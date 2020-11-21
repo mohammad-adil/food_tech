@@ -1,0 +1,25 @@
+{
+  "name": "foodtech",
+  "version": "1.0.0",
+  "description": "This is the first version of the software that will be built for the food tecnology of isalmic university of science and technology.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammad-adil/food_tech.git"
+  },
+  "keywords": [
+    "foodtech"
+  ],
+  "author": "Shah Aadil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohammad-adil/food_tech/issues"
+  },
+  "homepage": "https://github.com/mohammad-adil/food_tech#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
