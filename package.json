@@ -20,6 +20,12 @@
   },
   "homepage": "https://github.com/mohammad-adil/food_tech#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "mysql2": "^2.2.5",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
