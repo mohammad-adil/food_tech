@@ -3,6 +3,7 @@ const adduser = require('../mod/addUser.js')
 const validator = require('validator')
 const db = require('../db/db.js')
 const mysql = require('mysql2')
+const { commit } = require('../db/db.js')
 
 
 
@@ -17,9 +18,13 @@ const checkUser = (data) => {
 
                 return reject("Email Password not Valid")
             }
+
+       
+           
+
 errors.data = data
             return resolve(errors)
-            console.log(errors)
+         
         } else {
             return reject('Attributes Missing')
         }
@@ -33,20 +38,12 @@ const validate = async (req, res, next) => {
 
     try {
         let result = await checkUser(req.body)
-
         let verify = JSON.stringify(result)
         verify = JSON.parse(verify)
+      
         if (verify.email == true && verify.phone == true) {
-
-            
-            db.query(
-                'INSERT INTO `user` VALUES (?, ?,?,?, ?,?)',
-   function(err, results, fields) {
-                  console.log(results); // results contains rows returned by server
-                  //console.log(fields); // fields contains extra meta data about results, if available
-                }
-              );
-               
+            req.user=verify.data
+            next()
 
         } else {
 
@@ -56,10 +53,10 @@ const validate = async (req, res, next) => {
     } catch (err) {
         res.sendStatus(400)
     }
-
-    next()
-
 }
+
+
+
 
 
 module.exports = validate
