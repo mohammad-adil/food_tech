@@ -1,10 +1,13 @@
 const fs = require('fs')
 const login = require('./src/mod/addUser.js')
+const approveUser = require('./src/mod/approveUser.js')
 const express = require('express')
 const path = require('path')
 const mainLanding = require('./src/router/mainLanding.js')
 const loginSignup = require('./src/router/loginSignup.js')
 const app = express()
+
+//setting up the port for server dynamically
 const PORT = process.env.PORT || 3000
 
 //setting up the statc assets directory like images stylesheets scripts etc
@@ -19,9 +22,9 @@ app.set('view engine','hbs')
 app.use(mainLanding)
 app.use(loginSignup)
 app.use(login)
-
+app.use(approveUser)
 
 app.listen(PORT,()=>{
 
-    console.log('Application is running at 3000')
+    console.log('Application is running at port' + PORT)
 })

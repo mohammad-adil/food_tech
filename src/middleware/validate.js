@@ -18,11 +18,8 @@ const checkUser = (data) => {
 
                 return reject("Email Password not Valid")
             }
-
-       
-           
-
-errors.data = data
+            
+            errors.data = data
             return resolve(errors)
          
         } else {
@@ -42,6 +39,7 @@ const validate = async (req, res, next) => {
         verify = JSON.parse(verify)
       
         if (verify.email == true && verify.phone == true) {
+            console.log(verify.data)
             req.user=verify.data
             next()
 
@@ -52,11 +50,9 @@ const validate = async (req, res, next) => {
 
     } catch (err) {
         res.sendStatus(400)
+        console.log(err)
     }
 }
-
-
-
 
 
 module.exports = validate

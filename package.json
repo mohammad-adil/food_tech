@@ -4,7 +4,7 @@
   "description": "This is the first version of the software that will be built for the food tecnology of isalmic university of science and technology.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js -e js,hbs,html"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "hbs": "^4.1.1",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
     "validator": "^13.1.17"
   },
