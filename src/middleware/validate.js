@@ -3,7 +3,7 @@ const adduser = require('../mod/addUser.js')
 const validator = require('validator')
 const db = require('../db/db.js')
 const mysql = require('mysql2')
-const { commit } = require('../db/db.js')
+
 
 
 
