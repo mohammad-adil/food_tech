@@ -1,16 +1,8 @@
 const fs = require('fs')
-/// modules
-const login = require('./src/mod/addUser.js')
-const approveUser = require('./src/mod/approveUser.js')
-const loginUser = require('./src/mod/loginUser.js')
 const express = require('express')
 const path = require('path')
-
-
-
-///routers
-const mainLanding = require('./src/router/mainLanding.js')
-const loginSignup = require('./src/router/loginSignup.js')
+///router
+const Pathrouter = require('./src/router/router.js')
 const app = express()
 
 //setting up the port for server dynamically
@@ -25,18 +17,12 @@ app.use(express.json())
 //app.set('view engine','hbs')
 // view engine setup
 let d = path.join(__dirname,'views')
-console.log(d)
-
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 ///includeing the dynamic pages for application
-app.use(mainLanding)
-app.use(loginSignup)
-app.use(login)
-app.use(approveUser)
-app.use(loginUser)
+app.use(Pathrouter)
 
 app.listen(PORT,()=>{
 

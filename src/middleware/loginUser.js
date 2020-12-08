@@ -1,6 +1,6 @@
 const db = require('../db/db.js')
 const mysql = require('mysql2/promise');
-const user = require('../mod/loginUser.js')
+const user = require('../router/router.js')
 const jwt = require('jsonwebtoken');
 const { json, response } = require('express');
 const bluebird = require('bluebird');
@@ -13,10 +13,16 @@ const loginUser = async function (req,res,next){
   try{
   let user = await checkUserCredentials(req.body)
   let token = await generateToken(user)
-  let save_Token = await saveToken(user,token)
-  console.log(save_Token)
-  }catch(e){
+  let UserDetails = await saveToken(user,token)
+delete UserDetails.PASSWORD
+     delete UserDetails.REG_DATE
+     delete UserDetails.ACTIVE
+     delete UserDetails.REG_ID
+  req.user=UserDetails
+next()
 
+  }catch(e){
+res.sendStatus(500).send(e)
   }
 }
 
@@ -34,7 +40,9 @@ async function generateToken(user) {
   return new Promise((resolve, reject) => {
          
     if(user){
-      let token = jwt.sign({user:user.REG_ID.toString()},'stockpIlebYaAdiL');
+      let token = jwt.sign({user:user.REG_ID.toString()},'stockpIlebYaAdiL', { expiresIn: 60 * 1 });
+    
+       
        return resolve(token)
     }else{
 
@@ -46,32 +54,18 @@ async function generateToken(user) {
 
 async function saveToken(user,token){
   return new Promise((resolve, reject) => {
+
+   let UpdateToken = 'UPDATE `user` SET `TOKENS`=? WHERE `UID`=?'
+   let getDept = db.execute(UpdateToken,[token,user.UID.toString()], function(err,results){
    
- let oldToken = JSON.parse(user.TOKENS)
-       oldToken[tokens]= oldToken[tokens] +','+ token
+    if(results){
+      user.TOKENS = token
+           return resolve(user)
+    }else{
 
-    console.log(oldToken)
-  let newToken = {
-    tokens:user.TOKENS+','+ token,
-    newToken:token
-  }
-
-let UpdateToken = 'UPDATE `user` SET `TOKENS`=? WHERE `UID`=?'
-let getDept = db.execute(UpdateToken,[null,user.UID.toString()], function(err,results){
-  
-  if(results){
-
-
-    
-    console.log(s)
-    let UpdateToken = 'UPDATE `user` SET `TOKENS`=? WHERE `UID`=?'
-    let getDept = db.execute(UpdateToken,[newToken,user.UID.toString()], function(err,results){
-    
-    })    
-      }else if(err){ res.sendStatus(500) }
-
-    });
-
+    return reject('Not Able to Validate')
+    }
+   })
   })
 }
 

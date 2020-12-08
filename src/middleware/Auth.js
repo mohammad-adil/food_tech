@@ -1,25 +1,16 @@
 const jwt = require('jsonwebtoken')
 const db = require("../db/db.js")
+
 const auth = async(req, res, next) => {
-
     try {
-
         const token = req.header('Authorization').replace('Bearer ', '')
-        const decoded = jwt.verify(token, 'thisismynewcourse')
-        const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
+        const decoded = jwt.verify(token, 'stockpIlebYaAdiL')
 
-        if (!user) {
-
-            throw new Error()
-        }
-        req.token = token
-        req.user = user
-        next()
+       res.status(200).send({ error: " Authenticated" })
 
     } catch (e) {
         res.status(401).send({ error: "Please Authenticate" })
     }
-
 }
 
 module.exports = auth
