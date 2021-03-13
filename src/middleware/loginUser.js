@@ -38,9 +38,9 @@ let getDept = await db.promise().execute(user,[body.email.toString(),body.passwo
 
 async function generateToken(user) {
   return new Promise((resolve, reject) => {
-         
+  
     if(user){
-      let token = jwt.sign({user:user.REG_ID.toString()},'stockpIlebYaAdiL', { expiresIn: 60 * 1 });
+      let token = jwt.sign({user:user},'stockpIlebYaAdiL', { expiresIn: 60 * 1 });
     
        
        return resolve(token)

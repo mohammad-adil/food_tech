@@ -5,12 +5,13 @@ const auth = async(req, res, next) => {
     try {
         const token = req.header('Authorization').replace('Bearer ', '')
         const decoded = jwt.verify(token, 'stockpIlebYaAdiL')
-
-       res.status(200).send({ error: " Authenticated" })
+        req.UID= decoded.user
+        next()
 
     } catch (e) {
         res.status(401).send({ error: "Please Authenticate" })
     }
 }
+
 
 module.exports = auth

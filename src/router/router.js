@@ -3,6 +3,7 @@ const express = require('express')
 const mysql = require('mysql2')
 const Auth = require("../middleware/Auth.js")
 const loginUser = require("../middleware/loginUser.js")
+const SaveItem = require('../mod/SaveItem.js')
 const router = new express.Router()
 
 
@@ -22,8 +23,9 @@ router.get('',(req,res)=>{
 
 })
 
-router.post('/addItem',Auth,async(req,res)=>{
+router.post('/addItem',Auth,SaveItem,async(req,res)=>{
    
+    console.log('Hello i am here 2')
 
 })
 
