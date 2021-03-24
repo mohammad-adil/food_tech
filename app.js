@@ -5,6 +5,8 @@ const path = require('path')
 const Pathrouter = require('./src/router/router.js')
 const app = express()
 
+
+
 //setting up the port for server dynamically
 const PORT = process.env.PORT || 3000
 
@@ -23,6 +25,7 @@ app.set('view engine', 'html');
 
 ///includeing the dynamic pages for application
 app.use(Pathrouter)
+
 
 app.listen(PORT,()=>{
 
