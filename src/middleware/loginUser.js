@@ -34,8 +34,6 @@ let user = 'SELECT * FROM user WHERE `EMAIL`=? AND `PASSWORD` = ? AND NOT `ACTIV
   ///get the user from the database
 let getDept = await db.promise().execute(user,[body.email.toString(),body.password.toString(),0], function(err,result){
  });
-console.log(getDept)
-
  return getDept[0][0]
 
 }

@@ -1,4 +1,5 @@
 const db = require('../db/db.js')
+const cookieParser = require('cookie-parser')
 const express = require('express')
 const mysql = require('mysql2')
 const Auth = require("../middleware/Auth.js")
@@ -8,6 +9,8 @@ const AddItem = require('../mod/AddItem.js')
 const Adduser = require('../mod/Adduser.js')
 const approveUser = require('../mod/approveUser.js')
 const router = new express.Router()
+
+
 
 
 router.post('/createUser',validate,Adduser,async(req,res)=>{
@@ -23,7 +26,12 @@ router.post('/createUser',validate,Adduser,async(req,res)=>{
  
 router.post('/loginUser',loginUser,async(req,res)=>{
     let user = (req.user)
-   res.status(200).json(user)
+   
+   res.cookie('shah','aadil')
+   res.status(200).json(user)  
+
+
+
 })
 
 

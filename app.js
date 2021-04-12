@@ -1,9 +1,12 @@
 const fs = require('fs')
 const express = require('express')
+const cookieParser = require('cookie-parser')
 const path = require('path')
 ///router
 const Pathrouter = require('./src/router/router.js')
+
 const app = express()
+
 
 
 
@@ -14,7 +17,7 @@ const PORT = process.env.PORT || 3000
 const pubDirPath = path.join(__dirname,'/src/public')
 app.use(express.static(pubDirPath))
 app.use(express.json())
-
+app.use(cookieParser())
 ///setting up the view engine for advanced templating
 //app.set('view engine','hbs')
 // view engine setup
