@@ -4,6 +4,9 @@ const mysql = require('mysql2')
 const router = new express.Router()
 
 const Adduser = async (req, res, next) => {
+
+console.log(req.body)
+
     //Generate Unique ID for user
     let IDS = pID(req.user.name);
     ///Get Department ID from the Department Table that has to be stored with the user

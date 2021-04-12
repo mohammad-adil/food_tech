@@ -8,6 +8,9 @@ const mysql = require('mysql2')
 const validate = async (req, res, next) => {
 
 
+    console.log(req.body)
+
+
     try {
         let result = await checkUser(req.body)
         let verify = JSON.stringify(result)

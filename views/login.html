@@ -30,7 +30,7 @@
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" name="password" placeholder="Password" />
+              <input type="password"  name="password" placeholder="Password" />
             </div>
             <input type="submit" value="Login" class="btn solid" />
             <p class="social-text">Or Sign in with social platforms</p>
@@ -49,31 +49,33 @@
               </a>
             </div>
           </form>
-          <form action="#" class="sign-up-form" autocomplete="off">
+
+
+          <form action="#" class="sign-up-form" id ='signupForm' autocomplete="off">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Name" id="#name" />
+              <input type="text" placeholder="Name" id="#name" name="name" />
             </div>
 
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" id='#email' />
             </div>
 
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Employee ID/Registration ID" />
+              <input type="email" placeholder="Employee ID/Registration ID" id='#id' />
             </div>
 
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Phone Number" />
+              <input type="number" placeholder="Phone Number" id='#phone'/>
             </div>
 
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" id='#password' />
             </div>
 
             <div class="input-field">
@@ -83,12 +85,13 @@
 
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <select name="cars" id="cars" style="background: none; outline: none; border: none; line-height: 1; font-weight: 600; font-size: 1.1rem;  color: #333;">
+              <select id='#department' name="cars" id="cars" style="background: none; outline: none; border: none; line-height: 1; font-weight: 600; font-size: 1.1rem;  color: #333;">
                 <option value="Choose">Choose Department</option>
-                <option value="CSE">Computer Science and Engineering</option>
-                <option value="EE">Electrical Engineering</option>
-                <option value="ECE">Electronics and Communication Engineering</option>
-                <option value="CE">Civil Engineering</option>
+                <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Food Technology">Food Technology</option>
               </select>
 
             </div>

@@ -19,6 +19,8 @@ router.post('/createUser',validate,Adduser,async(req,res)=>{
  })
 
 
+
+
  router.post('/approveUser',approveUser,async (req,res)=>{
 
  })
