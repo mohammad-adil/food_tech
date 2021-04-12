@@ -14,7 +14,7 @@ const loginUser = async function (req,res,next){
   let user = await checkUserCredentials(req.body)
   let token = await generateToken(user)
   let UserDetails = await saveToken(user,token)
-delete UserDetails.PASSWORD
+  delete UserDetails.PASSWORD
      delete UserDetails.REG_DATE
      delete UserDetails.ACTIVE
      delete UserDetails.REG_ID

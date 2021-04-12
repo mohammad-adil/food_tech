@@ -1,8 +1,34 @@
-
-const adduser = require('../mod/addUser.js')
+const adduser = require('../mod/Adduser.js')
 const validator = require('validator')
 const db = require('../db/db.js')
 const mysql = require('mysql2')
+
+
+
+const validate = async (req, res, next) => {
+
+
+    try {
+        let result = await checkUser(req.body)
+        let verify = JSON.stringify(result)
+        verify = JSON.parse(verify)
+      
+        if (verify.email == true && verify.phone == true) {
+           // console.log(verify.data)
+            req.user=verify.data
+           // console.log('here I am')
+            next()
+
+        } else {
+
+            res.sendStatus(400)
+        }
+
+    } catch (err) {
+        res.sendStatus(400)
+       // console.log(err)
+    }
+}
 
 
 
@@ -28,30 +54,6 @@ const checkUser = (data) => {
 
     })
 
-}
-
-
-const validate = async (req, res, next) => {
-
-    try {
-        let result = await checkUser(req.body)
-        let verify = JSON.stringify(result)
-        verify = JSON.parse(verify)
-      
-        if (verify.email == true && verify.phone == true) {
-            console.log(verify.data)
-            req.user=verify.data
-            next()
-
-        } else {
-
-            res.sendStatus(400)
-        }
-
-    } catch (err) {
-        res.sendStatus(400)
-        console.log(err)
-    }
 }
 
 
