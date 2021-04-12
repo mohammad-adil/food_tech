@@ -25,13 +25,9 @@ router.post('/createUser',validate,Adduser,async(req,res)=>{
 
  
 router.post('/loginUser',loginUser,async(req,res)=>{
-    let user = (req.user)
-   
+    let user = (req.user)   
    res.cookie('shah','aadil')
    res.status(200).json(user)  
-
-
-
 })
 
 
@@ -40,9 +36,14 @@ router.get('',(req,res)=>{
     res.render('index')
 
 })
+router.get('/login',(req,res)=>{
+
+    res.render('login')
+
+})
 
 
-router.post('/addItem',Auth,AddItem,async(req,res)=>{
+router.post('/addItem',AddItem,async(req,res)=>{
    
     console.log('Hello i am here 2')
 

@@ -21,14 +21,12 @@ if(User[0]==='[]'){
 }
 
 
-
-
 let FindUser = async function(req){
     if(req.body.hasOwnProperty('Approved')){
         let user ='SELECT * FROM user WHERE `UID` = ?'
         try{
-              let updateUser = await db.promise().query(user,[req.body.user], (err,result)=>{});
-              return updateUser
+              let findUser = await db.promise().query(user,[req.body.user], (err,result)=>{});
+              return findUser
         }catch(e){
         console.log(e)
          }

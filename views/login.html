@@ -3,22 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/login.css" />
+    <script src="/js/signup.js"></script>
+    
+
+
     <title>Sign in & Sign up Form</title>
+<script>
+
+
+</script>
+    
+
   </head>
   <body>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="/login" method="post" class="sign-in-form">
+          <form action="/login" method="#" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" name="username" placeholder="Username" />
+              <input type="text" id="name" name="username" placeholder="Username" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
@@ -41,11 +49,11 @@
               </a>
             </div>
           </form>
-          <form action="#" class="sign-up-form">
+          <form action="#" class="sign-up-form" autocomplete="off">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Name" />
+              <input type="text" placeholder="Name" id="#name" />
             </div>
 
             <div class="input-field">
@@ -67,7 +75,24 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" />
             </div>
-            <input type="submit" class="btn" value="Sign up" />
+
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Confirm Password" />
+            </div>
+
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <select name="cars" id="cars" style="background: none; outline: none; border: none; line-height: 1; font-weight: 600; font-size: 1.1rem;  color: #333;">
+                <option value="Choose">Choose Department</option>
+                <option value="CSE">Computer Science and Engineering</option>
+                <option value="EE">Electrical Engineering</option>
+                <option value="ECE">Electronics and Communication Engineering</option>
+                <option value="CE">Civil Engineering</option>
+              </select>
+
+            </div>
+            <button type="button" class="btn" value="Sign up" id="signup"> Sign Up </button>
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
