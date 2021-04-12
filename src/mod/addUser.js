@@ -3,8 +3,6 @@ const express = require('express')
 const mysql = require('mysql2')
 const router = new express.Router()
 
-
-
 const Adduser = async (req, res, next) => {
     //Generate Unique ID for user
     let IDS = pID(req.user.name);
@@ -15,7 +13,7 @@ const Adduser = async (req, res, next) => {
                 /* Department  is Not registered
                  Send 403 response  
                 */
-                 res.sendStatus(403)
+                 res.status(404).json({msg: ' No Such Department Found!'})
 
            } 
          else{

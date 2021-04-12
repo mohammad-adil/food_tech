@@ -12,17 +12,19 @@ const loginUser = async function (req,res,next){
   ///check user Credentials
   try{
   let user = await checkUserCredentials(req.body)
+
   let token = await generateToken(user)
+
   let UserDetails = await saveToken(user,token)
   delete UserDetails.PASSWORD
      delete UserDetails.REG_DATE
      delete UserDetails.ACTIVE
      delete UserDetails.REG_ID
-  req.user=UserDetails
+      req.user=UserDetails
 next()
 
   }catch(e){
-res.sendStatus(500).send(e)
+res.status(500).send(e)
   }
 }
 
@@ -32,7 +34,10 @@ let user = 'SELECT * FROM user WHERE `EMAIL`=? AND `PASSWORD` = ? AND NOT `ACTIV
   ///get the user from the database
 let getDept = await db.promise().execute(user,[body.email.toString(),body.password.toString(),0], function(err,result){
  });
+console.log(getDept)
+
  return getDept[0][0]
+
 }
 
 
