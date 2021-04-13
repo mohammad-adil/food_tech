@@ -56,7 +56,6 @@ let pID = function (name) {
     return name.substr(0,4) + Math.random().toString(36).substr(8, 9);
   }
 
-
   /// Save the user Details in Database..
   async function createUser(user,DEPARTMENT_ID) {
     return new Promise((resolve, reject) => {

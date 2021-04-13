@@ -19,10 +19,8 @@ let UserDetails ={
 
 
 /// Validate Email then password
-
 var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 if(UserDetails.email.match(mailformat)){
-
 
 alert('Vaid Mail')
 
@@ -31,13 +29,8 @@ alert('Vaid Mail')
     document.signupForm.name.focus();
 }
 
-
 /// send data to server
-
 UserDetails = JSON.stringify(UserDetails)
-
-
-
 var xhr = new XMLHttpRequest();
 //xhr.withCredentials = true;
 xhr.addEventListener("readystatechange", function() {
@@ -45,6 +38,8 @@ xhr.addEventListener("readystatechange", function() {
         let jsonobj = JSON.parse(this.responseText)
 
         console.log(jsonobj)
+        
+
         }
 });
 let url = window.location.origin
@@ -53,6 +48,5 @@ xhr.setRequestHeader("content-type", "application/json");
 //xhr.setRequestHeader("x-auth-token", token);
 //xhr.setRequestHeader("cache-control", "no-cache");
 xhr.send(UserDetails)
-
 
 })

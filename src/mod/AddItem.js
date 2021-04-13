@@ -6,6 +6,8 @@ const router = new express.Router()
 
 let AddItem = async(req,res,next)=>{
 let ItemId = await GenerateId(req.body.ITEM_NAME)
+console.log(ItemId)
+
 
 
 
