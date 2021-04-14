@@ -21,7 +21,7 @@ let GenerateId = async function(name){
 let  saveItem = async function(Item,Itemid){
 let sql = "INSERT INTO assets (ITEM_NAME, TOTAL_QUANTITY, SUPPLIED_BY, ENTRY_BY, DEPARTMENT, LAB_ID, CATEGORY, ITEM_TYPE, UNIT_PRICE, ITEM_ID, SOURCE, AVL_QUANTITY) VALUES('"+ Item.ITEM_NAME +"','"+ Item.TOTAL_QUANTITY +"', '"+ Item.SUPPLIED_BY +"', '"+ Item.ENTRY_BY +"', '"+ Item.DEPARTMENT +"', '"+ Item.LAB_ID +"', '"+ Item.CATEGORY +"', '"+ Item.ITEM_TYPE +"', '"+ Item.UNIT_PRICE +"', '"+ Itemid +"','"+ Item.SOURCE +"','"+ Item.TOTAL_QUANTITY +"')"
 
-
+//inserting Items to Database
    db.query(sql, function (err, result) {console.log(result); console.log(err)});
 
 }
