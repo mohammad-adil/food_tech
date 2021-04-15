@@ -35,7 +35,7 @@ const validate = async (req, res, next) => {
 
 
 
-
+//// check user details
 const checkUser = (data) => {
     let errors = {}
     return new Promise((resolve, reject) => {
