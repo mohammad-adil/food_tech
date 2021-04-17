@@ -50,3 +50,54 @@ xhr.setRequestHeader("content-type", "application/json");
 xhr.send(UserDetails)
 
 })
+
+
+
+
+
+
+
+/////////////////////////////////////////// Sign in Code for the user 
+
+$(document).on('click','#LoginBtn', function(){
+
+
+    let email = document.getElementById('Sname').value
+    let password = document.getElementById('Spassword').value
+
+
+ let data = {
+     email,
+     password
+ }
+
+
+
+/// send data to server
+data = JSON.stringify(data)
+
+console.log(data)
+
+
+var xhr = new XMLHttpRequest();
+//xhr.withCredentials = true;
+xhr.addEventListener("readystatechange", function() {
+    if (this.readyState === 4) {
+    
+
+        console.log(this.responseText)
+        
+
+        }
+});
+let url = window.location.origin
+xhr.open("POST", url + "/loginUser");
+xhr.setRequestHeader("content-type", "application/json");
+//xhr.setRequestHeader("x-auth-token", token);
+//xhr.setRequestHeader("cache-control", "no-cache");
+xhr.send(data)
+
+
+
+
+})
