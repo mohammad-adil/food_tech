@@ -22,12 +22,35 @@ let UserDetails ={
 var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 if(UserDetails.email.match(mailformat)){
 
-alert('Vaid Mail')
 
 } else{
-    alert('Enter Vaid Mail')
-    document.signupForm.name.focus();
+    alert('Please provide a valid email address')
+    email.focus;
+    return false;
+    
 }
+if(name==null || name=="" ){
+    alert("Name can't be blank");
+    return false;
+}
+if(password.lenght<6){
+    alert("Password must be atleast 6 character long");
+    return false;
+}
+("(0/91)?[7-9][0-9]{9}")
+
+var phoneformat = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+if(UserDetails.phone.match(phoneformat)){
+
+
+} else{
+    alert('Please provide a valid phone number')
+    phone.focus;
+    return false;
+    
+}
+
+
 
 /// send data to server
 UserDetails = JSON.stringify(UserDetails)
