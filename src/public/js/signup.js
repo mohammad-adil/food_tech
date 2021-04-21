@@ -5,6 +5,7 @@ $(document).on('click', '#signup', function() {
    let email = document.getElementById('#email').value
    let phone = document.getElementById('#phone').value
    let password = document.getElementById('#password').value
+   let confirmpassword = document.getElementById('#confirmpassword').value
    let department = document.getElementById('#department').value
    let id = document.getElementById('#id').value
 
@@ -13,46 +14,72 @@ let UserDetails ={
     email,
     phone,
     password,
+    confirmpassword,
     department,
     id
 }
 
-
-/// Validate Email then password
 var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-if(UserDetails.email.match(mailformat)){
+var phoneformat = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+if(UserDetails.name ==""){
+    document.getElementById('Nameid').innerHTML= "**Please fill Name";
+    return false;
+  }
 
-
-} else{
-    alert('Please provide a valid email address')
+  else if(!isNaN(UserDetails.name)){
+    document.getElementById('Nameid').innerHTML= "**Please enter character";
+    return false;
+  }
+  else if(UserDetails.email ==""){
+    document.getElementById('emailid').innerHTML= "**Please fill Email";
+    return false;
+  }
+ 
+else if(!(UserDetails.email.match(mailformat))){
+    document.getElementById('emailid').innerHTML="**Please provide a valid email address";
     email.focus;
     return false;
     
 }
-if(name==null || name=="" ){
-    alert("Name can't be blank");
+  else if(USerDetails.id ==""){
+    document.getElementById('Empid').innerHTML= "**Please fill Employee ID";
+    return false
+  }
+  else if(UserDetails.phone ==""){
+    document.getElementById('phoneid').innerHTML= "**Please fill Phone Number";
     return false;
-}
-if(password.lenght<6){
-    alert("Password must be atleast 6 character long");
-    return false;
-}
-("(0/91)?[7-9][0-9]{9}")
+  }
+  if(!(UserDetails.phone.match(phoneformat))){
 
-var phoneformat = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-if(UserDetails.phone.match(phoneformat)){
-
-
-} else{
-    alert('Please provide a valid phone number')
+    document.getElementById('phoneid').innerHTML="Please provide a valid phone number";
     phone.focus;
     return false;
     
 }
+  else if(UserDetails.password ==""){
+    document.getElementById('passwordid').innerHTML= "**Please fill Password";
+    return false;
+  }
+
+  else if((UserDetails.password.length<5)||(UserDetails.passsword.length>20)){
+    document.getElementById('passwordid').innerHTML= "**Please fill Password between 6 and 20";
+    return false;
+  }
+  else if(UserDetails.password!=UserDetails.confirmpassword){
+    document.getElementById('cpasswordid').innerHTML= "**Passwords do not match";
+  }
+  else if(UserDetails.confirmpassword ==""){
+    document.getElementById('cpasswordid').innerHTML= "**Please fill Confirm Password";
+  }
+SendData(UserDetails);
+})
 
 
 
-/// send data to server
+
+var SendData = function(){
+
+  /// send data to server
 UserDetails = JSON.stringify(UserDetails)
 var xhr = new XMLHttpRequest();
 //xhr.withCredentials = true;
@@ -70,9 +97,9 @@ xhr.open("POST", url + "/createUser");
 xhr.setRequestHeader("content-type", "application/json");
 //xhr.setRequestHeader("x-auth-token", token);
 //xhr.setRequestHeader("cache-control", "no-cache");
-xhr.send(UserDetails)
+xhr.send(UserDetails)  
 
-})
+}
 
 
 
