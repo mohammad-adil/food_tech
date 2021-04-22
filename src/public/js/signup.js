@@ -46,28 +46,40 @@ if(UserDetails.name ==""){
   }
 
  else if(UserDetails.password =="" && ((UserDetails.password.length<5)||(UserDetails.passsword.length>20))){
-    document.getElementById('passwordid').innerHTML= "****Please fill Password between 6 and 20";
+    document.getElementById('passwordid').innerHTML= "**Please fill Password between 6 and 20";
   }
 
- else if(UserDetails.confirmpassword =="" && (!(UserDetails.password==UserDetails.confirmpassword))){
+ else if(UserDetails.confirmpassword =="" && UserDetails.password != UserDetails.confirmpassword){
     document.getElementById('cpasswordid').innerHTML= "**Passwords do not match";
+    return false;
   }
 
  else if(UserDetails.eid ==""){
     document.getElementById('empid').innerHTML= "**Please fill Employee ID";
   }
+
   else {
     SendData(UserDetails);
   }
 
+});
+
+function checkPasswordMatch() {
+  var p = $("#password").val();
+  var cp = $("#confirmpassword").val();
+
+  if (p != cp)
+   $("#divCheckPasswordMatch").html("Passwords match!");
+  else
+   $("#divCheckPasswordMatch").html("Passwords  do not match.");
+}
+
+$(document).ready(function () {
+ $("#password, #confirmpassword").keyup(checkPasswordMatch);
+});
 
 
-})
-
-
-
-
-var SendData = function(){
+var SendData = function(UserDetails){
 
   /// send data to server
 UserDetails = JSON.stringify(UserDetails)

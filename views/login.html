@@ -85,8 +85,10 @@
 
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Confirm Password" id='#confirmpassword' />
+              <input type="password" placeholder="Confirm Password" id='#confirmpassword' onChange="checkPasswordMatch();" />
               <span id ="cpasswordid" style="font-style: italic; font-size: xx-small ; color: rgb(233, 23, 23); width: 200px;"> </span>
+            </div>
+            <div class="registrationFormAlert" id="divCheckPasswordMatch">
             </div>
 
             <div class="input-field">
