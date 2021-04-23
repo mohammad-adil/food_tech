@@ -6,13 +6,13 @@ $(document).on('click', '#signup', function() {
   let department = document.getElementById('#department').value
   let id = document.getElementById('#eid').value
 let UserDetails ={
-   name,
-   email,
-   phone,
-   password,
-   department,
-   id,
-   role:"user"
+   'name': name,
+   'email':email,
+   'phone':phone,
+   'password':password,
+   'department':department,
+   'id':id,
+   'role':"user"
 }
 
 
