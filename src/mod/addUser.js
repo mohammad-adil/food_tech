@@ -4,9 +4,6 @@ const mysql = require('mysql2')
 const router = new express.Router()
 
 const Adduser = async (req, res, next) => {
-
-console.log(req.body)
-
     //Generate Unique ID for user
     let IDS = pID(req.user.name);
     ///Get Department ID from the Department Table that has to be stored with the user
@@ -20,7 +17,7 @@ console.log(req.body)
 
            } 
          else{
-        
+          console.log('hERE IS ME' + req.body)
                  let departmen_ID = getDept[0][0].DEPARTMENT_ID
                  console.log(departmen_ID)
                  /// check if the user is already present in database.
@@ -60,7 +57,10 @@ let pID = function (name) {
   async function createUser(user,DEPARTMENT_ID) {
     return new Promise((resolve, reject) => {
       if(user && DEPARTMENT_ID){
-        let sql = "INSERT INTO user (NAME, REG_ID,EMAIL,PHONE_NUMBER,UID,ACTIVE,TOKENS,PASSWORD,DEPARTMENT) VALUES ('"+ user.name +"','"+ user.id +"','"+user.email +"','"+user.phone +"','"+ user.ID +"','0','0','"+user.password +"','"+ DEPARTMENT_ID +"')";
+
+        let sql = "INSERT INTO user (NAME, REG_ID,EMAIL,PHONE_NUMBER,UID,ROLE,ACTIVE,TOKENS,PASSWORD,DEPARTMENT) VALUES ('"+ user.name +"','"+ user.id +"','"+user.email +"','"+user.phone +"','"+ user.ID +"','"+user.role +"','0','0','"+user.password +"','"+ DEPARTMENT_ID +"')";
+        
+console.log(sql)
         db.query(sql, function (err, result) {
             if (err) throw err;
             else{return resolve('User Created') }
