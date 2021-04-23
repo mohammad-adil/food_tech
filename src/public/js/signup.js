@@ -69,9 +69,9 @@ function checkPasswordMatch() {
   var cp = $("#confirmpassword").val();
 
   if (p != cp)
-   $("#divCheckPasswordMatch").html("Passwords match!");
+   $("#errorid").html("Passwords match!");
   else
-   $("#divCheckPasswordMatch").html("Passwords  do not match.");
+   $("#errorid").html("Passwords  do not match.");
 }
 
 $(document).ready(function () {
