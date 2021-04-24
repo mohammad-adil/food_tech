@@ -3,6 +3,7 @@ $(document).on('click', '#signup', function() {
   let email = document.getElementById('#email').value
   let phone = document.getElementById('#phone').value
   let password = document.getElementById('#password').value
+<<<<<<< Updated upstream
   let department = document.getElementById('#department').value
   let id = document.getElementById('#eid').value
 let UserDetails ={
@@ -16,6 +17,26 @@ let UserDetails ={
 }
 
 
+=======
+  let confirmpassword = document.getElementById('#confirmpassword').value
+  let department = document.getElementById('#department').value
+  let id = document.getElementById('#eid').value
+let UserDetails ={
+   name,
+   email,
+   phone,
+   password,
+   confirmpassword,
+   department,
+   id,
+   role:"user"
+}
+var ver= formValidate(UserDetails);
+var pas= checkPasswordMatch(UserDetails);
+if(ver==true && pas==true){
+   SendData(UserDetails);
+}
+>>>>>>> Stashed changes
 /// send data to server
 UserDetails = JSON.stringify(UserDetails)
 var xhr = new XMLHttpRequest();

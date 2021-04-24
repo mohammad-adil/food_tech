@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/login.css" />
     <script src="/js/signup.js"></script>
+    <script src="/js/formValidate.js"></script>
     
 
 
@@ -86,6 +87,7 @@
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Confirm Password" id='#confirmpassword' onkeyup="checkPasswordMatch();" />
+              <error id="alert"></error>
               <span id ="cpasswordid" style="font-style: italic; font-size: xx-small ; color: rgb(233, 23, 23); width: 200px;"> </span>
             </div>
             <div class="registrationFormAlert" id="errorid">
@@ -150,8 +152,6 @@
 
     <script src="/js/login.js"></script>
 
-
-  }
     </script>
   </body>
 </html>
