@@ -8,6 +8,7 @@ const validate = require("../middleware/validate.js")
 const AddItem = require('../mod/AddItem.js')
 const Adduser = require('../mod/Adduser.js')
 const approveUser = require('../mod/approveUser.js')
+const path = require('path')
 const router = new express.Router()
 
 
@@ -25,11 +26,39 @@ router.post('/createUser',validate,Adduser,async(req,res)=>{
 
  })
 
+
+ router.get("/admin",async(req,res)=>{
+     let token = req.query["token"]
+     console.log("token",token)
+     res.sendFile(path.dirname(__dirname) + "/public/Panel/User/issue.html")})
  
-router.post('/loginUser',loginUser,async(req,res)=>{
-    let user = (req.user)   
-   res.cookie('shah','aadil')
-   res.status(200).json(user)  
+router.post('/loginUser',loginUser,async(req,res)=>{  
+
+    console.log("hete I am")
+
+try {
+    let ROLE = req.user.ROLE
+     console.log(ROLE)
+    
+            if (ROLE == "user") {
+                res.redirect("/admin")
+                //res.status(200).json({role:"user",token:"XYZ",url:"/admin"})
+                
+            } else if (ROLE == "admin") {
+                res.sendFile(path.dirname(__dirname) + "/public/Panel/Adminser/issue.html")
+            } else if (ROLE == "master") {
+                res.sendFile(path.dirname(__dirname) + "/public/Panel/MasterAdmin/issue.html")
+            }
+     
+}catch(e){
+console.log(e)
+}
+
+
+    
+
+
+    
 })
 
 

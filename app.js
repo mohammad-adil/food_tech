@@ -21,10 +21,11 @@ app.use(cookieParser())
 ///setting up the view engine for advanced templating
 //app.set('view engine','hbs')
 // view engine setup
+
 let d = path.join(__dirname,'views')
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 
 ///includeing the dynamic pages for application
 app.use(Pathrouter)

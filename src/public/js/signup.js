@@ -1,9 +1,10 @@
+
+
 $(document).on('click', '#signup', function() {
   let name = document.getElementById('#name').value
   let email = document.getElementById('#email').value
   let phone = document.getElementById('#phone').value
   let password = document.getElementById('#password').value
-<<<<<<< Updated upstream
   let department = document.getElementById('#department').value
   let id = document.getElementById('#eid').value
 let UserDetails ={
@@ -17,26 +18,13 @@ let UserDetails ={
 }
 
 
-=======
   let confirmpassword = document.getElementById('#confirmpassword').value
-  let department = document.getElementById('#department').value
-  let id = document.getElementById('#eid').value
-let UserDetails ={
-   name,
-   email,
-   phone,
-   password,
-   confirmpassword,
-   department,
-   id,
-   role:"user"
-}
+
 var ver= formValidate(UserDetails);
 var pas= checkPasswordMatch(UserDetails);
 if(ver==true && pas==true){
    SendData(UserDetails);
 }
->>>>>>> Stashed changes
 /// send data to server
 UserDetails = JSON.stringify(UserDetails)
 var xhr = new XMLHttpRequest();
@@ -65,7 +53,7 @@ xhr.send(UserDetails)
 
 /////////////////////////////////////////// Sign in Code for the user 
 
-/*$(document).on('click','#LoginBtn', function(){
+$(document).on('click','#LoginBtn', async function(){
 
 
    let email = document.getElementById('Sname').value
@@ -84,26 +72,21 @@ data = JSON.stringify(data)
 
 console.log(data)
 
+let result =await fetch("/loginUser",{
+   method:"POST",
+   redirect:"follow",
+   headers:new Headers({
+      'Content-Type':"application/json"
+   }),
+   body:data
+})
 
-var xhr = new XMLHttpRequest();
-//xhr.withCredentials = true;
-xhr.addEventListener("readystatechange", function() {
-   if (this.readyState === 4) {
+if(result.redirected){
+   window.location.assign(result.url)
+}
 
-
-       console.log(this.responseText)
-
-
-       }
-});
-let url = window.location.origin
-xhr.open("POST", url + "/loginUser");
-xhr.setRequestHeader("content-type", "application/json");
-//xhr.setRequestHeader("x-auth-token", token);
-//xhr.setRequestHeader("cache-control", "no-cache");
-xhr.send(data)
-
-
-
-
-}) */
+// if(result.status===200)
+// {let response=(await result.json())
+//    window.location.assign(`${response.url}?token=${response.token}`)
+// }
+}) 
