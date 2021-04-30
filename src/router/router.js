@@ -33,9 +33,6 @@ router.post('/createUser',validate,Adduser,async(req,res)=>{
      res.sendFile(path.dirname(__dirname) + "/public/Panel/User/issue.html")})
  
 router.post('/loginUser',loginUser,async(req,res)=>{  
-
-    console.log("hete I am")
-
 try {
     let ROLE = req.user.ROLE
      console.log(ROLE)
