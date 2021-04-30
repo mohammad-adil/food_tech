@@ -12,35 +12,11 @@
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!--   <script src="/panel/master/js/Airport.js"></script>
-    <script src="/panel/master/js/Edithandler.js"></script> -->
-    <link href="/panel/master/css/myStyle.css" rel="stylesheet" />
- <!--    <script src="/panel/master/js/agentRegistration.js"></script> -->
-    <script src="/panel/master/js/script.js"></script>
-<!-- 
-    <script src="/panel/master/js/getReportHTML.js"></script>
-    <script src="/panel/master/js/dashboard.js"></script>
-    <script src="/panel/master/js/search.js"></script>
-    <script src="/panel/master/js/register.js"></script>
-    <script src="/panel/master/js/getAgent.js"></script>
-    <script src="/panel/master/js/purchaseHandler.js"></script>
-    <script src="/panel/master/js/ReportHandler.js"></script>
-    <script src="/panel/master/js/searchagenHTML.js"></script>
-    <script src="/panel/master/js/UpdateAgentHandler.js"></script>
-    <script src="/panel/master/js/approveAgent.js"></script>
-    <script src="/panel/master/js/approveAgentHandler.js"></script>
-    <script src="/panel/master/js/calender.js"></script>
-    <script src="/panel/master/js/approveAgentHandler.js"></script>
-    <script src="/panel/master/js/calenderHandler.js"></script>
-    <script src="/panel/master/js/paymentAgentHTML.js"></script>
-    <script src="/panel/master/js/paymentAgentHandler.js"></script>
-    <script src="/panel/master/js/RegisterVendorHTML.js"></script>
-    <script src="/panel/master/js/RegisterVendorHandler.js"></script>
-    <link href="/panel/master/css/myStyle.css" rel="stylesheet" />
-    <script src="/panel/master/js/retrievebookingHTML.js"></script>
-    <script src="/panel/master/js/retrieveBookingHandler.js"></script>
-    <script src="/panel/master/js/cancelBookingHandler.js"></script>
-    <style> -->
+    <link href="/Panel/User/css/myStyle.css" rel="stylesheet" />
+    <script src="/Panel/User/js/script.js"></script>
+    <script src="/Panel/User/js/dashboard.js"></script>
+    
+    <style> 
         .modal {
             overflow-x: scroll;
         }
@@ -49,7 +25,7 @@
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="panel/master/index.html"> Dashboard </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+        <a class="navbar-brand" href="Panel/User/issue.html"> Dashboard </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             >
             <!-- Navbar Search-->
 			
@@ -85,52 +61,56 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Qiblatain Travels</div>
-                        <a class="nav-link" href="/panel/master/index.html">
+                        <div class="sb-sidenav-menu-heading">Stock Pile</div>
+                        <a class="nav-link" href="/Panel/User/issue.html">
                             <div class="sb-nav-link-icon">
                                 <i class="fas fa-tachometer-alt"></i>
                             </div>Dashboard</a>
 
                         <a class="nav-link" id="calender" href="#">
                             <div class="sb-nav-link-icon">
-                                <i class="fa fa-calender"></i>
-                            </div>Calender</a>
+                                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                            </div>Report</a>
 
                         <a class="nav-link" id="retrieveBooking" href="#">
                             <div class="sb-nav-link-icon">
-                                <i class="fa fa-calender"></i>
-                            </div>Retrieve</a>
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </div>Search</a>
 
-                        <a class="nav-link" id="SearchItenary" href="#">
+                       <!--  <a class="nav-link" id="SearchItenary" href="#">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-calender"></i>
-                            </div>Search</a>
+                            </div>Search</a> -->
 
 
                         <div class="sb-sidenav-menu-heading">Menu</div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Reports
+                            Add
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="getReport" type="button" class="btn btn-link nav-link itenary">Get Reports</button>
+                            <button id="getReport" type="button" class="btn btn-link nav-link itenary">Add Department</button>
+
+                        </div>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <button id="getReport" type="button" class="btn btn-link nav-link itenary">Add User</button>
 
                         </div>
 
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon">
-                                <i class="fas fa-book-open"></i>
+                                <i class="fa fa-certificate  " aria-hidden="true"></i>
                             </div>
-                            Agents
+                            Update
 
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
                             </div>
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="Register" type="button" class="btn btn-link nav-link nav-link">Register</button>
-                            <button id="AgentDetails" type="button" class="btn btn-link nav-link ">Update Details</button>
-                            <button id="approveAgents" onclick="approveAgent();" type="button" class="btn btn-link nav-link ">Approve Agents</button>
+                            <button id="Register" type="button" class="btn btn-link nav-link nav-link">Update User Details</button>
+                            <button id="AgentDetails" type="button" class="btn btn-link nav-link ">Update Asset Details</button>
+                            <button id="approveAgents" onclick="approveAgent();" type="button" class="btn btn-link nav-link ">Update Department</button>
 
                         </div>
 
@@ -138,7 +118,7 @@
                             <div class="sb-nav-link-icon">
                                 <i class="fas fa-book-open"></i>
                             </div>
-                            Payments
+                            Reports
 
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
                             </div>
@@ -148,9 +128,9 @@
                             <!-- <a class="nav-link" id="reg" href="register.html">Register Agent</a>
                                     <!-- <a" class="nav-link" href="#"></a>-->
 
-                            <button id="PaymentAgent" type="button" class="btn btn-link nav-link nav-link">Agent</button>
-                            <button id="PaymentVendor" type="button" class="btn btn-link nav-link ">Vendor</button>
-                            <button id="PaymentReport" type="button" class="btn btn-link nav-link ">Make Payment</button>
+                            <button id="PaymentAgent" type="button" class="btn btn-link nav-link nav-link">Asset Report</button>
+                            <button id="PaymentVendor" type="button" class="btn btn-link nav-link ">Admin Report</button>
+                            <button id="PaymentReport" type="button" class="btn btn-link nav-link "> User Report</button>
 
                         </div>
 
@@ -161,15 +141,13 @@
                             <div class="sb-nav-link-icon">
                                 <i class="fas fa-book-open"></i>
                             </div>
-                            Vendor
+                            Register
 
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
                             </div>
                         </a>
                         <div class="collapse" id="collapseVendor" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="btnRegisterVendor" type="button" class="btn btn-link nav-link nav-link">Register</button>
-
-
+                            <button id="btnRegisterVendor" type="button" class="btn btn-link nav-link nav-link">Register User</button>
                         </div>
 
 
@@ -496,7 +474,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Qiblatain Travels</div>
+                        <div class="text-muted">Copyright &copy; Stock Pile</div>
                         <div>
                             <a href="#">Privacy Policy</a> &middot;
                             <a href="#">Terms &amp; Conditions</a>
