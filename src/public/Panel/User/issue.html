@@ -15,6 +15,7 @@
     <link href="/Panel/User/css/myStyle.css" rel="stylesheet" />
     <script src="/Panel/User/js/script.js"></script>
     <script src="/Panel/User/js/dashboard.js"></script>
+    <script src="/Panel/User/js/register.js"></script>
     
     <style> 
         .modal {
@@ -25,7 +26,7 @@
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="Panel/User/issue.html"> Dashboard </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+        <a class="navbar-brand"  href="/Panel/User/issue.html"> Dashboard </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             >
             <!-- Navbar Search-->
 			
@@ -67,12 +68,12 @@
                                 <i class="fas fa-tachometer-alt"></i>
                             </div>Dashboard</a>
 
-                        <a class="nav-link" id="calender" href="#">
+                        <a class="nav-link" id="" href="#">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-list-alt" aria-hidden="true"></i>
                             </div>Report</a>
 
-                        <a class="nav-link" id="retrieveBooking" href="#">
+                        <a class="nav-link" id="" href="#">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </div>Search</a>
@@ -90,13 +91,39 @@
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="getReport" type="button" class="btn btn-link nav-link itenary">Add Department</button>
+                            <button id="" type="button" class="btn btn-link nav-link itenary">Add Department</button>
 
                         </div>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="getReport" type="button" class="btn btn-link nav-link itenary">Add User</button>
+                            <button id="" type="button" class="btn btn-link nav-link itenary">Add User</button>
 
                         </div>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <button id="" type="button" class="btn btn-link nav-link itenary">Add Lab</button>
+
+                        </div>
+
+
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseItem" aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            Item
+
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                            <button id="" type="button" class="btn btn-link nav-link nav-link">Issue</button>
+                        </div>
+
+                        <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                            <button id="" type="button" class="btn btn-link nav-link nav-link">Return</button>
+                        </div>
+
+
+
+
 
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon">
@@ -108,9 +135,10 @@
                             </div>
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="Register" type="button" class="btn btn-link nav-link nav-link">Update User Details</button>
-                            <button id="AgentDetails" type="button" class="btn btn-link nav-link ">Update Asset Details</button>
-                            <button id="approveAgents" onclick="approveAgent();" type="button" class="btn btn-link nav-link ">Update Department</button>
+                            <button id="" type="button" class="btn btn-link nav-link nav-link">Update User Details</button>
+                            <button id="" type="button" class="btn btn-link nav-link ">Update Asset Details</button>
+                            <button id=""  type="button" class="btn btn-link nav-link ">Update Department</button>
+                            <button id=""  type="button" class="btn btn-link nav-link ">Update Lab</button>
 
                         </div>
 
@@ -128,11 +156,18 @@
                             <!-- <a class="nav-link" id="reg" href="register.html">Register Agent</a>
                                     <!-- <a" class="nav-link" href="#"></a>-->
 
-                            <button id="PaymentAgent" type="button" class="btn btn-link nav-link nav-link">Asset Report</button>
-                            <button id="PaymentVendor" type="button" class="btn btn-link nav-link ">Admin Report</button>
-                            <button id="PaymentReport" type="button" class="btn btn-link nav-link "> User Report</button>
+                            <button id="" type="button" class="btn btn-link nav-link nav-link">Asset Report</button>
+                            <button id="" type="button" class="btn btn-link nav-link ">Admin Report</button>
+                            <button id="" type="button" class="btn btn-link nav-link "> User Report</button>
 
                         </div>
+
+
+
+
+                       
+
+                        
 
 
 
@@ -156,15 +191,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
+                      
 
 
 
@@ -202,56 +229,6 @@
                     </script>
 
 
-
-
-                    <!-----------------------------------Calender-->
-
-                    <div id="changeMark">
-                        <!-- Modal -->
-                        <div class="modal fade" id="updateMarkup" role="dialog">
-                            <div class="modal-dialog modal-sm">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <form action="#">
-                                            <div class="form-group">
-                                                <label for="cpnr"> PNR: </label>
-                                                <input type="text" class="form-control" id="cpnr" disabled>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="tseats"> Seats: </label>
-                                                <input type="text" class="form-control" id="ctseats" disabled>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="Threshold"> Threshold: </label>
-                                                <input type="text" class="form-control" id="threshold">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="cmarkup">Markup:</label>
-
-                                                <input type="text" class="form-control" id="cmarkup">
-                                            </div>
-                                            <button type="button" id="updateThreshold" class="btn btn-primary">Update</button>
-                                        </form>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                 
 
                     
             </main>
