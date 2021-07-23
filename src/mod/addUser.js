@@ -57,8 +57,7 @@ let pID = function (name) {
   async function createUser(user,DEPARTMENT_ID) {
     return new Promise((resolve, reject) => {
       if(user && DEPARTMENT_ID){
-
-        let sql = "INSERT INTO user (NAME, REG_ID,EMAIL,PHONE_NUMBER,UID,ROLE,ACTIVE,TOKENS,PASSWORD,DEPARTMENT) VALUES ('"+ user.name +"','"+ user.id +"','"+user.email +"','"+user.phone +"','"+ user.ID +"','"+user.role +"','0','0','"+user.password +"','"+ DEPARTMENT_ID +"')";
+         let sql = "INSERT INTO user (NAME, REG_ID,EMAIL,PHONE_NUMBER,UID,ROLE,ACTIVE,TOKENS,PASSWORD,DEPARTMENT) VALUES ('"+ user.name +"','"+ user.id +"','"+user.email +"','"+user.phone +"','"+ user.ID +"','"+user.role +"','0','0','"+user.password +"','"+ DEPARTMENT_ID +"')";
         
 console.log(sql)
         db.query(sql, function (err, result) {

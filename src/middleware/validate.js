@@ -6,22 +6,17 @@ const mysql = require('mysql2')
 
 
 const validate = async (req, res, next) => {
-
-
     console.log(req.body)
-
-
     try {
         let result = await checkUser(req.body)
         let verify = JSON.stringify(result)
         verify = JSON.parse(verify)
-      
-        if (verify.email == true && verify.phone == true) {
-           // console.log(verify.data)
-            req.user=verify.data
-           // console.log('here I am')
-            next()
 
+        if (verify.email == true && verify.phone == true) {
+            // console.log(verify.data)
+            req.user = verify.data
+            // console.log('here I am')
+            next()
         } else {
 
             res.sendStatus(400)
@@ -29,7 +24,7 @@ const validate = async (req, res, next) => {
 
     } catch (err) {
         res.sendStatus(400)
-       // console.log(err)
+        // console.log(err)
     }
 }
 
@@ -47,10 +42,10 @@ const checkUser = (data) => {
 
                 return reject("Email Password not Valid")
             }
-            
+
             errors.data = data
             return resolve(errors)
-         
+
         } else {
             return reject('Attributes Missing')
         }
