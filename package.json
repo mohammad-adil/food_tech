@@ -1,17 +1,18 @@
 {
-  "name": "foodtech",
+  "name": "stockpile",
   "version": "1.0.0",
   "description": "This is the first version of the software that will be built for the food tecnology of isalmic university of science and technology.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js -e js,hbs,html"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js -e js,hbs,html"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mohammad-adil/food_tech.git"
   },
   "keywords": [
-    "foodtech"
+    "stockpile"
   ],
   "author": "Shah Aadil",
   "license": "ISC",
@@ -20,13 +21,13 @@
   },
   "homepage": "https://github.com/mohammad-adil/food_tech#readme",
   "dependencies": {
-    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "hbs": "^4.1.1",
     "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.2.5",
+    "mongoose": "^5.13.5",
     "validator": "^13.1.17"
   },
   "devDependencies": {
