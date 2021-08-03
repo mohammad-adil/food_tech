@@ -1,45 +1,63 @@
 
 
-$(document).on('click', '#signup', function () {
+$(document).on('click','#sign-up-btn', async function(){
+   let baseUrl = window.location.origin
+   let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
+      method: "GET",
+   }).then(data => {  return data.json()})
+
+const selectionBox = document.querySelector("#department")
+let dataSelect='<option value="select"> Select </option>'
+result.forEach(element => {
+console.log(element)
+   dataSelect  += `<option value="${element._id}">${element.departmentName}</option>`
+
+});
+
+selectionBox.innerHTML=dataSelect
+
+})
+
+$(document).on('click', '#signup', async function () {
    let name = document.getElementById('#name').value
    let email = document.getElementById('#email').value
    let phone = document.getElementById('#phone').value
    let password = document.getElementById('#password').value
-   let department = document.getElementById('#department').value
-   let id = document.getElementById('#eid').value
-   let UserDetails = {
-      'name': name,
-      'email': email,
-      'phone': phone,
-      'password': password,
-      'department': department,
-      'id': id,
-      'role': "user"
-   }
+   let  department = $("#department :selected").val(); 
+   let universityId = document.getElementById('#eid').value
+   let dob = '22-1-2021'
+   //let userRole = document.getElementById('#userRole').value 
+   let gender = 'Male'
+   //let address = document.getElementById('#address').value 
+   
 
+   let UserDetails ={
+      name,
+   dob,
+   department,
+   universityId,
+   userRole:'user',
+   phone,
+   gender,
+   address:{
+       Landmark:'Shah ssfil',
+       pin:19113,
+       street:'google steeet',
+      },
+      email,
+      password
+}
 
-   let confirmpassword = document.getElementById('#confirmpassword').value
+   let baseUrl = window.location.origin
+   let results = await fetch(baseUrl + "/stockpile/v1/signUp", {
+      method: "POST",
+      headers: {
+         'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(UserDetails),
+   }).then(data => {  return data.json()})
 
-   var ver = formValidate(UserDetails);
-   var pas = checkPasswordMatch(UserDetails);
-
-   /// send data to server
-   UserDetails = JSON.stringify(UserDetails)
-   var xhr = new XMLHttpRequest();
-   //xhr.withCredentials = true;
-   xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === 4) {
-         let jsonobj = JSON.parse(this.responseText)
-         console.log(jsonobj)
-
-      }
-   });
-   let url = window.location.origin
-   xhr.open("POST", url + "/createUser");
-   xhr.setRequestHeader("content-type", "application/json");
-   //xhr.setRequestHeader("x-auth-token", token);
-   //xhr.setRequestHeader("cache-control", "no-cache");
-   xhr.send(UserDetails)
+console.log('data is '+   results)
 
 })
 
