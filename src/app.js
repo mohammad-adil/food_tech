@@ -34,6 +34,9 @@ app.set("view engine", "html");
 app.get("/", async (req, res) => {
   res.render("index");
 });
+app.get("/login", (req, res) => {
+  res.render("login");
+});
 
 app.use(signupRouter);
 app.use(labRouter);
