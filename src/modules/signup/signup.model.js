@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      default: "Loren Ipsumgit ",
+      default: "Loren Ipsum ",
     },
     dob: {
       type: String,
@@ -14,9 +14,9 @@ const userSchema = new mongoose.Schema(
       trim: true,
     },
     department: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
-      trim: true,
+      ref: "Department",
     },
     universityId: {
       type: String,

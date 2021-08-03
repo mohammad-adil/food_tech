@@ -9,19 +9,17 @@ const labSchema = new mongoose.Schema(
       default: "Loren Ipsumgit ",
     },
     department: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
-      trim: true,
+      ref: "Department",
     },
-    estdDate: {
+    labEstDate: {
       type: String,
-      required: true,
-      trim: true,
     },
     labAdmin: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
-      trim: true,
+      ref: "User",
     },
   },
   { timestamps: true }
