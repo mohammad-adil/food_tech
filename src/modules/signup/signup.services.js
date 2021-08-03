@@ -10,3 +10,12 @@ exports.doSignupUser = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.doGetUser = async (req, res, next) => {
+  try {
+    const getUser = await User.find();
+    return res.status(200).send(getUser);
+  } catch (err) {
+    next(err);
+  }
+};
