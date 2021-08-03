@@ -91,7 +91,23 @@ $(document).on('click', '#LoginBtn', async function () {
 
 
 
+   /// get department
+   data = JSON.stringify(data)
 
+   console.log(data)
+
+   let result = await fetch("/stockpile/v1/department/getDepartment", {
+      method: "GET",
+      headers: new Headers({
+         'Content-Type': "application/json"
+      }),
+      body: data
+   })
+
+   if (result.redirected) {
+     // window.location.assign(result.url)
+     console.log("i am here")
+   }
 
 
 
