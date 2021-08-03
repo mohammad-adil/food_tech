@@ -6,7 +6,7 @@ const labSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      default: "Loren Ipsumgit ",
+      default: "Loren Ipsum",
     },
     department: {
       type: mongoose.Schema.Types.ObjectId,
