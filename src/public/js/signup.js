@@ -82,6 +82,7 @@ $(document).on("click", "#LoginBtn", async function () {
     }),
     body: data,
   }).then((data) => {
+    console.log(data);
     window.location.href = data.url;
   });
 
