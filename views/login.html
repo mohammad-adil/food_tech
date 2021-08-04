@@ -8,9 +8,7 @@
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> 
 
     <link rel="stylesheet" href="/css/login.css" />
-    <script src="/js/signup.js"></script>
-    <script src="/js/formValidate.js"></script>
-    <script src="/js/app.js"></script>
+   
     
 
 
@@ -72,6 +70,24 @@
             </div>
 
             <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Street" id="#street" name="street" />
+            <span id ="street" style="font-style: italic; font-size: xx-small ; color: rgb(233, 23, 23); width: 200px;"> </span>
+            </div>
+
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Pin" id="#pin" name="pin" />
+            <span id ="pin" style="font-style: italic; font-size: xx-small ; color: rgb(233, 23, 23); width: 200px;"> </span>
+            </div>
+
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Landmark" id="#Landmark" name="Landmark" />
+            <span id ="Landmark" style="font-style: italic; font-size: xx-small ; color: rgb(233, 23, 23); width: 200px;"> </span>
+            </div>
+
+            <div class="input-field">
               <i class="fas fa-envelope"></i>
               <input type="email" placeholder="Employee ID/Registration ID" id='#eid' />
               <span id ="empid" style="font-style: italic; font-size: xx-small ; color: rgb(233, 23, 23); width: 200px;"> </span>
@@ -83,6 +99,16 @@
               <span id ="phoneid" style="font-style: italic; font-size: xx-small ; color: rgb(233, 23, 23); width: 200px;"> </span>
             </div>
 
+            <label for="gender"></label>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <select id= "gender" name="gender" style="background: none; outline: none; border: none; line-height: 1; font-weight: 600; font-size: 1.1rem;  color: #333;">
+                <option value="Choose">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" id='#password' />
@@ -169,6 +195,8 @@
     </div>
 
 <script src="/js/login.js"></script>
+<script src="/js/signup.js"></script>
+<script src="/js/formValidate.js"></script>
 
     </script>
   </body>
