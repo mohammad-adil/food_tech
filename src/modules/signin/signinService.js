@@ -14,11 +14,17 @@ exports.signinUser = async (req, res, next) => {
         res.redirect("/Panel/MasterAdmin/index.html");
         res.status(302);
       } else if (user && user.userRole == "user") {
+        res.cookie("data", { Token, user });
         res.redirect("/Panel/User/index.html");
+        res.status(302);
       } else if (user && user.userRole == "labAdmin") {
+        res.cookie("data", { Token, user });
         res.redirect("/Panel/MasterAdmin/index.html");
+        res.status(302);
       } else if (user && user.userRole == "admin") {
+        res.cookie("data", { Token, user });
         res.redirect("/Panel/Admin/index.html");
+        res.status(302);
       } else {
         res.status(404).send("User not found");
       }
