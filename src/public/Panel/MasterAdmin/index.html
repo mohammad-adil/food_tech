@@ -16,6 +16,20 @@
     <script src="/Panel/User/js/script.js"></script>
     <script src="/Panel/User/js/dashboard.js"></script>
     <script src="/Panel/User/js/register.js"></script>
+
+    
+<script type="text/javascript">
+
+
+    const getCookie = (name) => {
+  return document.cookie.split('; ').reduce((r, v) => {
+    const parts = v.split('=')
+    return parts[0] === name ? decodeURIComponent(parts[1]) : r
+  }, '')
+}
+
+console.log(getCookie('data'))
+    </script>
     
     <style> 
         .modal {
