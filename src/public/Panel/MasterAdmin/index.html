@@ -8,15 +8,11 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Master Admin Dashboard</title>
-    <link href="/Panel/User/css/styles.css" rel="stylesheet" />
+    <link href="/Panel/MasterAdmin/css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link href="/Panel/User/css/myStyle.css" rel="stylesheet" />
-    <script src="/Panel/User/js/script.js"></script>
-    <script src="/Panel/User/js/dashboard.js"></script>
-    <script src="/Panel/User/js/register.js"></script>
-    <script src="/Panel/User/js/addItem.js"></script>
+
     
 
 
@@ -75,12 +71,12 @@
                         <a class="nav-link" id="" href="#">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-list-alt" aria-hidden="true"></i>
-                            </div>Report</a>
+                            </div>Issue</a>
 
                         <a class="nav-link" id="" href="#">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>Search</a>
+                            </div>Return</a>
 
                        <!--  <a class="nav-link" id="SearchItenary" href="#">
                             <div class="sb-nav-link-icon">
@@ -91,46 +87,53 @@
                         <div class="sb-sidenav-menu-heading">Menu</div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdd" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Add
+                            Item
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="addDepartment"  type="button" class="btn btn-link nav-link itenary">Add Department</button>
-
-                        </div>
-                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="addUser" type="button" class="btn btn-link nav-link itenary">Add User</button>
-
-                        </div>
-                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="addUser" type="button" class="btn btn-link nav-link itenary">Add Lab</button>
-
-                        </div>
-
                         <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <button id="addItem" type="button" class="btn btn-link nav-link itenary">Add Item</button>
 
                         </div>
+                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <button id="updateItem"  type="button" class="btn btn-link nav-link itenary">Update Item</button>
+
+                        </div>
+                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <button id="deleteItem" type="button" class="btn btn-link nav-link itenary">Delete Item</button>
+
+                        </div>
+                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <button id="getItemById" type="button" class="btn btn-link nav-link itenary">Get Item By Id</button>
+
+                        </div>
+
+                        
 
 
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseItem" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon">
                                 <i class="fas fa-book-open"></i>
                             </div>
-                            Item
+                            Department
 
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
                             </div>
                         </a>
                         <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="" type="button" class="btn btn-link nav-link nav-link">Issue</button>
+                            <button id="addDepartment" type="button" class="btn btn-link nav-link nav-link">Add Department</button>
                         </div>
 
                         <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="" type="button" class="btn btn-link nav-link nav-link">Return</button>
+                            <button id="updateDeparment" type="button" class="btn btn-link nav-link nav-link">Update Department</button>
                         </div>
 
+                    <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                        <button id="deleteDeparment" type="button" class="btn btn-link nav-link nav-link">Delete Department</button>
+                    </div>
 
+                <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                    <button id="getDeparmentById" type="button" class="btn btn-link nav-link nav-link">Get Department By Id</button>
+                </div>
 
 
 
@@ -138,16 +141,16 @@
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-certificate  " aria-hidden="true"></i>
                             </div>
-                            Update
+                            User
 
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
                             </div>
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="" type="button" class="btn btn-link nav-link nav-link">Update User Details</button>
-                            <button id="" type="button" class="btn btn-link nav-link ">Update Asset Details</button>
-                            <button id=""  type="button" class="btn btn-link nav-link ">Update Department</button>
-                            <button id=""  type="button" class="btn btn-link nav-link ">Update Lab</button>
+                            <button id="addUser" type="button" class="btn btn-link nav-link nav-link">Add User</button>
+                            <button id="updateUser" type="button" class="btn btn-link nav-link ">Update User</button>
+                            <button id="deleteUser"  type="button" class="btn btn-link nav-link ">Delete User</button>
+                            <button id="getUserById"  type="button" class="btn btn-link nav-link ">Get User By Id</button>
 
                         </div>
 
@@ -191,7 +194,7 @@
                             </div>
                         </a>
                         <div class="collapse" id="collapseVendor" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="btnRegisterVendor" type="button" class="btn btn-link nav-link nav-link">Register User</button>
+                            <button  type="button" class="btn btn-link nav-link nav-link">Register User</button>
                         </div>
 
 
@@ -257,10 +260,14 @@
    
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="/Panel/User/js/scripts.js"></script>
+        <script src="/Panel/MasterAdmin/js/scripts.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-
+        <link href="/Panel/MasterAdmin/css/myStyle.css" rel="stylesheet" />
+        <script src="/Panel/MasterAdmin/js/script.js"></script>
+        <script src="/Panel/MasterAdmin/js/dashboard.js"></script>
+        <script src="/Panel/MasterAdmin/js/register.js"></script>
+        <script src="/Panel/MasterAdmin/js/addItem.js"></script>
 </body>
 
 </html>

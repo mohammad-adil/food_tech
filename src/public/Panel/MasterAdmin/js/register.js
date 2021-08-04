@@ -1,4 +1,6 @@
-$(document).on('click', '#btnRegisterVendor', function () {
+
+const addUser = document.querySelector('#addUser')
+addUser.addEventListener('click',()=>{
     let dataDiv = document.getElementById("dashBoard");
     dataDiv.innerHTML = '';
     dataDiv.innerHTML = `<h1 class="mt-4">Register</h1> 
@@ -48,5 +50,5 @@ $(document).on('click', '#btnRegisterVendor', function () {
                      </div> 
                       <div></div> 
                   </div>`
+})
 
-});
