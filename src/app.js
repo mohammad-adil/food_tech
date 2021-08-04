@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const signupRouter = require("./modules/signup/signup.routes");
 const labRouter = require("./modules/labs/labs.routes");
 const departmentRouter = require("./modules/departments/department.routes");
+const signin = require("./modules/signin/signin.routes");
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.get("/login", (req, res) => {
 app.use(signupRouter);
 app.use(labRouter);
 app.use(departmentRouter);
+app.use(signin);
 
 app.listen(PORT, () => {
   console.log("Application is running at port: " + PORT);
