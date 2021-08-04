@@ -23,11 +23,14 @@ $(document).on("click", "#signup", async function () {
   let password = document.getElementById("#password").value;
   let department = $("#department :selected").val();
   let universityId = document.getElementById("#eid").value;
-  let dob = "22-1-2021";
+  let dob = document.getElementById("#dob").value;
   //let userRole = document.getElementById('#userRole').value
-  let gender = "Male";
-  //let address = document.getElementById('#address').value
+  let gender = document.getElementById("gender").value;
+console.log(gender)
 
+  let street = document.getElementById('#street').value;
+  let pin = document.getElementById('#pin').value;
+  let Landmark = document.getElementById('#Landmark').value;
   let UserDetails = {
     name,
     dob,
@@ -37,9 +40,9 @@ $(document).on("click", "#signup", async function () {
     phone,
     gender,
     address: {
-      Landmark: "Shah ssfil",
-      pin: 19113,
-      street: "google steeet",
+      Landmark,
+      pin ,
+      street,
     },
     email,
     password,
@@ -56,7 +59,7 @@ $(document).on("click", "#signup", async function () {
     return data.json();
   });
 
-  console.log("data is " + results);
+  console.log(results);
 });
 
 /////////////////////////////////////////// Sign in Code for the user
