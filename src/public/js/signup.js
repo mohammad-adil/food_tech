@@ -82,8 +82,11 @@ $(document).on("click", "#LoginBtn", async function () {
     }),
     body: data,
   }).then((data) => {
-    console.log(data);
-    window.location.href = data.url;
+    if (data.status == 200) {
+      window.location.href = data.url;
+    } else {
+      alert("User Does Not Exist");
+    }
   });
 
   // if(result.status===200)
