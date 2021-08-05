@@ -1,7 +1,6 @@
 
 const elm = document.querySelector('#addDepartment')
 elm.addEventListener('click',()=>{
-    console.log('hey i am aquib');
     let dataDiv = document.getElementById("dashBoard");
     dataDiv.innerHTML = '';
     dataDiv.innerHTML = `<h1 class="mt-4">Register</h1> 
@@ -17,22 +16,22 @@ elm.addEventListener('click',()=>{
                         <form> 
                             <div class="form-row"> 
                                 <div class="col-md-6"> 
-                                <div class="form-group"><label class="small mb-1" for="departmentName">Depatment Name</label><input class="form-control py-4" id="txtFname" type="text" placeholder="Enter Department Name" /></div> 
+                                <div class="form-group"><label class="small mb-1" for="departmentName">Depatment Name</label><input class="form-control py-4" id="depttName" type="text" placeholder="Enter Department Name" /></div> 
                                 </div> 
                                     <div class="col-md-6"> 
-                                      <div class="form-group"><label class="small mb-1" for="totalLabs">Total Labs</label><input class="form-control py-4" id="txtLname" type="text" placeholder="Enter Total Labs" /></div> 
+                                      <div class="form-group"><label class="small mb-1" for="totalLabs">Total Labs</label><input class="form-control py-4" id="totalLabs" type="number" placeholder="Enter Total Labs" /></div> 
                                          </div> 
                                             </div> 
-											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="txtEmail" type="email" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
+											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="estDate" type="email" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
                                             <div class="form-row"> 
                                                 <div class="col-md-6"> 
-                                                    <div class="form-group"><label class="small mb-1" for="establishmentSource">Establishment Source</label><input class="form-control py-4" id="txtphone" type="text" placeholder="Enter Establishment Source" /></div> 
+                                                    <div class="form-group"><label class="small mb-1" for="establishmentSource">Establishment Source</label><input class="form-control py-4" id="estSource" type="text" placeholder="Enter Establishment Source" /></div> 
                                                 </div> 
                                                  
 											
                                               </div> 
                                           <div class="form-group mt-4 mb-0"> 
-                                              <button id="registerAgent" type="button" class="btn btn-primary btn-block">Register</button> 
+                                              <button id="rDepartment" type="button" class="btn btn-primary btn-block">Register</button> 
                                           </div> 
                                       </form> 
                                   </div> 
@@ -43,3 +42,39 @@ elm.addEventListener('click',()=>{
                   </div>`
 })
 
+
+
+
+$(document).on('click',"#rDepartment", async()=>{
+
+
+
+    let department = document.getElementById("depttName").value;
+    let totalLabs = Number (document.getElementById("totalLabs").value);
+    let estDate = document.getElementById("estDate").value;
+    let estSource = document.getElementById("estSource").value;
+    
+    let departmentDetails = {
+        departmentName: department,
+        totalLabs,
+        estDate,
+        estSource,
+    };
+
+    console.log(departmentDetails)
+    let baseUrl = window.location.origin;
+        let results = await fetch(baseUrl + "/stockpile/v1/department/addDepartment", {
+            method: "POST",
+         headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(departmentDetails),
+          })
+
+          console.log(results)
+        
+
+
+    
+    
+})
