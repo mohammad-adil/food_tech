@@ -6,7 +6,7 @@ const db = require("../src/db/db");
 
 const bodyParser = require("body-parser");
 ///router
-const signupRouter = require("./modules/signup/signup.routes");
+const userRouter = require("./modules/user/user.routes");
 const labRouter = require("./modules/labs/labs.routes");
 const departmentRouter = require("./modules/departments/department.routes");
 const signin = require("./modules/signin/signin.routes");
@@ -39,7 +39,7 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
-app.use(signupRouter);
+app.use(userRouter);
 app.use(labRouter);
 app.use(departmentRouter);
 app.use(signin);

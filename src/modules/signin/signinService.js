@@ -1,4 +1,4 @@
-const User = require("../signup/signup.model");
+const User = require("../user/user.model");
 const jwt = require("jsonwebtoken");
 //const cookieParser = require("cookie-parser");
 exports.signinUser = async (req, res, next) => {
