@@ -43,6 +43,12 @@ const userSchema = new mongoose.Schema(
       enum: ["Male", "Female", "Other"],
       trim: true,
     },
+    active: {
+      type: String,
+      required: true,
+      enum: [true, false],
+      default: false,
+    },
     address: {
       Landmark: {
         type: String,
