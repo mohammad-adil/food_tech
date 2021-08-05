@@ -17,7 +17,7 @@ exports.doSignupUser = async (req, res, next) => {
 
 exports.doGetUser = async (req, res, next) => {
   try {
-    const { department } = req.body;
+    const { department } = req.params;
     const getUser = await User.find({ department });
     return res.status(200).send(getUser);
   } catch (err) {
