@@ -1,4 +1,4 @@
-$(document).ready(function () {
+/* $(document).ready(function () {
   $("input[type='checkbox']").on("change", function () {
     alert("checked");
   });
@@ -7,7 +7,7 @@ $(document).ready(function () {
     $("input[type='checkbox']").prop("checked", true).change();
   });
 });
-
+ */
 const approveElm = document.querySelector("#approveUser");
 approveElm.addEventListener("click", async () => {
   let dataDiv = document.getElementById("dashBoard");
