@@ -13,7 +13,7 @@ elm.addEventListener('click',()=>{
             <div class="card-header"><i class="fas fa-table mr-1"></i>Add Department</div> 
                 <div class="card-body"> 
                     <div class="card-body"> 
-                        <form id="updateDepartmentForm"> 
+                        <form id="addDepartmentForm"> 
                             <div class="form-row"> 
                                 <div class="col-md-6"> 
                                 <div class="form-group"><label class="small mb-1" for="departmentName">Depatment Name</label><input class="form-control py-4" id="depttName" type="text" placeholder="Enter Department Name" /></div> 
@@ -73,7 +73,7 @@ $(document).on('click',"#rDepartment", async()=>{
 if(results.status==200){
 
     alert('Department Created Successfully')
-    $('#updateDepartmentForm')[0].reset()
+    $('#addDepartmentForm')[0].reset()
 }else{
 
 }
