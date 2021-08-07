@@ -1,19 +1,25 @@
-
-const elm = document.querySelector('#addDepartment')
-elm.addEventListener('click',()=>{
+const btnUpdateDepartment = document.querySelector('#updateDeparment')
+btnUpdateDepartment.addEventListener('click', async ()=>{
     let dataDiv = document.getElementById("dashBoard");
     dataDiv.innerHTML = '';
-    dataDiv.innerHTML = `<h1 class="mt-4">Register</h1> 
+    dataDiv.innerHTML = `<h1 class="mt-4">Update</h1> 
                         <ol class="breadcrumb mb-4"> 
                             <li class="breadcrumb-item"><a href="/Panel/User/issue.html">Dashboard</a></li> 
-                            <li class="breadcrumb-item active">Add Department</li> 
+                            <li class="breadcrumb-item active">Update Department</li> 
                         </ol> 
 						<div> 
-		<div class="card mb-4 updateDiv"  style="visibility:visible; font-size:12px";> 
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Add Department</div> 
+
+
+                        <select id="updateGetDepartment" class="targetDept" >
+                        <option value="Choose">Choose Department</option>
+                        </select>
+
+
+		<div class="card mb-4" style="visibility:visible; font-size:12px";> 
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Update Department</div> 
                 <div class="card-body"> 
                     <div class="card-body"> 
-                        <form id="updateDepartmentForm"> 
+                        <form> 
                             <div class="form-row"> 
                                 <div class="col-md-6"> 
                                 <div class="form-group"><label class="small mb-1" for="departmentName">Depatment Name</label><input class="form-control py-4" id="depttName" type="text" placeholder="Enter Department Name" /></div> 
@@ -31,7 +37,7 @@ elm.addEventListener('click',()=>{
 											
                                               </div> 
                                           <div class="form-group mt-4 mb-0"> 
-                                              <button id="rDepartment" type="button" class="btn btn-primary btn-block">Register</button> 
+                                              <button id="uDepartment" type="button" class="btn btn-primary btn-block">Update</button> 
                                           </div> 
                                       </form> 
                                   </div> 
@@ -40,12 +46,33 @@ elm.addEventListener('click',()=>{
                      </div> 
                       <div></div> 
                   </div>`
+
+
+
+                  let baseUrl = window.location.origin;
+  let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
+    method: "GET",
+  }).then((data) => {
+    return data.json();
+  });
+
+  const selectionBox = document.querySelector("#updateGetDepartment");
+  let dataSelect = '<option value="select"> Select </option>';
+  result.forEach((element) => {
+    console.log(element);
+    dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
+  });
+  selectionBox.innerHTML = dataSelect;
+
+
 })
 
 
 
 
-$(document).on('click',"#rDepartment", async()=>{
+
+
+$(document).on('click',"#uDepartment", async()=>{
 
 
 
@@ -61,6 +88,7 @@ $(document).on('click',"#rDepartment", async()=>{
         estSource,
     };
 
+    console.log(departmentDetails)
     let baseUrl = window.location.origin;
         let results = await fetch(baseUrl + "/stockpile/v1/department/addDepartment", {
             method: "POST",
@@ -70,14 +98,9 @@ $(document).on('click',"#rDepartment", async()=>{
       body: JSON.stringify(departmentDetails),
           })
 
-if(results.status==200){
-
-    alert('Department Created Successfully')
-    $('#updateDepartmentForm')[0].reset()
-}else{
-
-}
+          console.log(results)
         
+
 
     
     
