@@ -19,7 +19,7 @@ btnUpdateDepartment.addEventListener('click', async ()=>{
             <div class="card-header"><i class="fas fa-table mr-1"></i>Update Department</div> 
                 <div class="card-body"> 
                     <div class="card-body"> 
-                        <form> 
+                        <form id = "updateDepartmentForm"> 
                             <div class="form-row"> 
                                 <div class="col-md-6"> 
                                 <div class="form-group"><label class="small mb-1" for="departmentName">Depatment Name</label><input class="form-control py-4" id="depttName" type="text" placeholder="Enter Department Name" /></div> 
@@ -59,7 +59,6 @@ btnUpdateDepartment.addEventListener('click', async ()=>{
   const selectionBox = document.querySelector("#updateGetDepartment");
   let dataSelect = '<option value="select"> Select </option>';
   result.forEach((element) => {
-    console.log(element);
     dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
   });
   selectionBox.innerHTML = dataSelect;
@@ -87,8 +86,6 @@ $(document).on('click',"#uDepartment", async()=>{
         estDate,
         estSource,
     };
-
-    console.log(departmentDetails)
     let baseUrl = window.location.origin;
         let results = await fetch(baseUrl + "/stockpile/v1/department/addDepartment", {
             method: "POST",
@@ -97,9 +94,13 @@ $(document).on('click',"#uDepartment", async()=>{
       },
       body: JSON.stringify(departmentDetails),
           })
+          if(results.status==200){
 
-          console.log(results)
+            alert('Department Updated Successfully')
+            $('#updateDepartmentForm')[0].reset()
+        }else{
         
+        }        
 
 
     
