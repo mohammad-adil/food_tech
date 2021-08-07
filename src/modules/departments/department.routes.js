@@ -13,4 +13,10 @@ router.get(
   (req, res) => {}
 );
 
+router.get(
+  prefix + "/getDepartment/:departmentId",
+  _departmentService.doGetDepartmentById,
+  (req, res) => {}
+);
+
 module.exports = router;
