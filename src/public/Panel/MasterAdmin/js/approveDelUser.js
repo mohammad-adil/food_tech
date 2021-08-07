@@ -31,16 +31,11 @@ approveElm.addEventListener("click", async () => {
       <th></th>
       <th>Name</th>
       <th>E-mail </th>
-      <th>Department</th>
+      <th>Active</th>
     </tr>
   </thead>
   <tbody id="departmentTable">
 
-
-
-
-  
-   
   </tbody>
   <tfoot class="full-width">
     <tr>
@@ -113,11 +108,11 @@ $(document).on("change", "#department", async (e) => {
     </td>
     <td>  ${element.name}  </td>
     <td> ${element.email} </td>
-    <td>${element.name} </td>
+    <td>${element.active} </td>
   </tr>`;
   });
 
-  document.getElementById("departmentTable").innerHTML = tableData;
+  departmentTable.innerHTML = tableData;
 });
 
 $(document).on("click", "#approve", async () => {
