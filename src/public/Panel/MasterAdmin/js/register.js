@@ -106,7 +106,7 @@ addUser.addEventListener('click', async ()=>{
   const selectionBox = document.querySelector("#department");
   let dataSelect = '<option value="select"> Select </option>';
   result.forEach((element) => {
-    console.log(element);
+
     dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
   });
 
@@ -159,7 +159,6 @@ $(document).on('click',"#rUser", async()=>{
       body: JSON.stringify(UserDetails),
           })
 
-          console.log(resultz)
         
 
 
