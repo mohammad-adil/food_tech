@@ -1,13 +1,4 @@
-/* $(document).ready(function () {
-  $("input[type='checkbox']").on("change", function () {
-    alert("checked");
-  });
-
-  $("#check_all").on("click", function () {
-    $("input[type='checkbox']").prop("checked", true).change();
-  });
-});
- */
+var  baseUrl = window.location.origin;
 const approveElm = document.querySelector("#approveUser");
 approveElm.addEventListener("click", async () => {
   let dataDiv = document.getElementById("dashBoard");
@@ -31,7 +22,7 @@ approveElm.addEventListener("click", async () => {
       <th></th>
       <th>Name</th>
       <th>E-mail </th>
-      <th>Department</th>
+      <th>Active</th>
     </tr>
   </thead>
   <tbody id="departmentTable">
@@ -47,8 +38,6 @@ approveElm.addEventListener("click", async () => {
       <th></th>
       <th colspan="4">
         <div class="ui right floated small primary labeled icon button">
-          <i class="user icon"></i> Add User
-        </div>
         <div class="ui small  button" id="approve">
           Approve
         </div>
@@ -68,10 +57,8 @@ approveElm.addEventListener("click", async () => {
   });
 
   const selectionBox = document.querySelector("#department");
-  console.log(selectionBox);
   let dataSelect = '<option value="select"> Select </option>';
   result.forEach((element) => {
-    console.log(element);
     dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
   });
   selectionBox.innerHTML = dataSelect;
@@ -107,34 +94,79 @@ $(document).on("change", "#department", async (e) => {
   result.forEach((element) => {
     tableData += `  <tr>
     <td class="collapsing">
-      <div class="ui fitted slider checkbox">
-        <input value=${element._id} name="department" type="checkbox"> <label></label>
+    <div class="inline fields">
+        <input type="radio" value="${element._id}"" name="user"  checked="" tabindex="0" class="hidden">
       </div>
     </td>
     <td>  ${element.name}  </td>
     <td> ${element.email} </td>
-    <td>${element.name} </td>
+    <td>${element.active} </td>
   </tr>`;
   });
 
   document.getElementById("departmentTable").innerHTML = tableData;
 });
 
-$(document).on("click", "#approve", async () => {
-  const element = document.getElementById("department");
-  const checkValue = element.options[element.selectedIndex].value;
-  let UserDetails = {
-    department: checkValue,
+$(document).on("click", "#remove", async () => {
+
+  const userId =  $('input[name=user]:checked').val();
+  let payload = {
+    deleteUser: userId,
   };
+  
 
-  let baseUrl = window.location.origin;
-  let resultz = await fetch(baseUrl + "/stockpile/v1/deleteUser", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(UserDetails),
-  });
-
-  console.log(resultz);
+  let api = baseUrl+ "/stockpile/v1/deleteUser"
+  let deletedUser = await serverRequest(payload,api,"DELETE" )
 });
+
+
+$(document).on("click", "#approve", async () => {
+
+  const userId =  $('input[name=user]:checked').val();
+  let payload = {
+    activeUser: userId,
+  };
+  
+
+  let api = baseUrl+ "/stockpile/v1/activeUser"
+  let approvedUser = await serverRequest(payload,api,"PATCH" )
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const serverRequest = async (payload,url,method)=>{
+
+    let result = await fetch(url, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+  
+  
+
+return result
+
+}
+
+
+
+
+
+
+
+
