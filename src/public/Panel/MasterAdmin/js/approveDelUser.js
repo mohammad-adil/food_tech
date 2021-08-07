@@ -117,6 +117,13 @@ $(document).on("click", "#remove", async () => {
 
   let api = baseUrl+ "/stockpile/v1/deleteUser"
   let deletedUser = await serverRequest(payload,api,"DELETE" )
+  if(deletedUser.status==200){
+
+    alert('User Removed')
+}else{
+    alert('Error')
+}
+  
 });
 
 
@@ -131,6 +138,12 @@ $(document).on("click", "#approve", async () => {
   let api = baseUrl+ "/stockpile/v1/activeUser"
   let approvedUser = await serverRequest(payload,api,"PATCH" )
 
+  if(approvedUser.status==200){
+
+    alert('User Approved')
+}else{
+    alert('Error')
+}
 });
 
 
