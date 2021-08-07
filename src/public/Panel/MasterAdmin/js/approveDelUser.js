@@ -27,11 +27,6 @@ approveElm.addEventListener("click", async () => {
   </thead>
   <tbody id="departmentTable">
 
-
-
-
-  
-   
   </tbody>
   <tfoot class="full-width">
     <tr>
@@ -104,7 +99,7 @@ $(document).on("change", "#department", async (e) => {
   </tr>`;
   });
 
-  document.getElementById("departmentTable").innerHTML = tableData;
+  departmentTable.innerHTML = tableData;
 });
 
 $(document).on("click", "#remove", async () => {

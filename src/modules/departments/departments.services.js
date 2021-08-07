@@ -12,3 +12,9 @@ exports.doGetDepartment = async (req, res, next) => {
   const getDepartment = await Department.find({}).select("departmentName");
   return res.status(200).send(getDepartment);
 };
+
+exports.doGetDepartmentById = async (req, res, next) => {
+  const { departmentId } = req.params;
+  const getDepartment = await Department.findById({ _id: departmentId });
+  return res.status(200).send(getDepartment);
+};
