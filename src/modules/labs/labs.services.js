@@ -25,7 +25,6 @@ exports.doGetLabByDepartment = async (req, res, next) => {
 exports.doUpdateLab = async (req, res, next) => {
   try {
     const createLab = req.body;
-
     const addLab = await Lab.create({ ...createLab });
     return res.status(200).send(addLab);
   } catch (err) {
