@@ -19,4 +19,10 @@ router.get(
   (req, res) => {}
 );
 
+router.patch(
+  prefix + "/update/:departmentId",
+  _departmentService.doUpdateDepartment,
+  (req, res) => {}
+);
+
 module.exports = router;
