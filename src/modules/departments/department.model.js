@@ -13,6 +13,10 @@ const departmentSchema = new mongoose.Schema(
       trim: true,
       default: 0,
     },
+    isdeleted: {
+      type: Boolean,
+      default: false,
+    },
 
     estDate: {
       type: String,
