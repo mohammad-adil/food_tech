@@ -79,6 +79,8 @@ $(document).on('click',"#uDepartment", async()=>{
     let totalLabs = Number (document.getElementById("totalLabs").value);
     let estDate = document.getElementById("estDate").value;
     let estSource = document.getElementById("estSource").value;
+    const element = document.getElementById("updateGetDepartment");
+        const checkValue = element.options[element.selectedIndex].value;
     
     let departmentDetails = {
         departmentName: department,
@@ -86,14 +88,20 @@ $(document).on('click',"#uDepartment", async()=>{
         estDate,
         estSource,
     };
+
+    console.log(checkValue)
+
+
     let baseUrl = window.location.origin;
-        let results = await fetch(baseUrl + "/stockpile/v1/department/addDepartment", {
-            method: "POST",
+        let results = await fetch(baseUrl + "/stockpile/v1/department/update/" + checkValue , {
+            method: "PATCH",
          headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(departmentDetails),
           })
+
+          console.log(results)
           if(results.status==200){
 
             alert('Department Updated Successfully')
@@ -106,3 +114,30 @@ $(document).on('click',"#uDepartment", async()=>{
     
     
 })
+
+$(document).on("change", "#updateGetDepartment", async (e) => {
+  
+    let baseUrl = window.location.origin;
+    let result1 = await fetch(
+      baseUrl + "/stockpile/v1/department/getDepartment/" + $(e.target).val(),
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((data) => {
+      return data.json();
+    });
+
+
+
+    document.getElementById("depttName").value= result1.departmentName;
+    document.getElementById("totalLabs").value= result1.totalLabs;
+    document.getElementById("estDate").value = result1.estDate;
+    document.getElementById("estSource").value= result1.estSource;
+    
+
+
+  });
+  
