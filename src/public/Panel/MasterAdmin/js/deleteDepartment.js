@@ -95,8 +95,8 @@ $(document).on('click',"#dDepartment", async()=>{
 
 if(results.status==200){
 
-    alert('Department Created Successfully')
-    $('#addDepartmentForm')[0].reset()
+    alert('Department Deleted Successfully')
+    $('#deleteDepartmentForm')[0].reset()
 }else{
 
 }
