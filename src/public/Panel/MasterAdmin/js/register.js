@@ -55,7 +55,7 @@ addUser.addEventListener('click', async ()=>{
                                 </div> 
                                 <div class="col-md-6"> 
                                 <div class="custom-select" style="width:200px;">
-                                <input type = "date" placeholder="Date of Birth" id="dob" name="dob" >
+                                <input type = "date" placeholder="Date of Birth" id="userDob" name="dob" >
                                 </div> 
                                 </div>
                                              
@@ -125,7 +125,7 @@ $(document).on('click',"#rUser", async()=>{
         const checkValue = element.options[element.selectedIndex].value;
         //let department = $("department :selected").val();
         let universityId = document.getElementById("eid").value;
-        let dob = document.getElementById("dob").value;
+        let dob = document.getElementById("userDob").value;
         let userRole = document.getElementById('role').value
         let gender = document.getElementById("gender").value;
       
