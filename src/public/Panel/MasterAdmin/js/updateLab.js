@@ -10,10 +10,21 @@ btnUpdateLab.addEventListener('click', async ()=>{
 						<div> 
 
                         <div class="col-md-6"> 
-                        <div class="form-group"><label class="medium mb-1" for="updateChoose">Choose Lab to Update</label></div> 
+                        <div class="form-group"><label class="medium mb-1" for="updateChoose">Choose Department</label></div> 
                         </div>
                         <div class="custom-select" style="width:200px;">
                         <select id="updateGetLab" class="targetDept" >
+                        <option value="Choose">Choose Lab</option>
+                        </select>
+                        </div>
+
+
+                        
+                        <div class="col-md-6"> 
+                        <div class="form-group"><label class="medium mb-1" for="updateLabChoose">Choose Lab to Update</label></div> 
+                        </div>
+                        <div class="custom-select" style="width:200px;">
+                        <select id="updateGetLabFromDepartment" class="targetLab" >
                         <option value="Choose">Choose Lab</option>
                         </select>
                         </div>
@@ -34,9 +45,17 @@ btnUpdateLab.addEventListener('click', async ()=>{
                                             </div> 
 											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="text" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
                                             <div class="form-row"> 
-                                                <div class="col-md-6"> 
-                                                    <div class="form-group"><label class="small mb-1" for="labAdminName">Lab Admin</label><input class="form-control py-4" id="labAdminName" type="text" placeholder="Select Lab Admin" /></div> 
-                                                </div> 
+                                            <div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="email" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
+                                            <div class="form-row"> 
+                                            <div class="col-md-6"> 
+                                            <div class="form-group"><label class="small mb-1" for="updateChooseAdmin">Select Lab Admin</label></div> 
+                                            </div>
+                                            <div class="custom-select" style="width:200px;">
+                                            <select id="labAdminName" class="targetLab" >
+                                            <option value="Choose">Choose Lab Admin</option>
+                                            </select>
+                                            </div>    
+                                            </div> 
                                                  
 											
                                               </div> 
@@ -56,6 +75,10 @@ btnUpdateLab.addEventListener('click', async ()=>{
                   let baseUrl = window.location.origin;
   let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+sessionStorage.getItem("Token")
+    },
   }).then((data) => {
     return data.json();
   });
@@ -70,6 +93,34 @@ btnUpdateLab.addEventListener('click', async ()=>{
 
 })
 
+$(document).on("change", "#updateGetLab", async (e) => {
+ 
+  let baseUrl = window.location.origin;
+  let result = await fetch(
+    baseUrl + "/stockpile/v1/lab/getLabByDepartmentId/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
+      },
+    }
+  ).then((data) => {
+    return data.json();
+  });
+
+  const selectionBox = document.querySelector("#updateGetLabFromDepartment");
+  let dataSelect = '<option value="select"> Select </option>';
+  result.forEach((element) => {
+    dataSelect += `<option value="${element._id}">${element.labName}</option>`;
+  });
+  selectionBox.innerHTML = dataSelect;
+
+
+
+
+  
+});
 
 
 
@@ -81,8 +132,10 @@ $(document).on('click',"#uLab", async()=>{
   let labDepartment = document.getElementById("labDepartments").value;
     let labName = document.getElementById("labName").value;
     let labEstDate = document.getElementById("labEstDate").value;
-    let labAdmin = document.getElementById("labGetAdmin").value;
-    
+    let labAdmin = document.getElementById("labAdminName").value;
+    const element = document.getElementById("updateGetDepartment");
+    const checkValue = element.options[element.selectedIndex].value;
+console.log(checkValue)
     let labDetails = {
       labDepartment,
         labName,
@@ -92,10 +145,11 @@ $(document).on('click',"#uLab", async()=>{
 
 
     let baseUrl = window.location.origin;
-        let results = await fetch(baseUrl + "/stockpile/v1/department/update/" + checkValue , {
+        let results = await fetch(baseUrl + "/stockpile/v1/lab/update/" + checkValue , {
             method: "PATCH",
          headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
       },
       body: JSON.stringify(labDetails),
           })
@@ -113,30 +167,29 @@ $(document).on('click',"#uLab", async()=>{
     
     
 })
-
-$(document).on("change", "#updateGetLab", async (e) => {
- 
-    let baseUrl = window.location.origin;
-    let result2 = await fetch(
-      baseUrl + "/stockpile/v1/lab/getLabByDepartmentId/" + $(e.target).val(),
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    ).then((data) => {
-      return data.json();
-    });
-
-
-
-   document.getElementById("labDepartments").value= result2.department.toString();
-    document.getElementById("labName").value= result2.labName;
-    document.getElementById("labEstDate").value = result2.labEstDate;
-    document.getElementById("labAdminName").value= result2.labAdminName;
-    
-
-
-  });
+$(document).on("change", "#updateGetLabFromDepartment", async (e) => {
   
+  let baseUrl = window.location.origin;
+  let result2 = await fetch(
+    baseUrl + "/stockpile/v1/lab/getlab/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
+      },
+    }
+  ).then((data) => {
+    return data.json();
+  });
+
+
+console.log(result2)
+  document.getElementById("labDepartments").value= result2.department;
+  document.getElementById("labName").value= result2.labName;
+  document.getElementById("labEstDate").value = result2.labEstDate;
+  document.getElementById("labAdminName").value= result2.labAdmin;
+  
+
+
+});
