@@ -1,5 +1,6 @@
 const User = require("../user/user.model");
 const Department = require("../departments/department.model");
+const auth = require("../../middleware/Auth");
 
 exports.doSignupUser = async (req, res, next) => {
   try {
@@ -15,7 +16,7 @@ exports.doSignupUser = async (req, res, next) => {
   }
 };
 
-exports.doGetUser = async (req, res, next) => {
+exports.doGetUserbyDepartment = async (req, res, next) => {
   try {
     const { department } = req.params;
     const getUser = await User.find({ department });

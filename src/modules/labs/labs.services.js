@@ -31,3 +31,13 @@ exports.doUpdateLab = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.doGetLabById = async (req, res, next) => {
+  try {
+    const { labId } = req.params;
+    const getLab = await Lab.findOne({ _id: labId });
+    return res.status(200).send(getLab);
+  } catch (err) {
+    next(err);
+  }
+};
