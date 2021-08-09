@@ -1,6 +1,18 @@
 $(document).ready(function () {
-  console.log(getCookie("data"));
+let cook = getCookie("data")
+let userCookie = cookieParse(cook)
+let setCookie = sessionStorage.getItem("Token")
+if(!setCookie){
+  sessionStorage.setItem("Token", userCookie.Token)
+}else{
+  sessionStorage.removeItem('Token');
+  sessionStorage.setItem("Token", userCookie.Token)
+}
 });
+
+
+
+
 function getCookie(name) {
   return document.cookie.split("; ").reduce((r, v) => {
     const parts = v.split("=");

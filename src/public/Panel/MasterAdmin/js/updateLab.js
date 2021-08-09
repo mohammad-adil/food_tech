@@ -45,9 +45,17 @@ btnUpdateLab.addEventListener('click', async ()=>{
                                             </div> 
 											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="text" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
                                             <div class="form-row"> 
-                                                <div class="col-md-6"> 
-                                                    <div class="form-group"><label class="small mb-1" for="labAdminName">Lab Admin</label><input class="form-control py-4" id="labAdminName" type="text" placeholder="Select Lab Admin" /></div> 
-                                                </div> 
+                                            <div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="email" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
+                                            <div class="form-row"> 
+                                            <div class="col-md-6"> 
+                                            <div class="form-group"><label class="small mb-1" for="updateChooseAdmin">Select Lab Admin</label></div> 
+                                            </div>
+                                            <div class="custom-select" style="width:200px;">
+                                            <select id="labAdminName" class="targetLab" >
+                                            <option value="Choose">Choose Lab Admin</option>
+                                            </select>
+                                            </div>    
+                                            </div> 
                                                  
 											
                                               </div> 
@@ -67,6 +75,10 @@ btnUpdateLab.addEventListener('click', async ()=>{
                   let baseUrl = window.location.origin;
   let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+sessionStorage.getItem("Token")
+    },
   }).then((data) => {
     return data.json();
   });
@@ -90,6 +102,7 @@ $(document).on("change", "#updateGetLab", async (e) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
       },
     }
   ).then((data) => {
@@ -136,6 +149,7 @@ console.log(checkValue)
             method: "PATCH",
          headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
       },
       body: JSON.stringify(labDetails),
           })
@@ -157,11 +171,12 @@ $(document).on("change", "#updateGetLabFromDepartment", async (e) => {
   
   let baseUrl = window.location.origin;
   let result2 = await fetch(
-    baseUrl + "/stockpile/v1/lab/getLabByDepartmentId/" + $(e.target).val(),
+    baseUrl + "/stockpile/v1/lab/getlab/" + $(e.target).val(),
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
       },
     }
   ).then((data) => {

@@ -46,9 +46,6 @@ elm.addEventListener('click',()=>{
 
 
 $(document).on('click',"#rDepartment", async()=>{
-
-
-
     let department = document.getElementById("depttName").value;
     let totalLabs = Number (document.getElementById("totalLabs").value);
     let estDate = document.getElementById("estDate").value;
@@ -66,6 +63,7 @@ $(document).on('click',"#rDepartment", async()=>{
             method: "POST",
          headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
       },
       body: JSON.stringify(departmentDetails),
           })

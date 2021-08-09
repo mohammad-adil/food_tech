@@ -57,6 +57,10 @@ BtnDeleteDepartment.addEventListener('click', async ()=>{
                   let baseUrl = window.location.origin;
   let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+sessionStorage.getItem("Token")
+    },
   }).then((data) => {
     return data.json();
   });
@@ -89,6 +93,7 @@ $(document).on('click',"#dDepartment", async()=>{
             method: "PATCH",
          headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
       },
       body: JSON.stringify(departmentDetails),
           })
@@ -116,6 +121,7 @@ $(document).on("change", "#deleteGetDepartment", async (e) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": "Bearer "+sessionStorage.getItem("Token")
         },
       }
     ).then((data) => {
