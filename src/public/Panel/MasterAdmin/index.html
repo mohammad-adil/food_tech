@@ -13,11 +13,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- 
+    <script src="/Panel/MasterAdmin/js/eventHandler.js"></script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
     <style> 
         .modal {
             overflow-x: scroll;
@@ -104,7 +104,6 @@
 
                         </div>
                         <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="getItemById" type="button" class="btn btn-link nav-link itenary">Get Item By Id</button>
 
                         </div>
 
@@ -132,10 +131,35 @@
                         <button id="deleteDeparment" type="button" class="btn btn-link nav-link nav-link">Delete Department</button>
                     </div>
 
+
+
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLab" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        Labs
+
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
+                        </div>
+                    </a>
+                    <div class="collapse" id="collapseLab" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                        <button id="addLab" type="button" class="btn btn-link nav-link nav-link">Add Lab</button>
+                    </div>
+
+                    <div class="collapse" id="collapseLab" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                        <button id="updateLab" type="button" class="btn btn-link nav-link nav-link">Update Lab</button>
+                    </div>
+
+                <div class="collapse" id="collapseLab" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                    <button id="deleteLab" type="button" class="btn btn-link nav-link nav-link">Delete Lab</button>
+                </div>
+
+
+
+
                     
  
                 <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                    <button id="getDeparmentById" type="button" class="btn btn-link nav-link nav-link">Get Department By Id</button>
                 </div>
 
 
@@ -152,6 +176,7 @@
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                             <button id="addUser" type="button" class="btn btn-link nav-link nav-link">Add User</button>
                             <button id="updateUser" type="button" class="btn btn-link nav-link ">Update User</button>
+
         
                             <button id="approveUser"  type="button" class="btn btn-link nav-link ">Approve User \ Delete User</button>
 
@@ -219,7 +244,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Admin
+                    <script> document.write(cookieParse(getCookie('data')).user.name) </script>
                 </div>
             </nav>
         </div>
@@ -264,7 +289,7 @@
         </div>
        
     <!--  <script src="semantic/dist/semantic.min.js"></script> -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+      
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
       <!--   <script src="/Panel/MasterAdmin/js/scripts.js"></script> -->
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
@@ -275,9 +300,16 @@
         <script src="/Panel/MasterAdmin/js/register.js"></script>
         <script src="/Panel/MasterAdmin/js/addItem.js"></script>
         <script src="/Panel/MasterAdmin/js/addDepartment.js"></script>
-        <script src="/Panel/MasterAdmin/js/eventHandler.js"></script>
+ 
         <script src="/Panel/MasterAdmin/js/approveDelUser.js"></script>
+        <script src="/Panel/MasterAdmin/js/updateDepartment.js"></script>
+        <script src="/Panel/MasterAdmin/js/addLab.js"></script>
+        <script src="/Panel/MasterAdmin/js/deleteDepartment.js"></script>
+        <script src="/Panel/MasterAdmin/js/updateLab.js"></script>
+       
+<script>
 
+</script>
 </body>
 
 </html>
