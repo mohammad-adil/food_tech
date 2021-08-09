@@ -47,6 +47,10 @@ approveElm.addEventListener("click", async () => {
   let baseUrl = window.location.origin;
   let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+sessionStorage.getItem("Token")
+    },
   }).then((data) => {
     return data.json();
   });
@@ -78,6 +82,7 @@ $(document).on("change", "#department", async (e) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
       },
     }
   ).then((data) => {
@@ -156,11 +161,11 @@ $(document).on("click", "#approve", async () => {
 
 
 const serverRequest = async (payload,url,method)=>{
-
-    let result = await fetch(url, {
+let result = await fetch(url, {
       method,
       headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
       },
       body: JSON.stringify(payload),
     });
