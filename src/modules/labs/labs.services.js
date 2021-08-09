@@ -35,7 +35,9 @@ exports.doUpdateLab = async (req, res, next) => {
 exports.doGetLabById = async (req, res, next) => {
   try {
     const { labId } = req.params;
-    const getLab = await Lab.findOne({ _id: labId });
+    const getLab = await Lab.findOne({ _id: labId })
+      .populate("department", ["departmentName"])
+      .populate("labAdmin");
     return res.status(200).send(getLab);
   } catch (err) {
     next(err);
