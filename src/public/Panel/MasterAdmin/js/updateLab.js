@@ -29,7 +29,7 @@ btnUpdateLab.addEventListener('click', async ()=>{
                                 <div class="form-group"><label class="small mb-1" for="labName">Lab Name</label><input class="form-control py-4" id="labName" type="text" placeholder="Enter Lab Name" disabled /></div> 
                                 </div> 
                                     <div class="col-md-6"> 
-                                      <div class="form-group"><label class="small mb-1" for="totalLabs">Department</label><input class="form-control py-4" id="labDepartment" type="text" placeholder="Lab Department" disabled /></div> 
+                                      <div class="form-group"><label class="small mb-1" for="totalLabs">Department</label><input class="form-control py-4" id="labDepartments" type="text" placeholder="Lab Department" disabled /></div> 
                                          </div> 
                                             </div> 
 											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="text" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
@@ -41,7 +41,7 @@ btnUpdateLab.addEventListener('click', async ()=>{
 											
                                               </div> 
                                           <div class="form-group mt-4 mb-0"> 
-                                              <button id="uDepartment" type="button" class="btn btn-primary btn-block">Update</button> 
+                                              <button id="uLab" type="button" class="btn btn-primary btn-block">Update</button> 
                                           </div> 
                                       </form> 
                                   </div> 
@@ -60,7 +60,7 @@ btnUpdateLab.addEventListener('click', async ()=>{
     return data.json();
   });
 
-  const selectionBox = document.querySelector("#updateGetDepartment");
+  const selectionBox = document.querySelector("#updateGetLab");
   let dataSelect = '<option value="select"> Select </option>';
   result.forEach((element) => {
     dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
@@ -75,25 +75,20 @@ btnUpdateLab.addEventListener('click', async ()=>{
 
 
 
-$(document).on('click',"#uDepartment", async()=>{
+$(document).on('click',"#uLab", async()=>{
 
 
-
-    let department = document.getElementById("depttName").value;
-    let totalLabs = Number (document.getElementById("totalLabs").value);
-    let estDate = document.getElementById("estDate").value;
-    let estSource = document.getElementById("estSource").value;
-    const element = document.getElementById("updateGetDepartment");
-        const checkValue = element.options[element.selectedIndex].value;
+  let labDepartment = document.getElementById("labDepartments").value;
+    let labName = document.getElementById("labName").value;
+    let labEstDate = document.getElementById("labEstDate").value;
+    let labAdmin = document.getElementById("labGetAdmin").value;
     
-    let departmentDetails = {
-        departmentName: department,
-        totalLabs,
-        estDate,
-        estSource,
+    let labDetails = {
+      labDepartment,
+        labName,
+        labEstDate,
+        labAdmin,
     };
-
-    console.log(checkValue)
 
 
     let baseUrl = window.location.origin;
@@ -102,7 +97,7 @@ $(document).on('click',"#uDepartment", async()=>{
          headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(departmentDetails),
+      body: JSON.stringify(labDetails),
           })
 
           console.log(results)
@@ -119,11 +114,11 @@ $(document).on('click',"#uDepartment", async()=>{
     
 })
 
-$(document).on("change", "#updateGetDepartment", async (e) => {
-  
+$(document).on("change", "#updateGetLab", async (e) => {
+ 
     let baseUrl = window.location.origin;
-    let result1 = await fetch(
-      baseUrl + "/stockpile/v1/department/getDepartment/" + $(e.target).val(),
+    let result2 = await fetch(
+      baseUrl + "/stockpile/v1/lab/getLabByDepartmentId/" + $(e.target).val(),
       {
         method: "GET",
         headers: {
@@ -136,10 +131,10 @@ $(document).on("change", "#updateGetDepartment", async (e) => {
 
 
 
-    document.getElementById("depttName").value= result1.departmentName;
-    document.getElementById("totalLabs").value= result1.totalLabs;
-    document.getElementById("estDate").value = result1.estDate;
-    document.getElementById("estSource").value= result1.estSource;
+   document.getElementById("labDepartments").value= result2.department.toString();
+    document.getElementById("labName").value= result2.labName;
+    document.getElementById("labEstDate").value = result2.labEstDate;
+    document.getElementById("labAdminName").value= result2.labAdminName;
     
 
 
