@@ -27,7 +27,7 @@ addLab.addEventListener('click', async ()=>{
                                 </select>
                                 </div>
                                             </div> 
-											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="estDate" type="email" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
+											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="email" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
                                             <div class="form-row"> 
                                             <div class="col-md-6"> 
                                             <div class="form-group"><label class="small mb-1" for="updateChooseAdmin">Select Lab Admin</label></div> 
@@ -84,7 +84,6 @@ $(document).on("change", "#labGetDepartment", async (e) => {
       return data.json();
     });
 
-console.log(result1)
     
     const selectLabAdmin = document.querySelector("#labGetAdmin");
     let dataSelect = '<option value="select"> Select </option>';
@@ -102,21 +101,23 @@ console.log(result1)
 $(document).on('click',"#rLab", async()=>{
 
 
-
-    let department = document.getElementById("depttName").value;
-    let totalLabs = Number (document.getElementById("totalLabs").value);
-    let estDate = document.getElementById("estDate").value;
-    let estSource = document.getElementById("estSource").value;
+    let department = document.getElementById("labGetDepartment").value;
+    let labName = document.getElementById("labName").value;
+    let labEstDate = document.getElementById("labEstDate").value;
+    let labAdmin = document.getElementById("labGetAdmin").value;
     
     let departmentDetails = {
-        departmentName: department,
-        totalLabs,
-        estDate,
-        estSource,
+        department,
+        labName,
+        labEstDate,
+        labAdmin,
     };
 
+
+    console.log('object', departmentDetails)
+
     let baseUrl = window.location.origin;
-        let results = await fetch(baseUrl + "/stockpile/v1/addLab", {
+        let results = await fetch(baseUrl + "/stockpile/v1/lab/addLab", {
             method: "POST",
          headers: {
         "Content-Type": "application/json",
@@ -125,11 +126,11 @@ $(document).on('click',"#rLab", async()=>{
           })
 
 if(results.status==200){
-
     alert('Lab Added Successfully')
-    $('#addLabForm')[0].reset()
+    $('#addDLabForm')[0].reset()
 }else{
 
+    alert("Something went Wrong")
 }
         
 
