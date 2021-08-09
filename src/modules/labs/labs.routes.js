@@ -13,4 +13,10 @@ router.patch(
   (req, res) => {}
 );
 
+router.get(
+  prefix + "/getlab/:labId",
+  _labService.doGetLabById,
+  (req, res) => {}
+);
+
 module.exports = router;
