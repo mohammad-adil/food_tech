@@ -134,30 +134,15 @@ $(document).on("change", "#updateGetLab", async (e) => {
     dataSelect += `<option value="${element._id}">${element.labName}</option>`;
   });
   selectionBox.innerHTML = dataSelect;
-
-
-
-
-  
 });
 
-
-
-
-
 $(document).on('click',"#uLab", async()=>{
-
-
-  let labDepartment = document.getElementById("labDepartments").value;
-    let labName = document.getElementById("labName").value;
-    let labEstDate = document.getElementById("labEstDate").value;
     let labAdmin = document.getElementById("labAdminName").value;
     const element = document.getElementById("updateGetLabFromDepartment");
     const checkValue = element.options[element.selectedIndex].value;
     let labDetails = {
         labAdmin,
     };
-console.log(labDetails)
     let baseUrl = window.location.origin;
         let results = await fetch(baseUrl + "/stockpile/v1/lab/update/" + checkValue , {
             method: "PATCH",
@@ -173,11 +158,7 @@ console.log(labDetails)
             alert('Lab Updated Successfully')
         }else{
         
-        }        
-
-
-    
-    
+        }     
 })
 $(document).on("change", "#updateGetLabFromDepartment", async (e) => {
   
