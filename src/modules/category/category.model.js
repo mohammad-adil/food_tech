@@ -6,6 +6,7 @@ const categorySchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+      index: { unique: true, dropDups: true },
     },
     enteredBy: {
       type: mongoose.Schema.Types.ObjectId,

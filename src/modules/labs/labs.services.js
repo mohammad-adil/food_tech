@@ -4,7 +4,6 @@ const Department = require("../departments/department.model");
 exports.doAddLab = async (req, res, next) => {
   try {
     const createLab = req.body;
-    console.log(createLab);
     const addLab = await Lab.create({ ...createLab });
     return res.status(200).send(addLab);
   } catch (err) {
@@ -24,9 +23,14 @@ exports.doGetLabByDepartment = async (req, res, next) => {
 
 exports.doUpdateLab = async (req, res, next) => {
   try {
-    const createLab = req.body;
-    const addLab = await Lab.create({ ...createLab });
-    return res.status(200).send(addLab);
+    const { labAdmin } = req.body;
+    const labId = req.params.labId;
+    const updatedLab = await Lab.findByIdAndUpdate(
+      { _id: labId },
+      { labAdmin },
+      { new: true }
+    );
+    return res.status(200).send(updatedLab);
   } catch (err) {
     next(err);
   }
