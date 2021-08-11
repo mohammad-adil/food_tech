@@ -152,17 +152,12 @@ $(document).on('click',"#uLab", async()=>{
     let labName = document.getElementById("labName").value;
     let labEstDate = document.getElementById("labEstDate").value;
     let labAdmin = document.getElementById("labAdminName").value;
-    const element = document.getElementById("updateGetDepartment");
+    const element = document.getElementById("updateGetLabFromDepartment");
     const checkValue = element.options[element.selectedIndex].value;
-console.log(checkValue)
     let labDetails = {
-      labDepartment,
-        labName,
-        labEstDate,
         labAdmin,
     };
-
-
+console.log(labDetails)
     let baseUrl = window.location.origin;
         let results = await fetch(baseUrl + "/stockpile/v1/lab/update/" + checkValue , {
             method: "PATCH",
@@ -173,11 +168,9 @@ console.log(checkValue)
       body: JSON.stringify(labDetails),
           })
 
-          console.log(results)
           if(results.status==200){
 
-            alert('Department Updated Successfully')
-            $('#updateDepartmentForm')[0].reset()
+            alert('Lab Updated Successfully')
         }else{
         
         }        
@@ -211,7 +204,6 @@ $(document).on("change", "#updateGetLabFromDepartment", async (e) => {
 
 let selectDepartmet = document.querySelector("#updateGetLab").value
 
-console.log('Dept' , selectDepartmet)
 
   let getUsers = await fetch(
     baseUrl + "/stockpile/v1/getUser/"+selectDepartmet,
