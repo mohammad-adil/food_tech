@@ -6,11 +6,13 @@ const db = require("../src/db/db");
 
 const bodyParser = require("body-parser");
 ///router
+const errorController = require("./middleware/errorController");
 const userRouter = require("./modules/user/user.routes");
 const labRouter = require("./modules/labs/labs.routes");
 const departmentRouter = require("./modules/departments/department.routes");
 const signin = require("./modules/signin/signin.routes");
 const item = require("./modules/items/item.routes");
+const category = require("./modules/category/category.routes");
 
 const app = express();
 
@@ -45,7 +47,9 @@ app.use(labRouter);
 app.use(departmentRouter);
 app.use(signin);
 app.use(item);
+app.use(category);
 
+app.use(errorController);
 app.listen(PORT, () => {
   console.log("Application is running at port: " + PORT);
 });
