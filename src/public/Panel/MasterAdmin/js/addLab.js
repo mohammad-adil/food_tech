@@ -1,9 +1,8 @@
-
-const addLab = document.querySelector('#addLab')
-addLab.addEventListener('click', async ()=>{
-    let dataDiv = document.getElementById("dashBoard");
-    dataDiv.innerHTML = '';
-    dataDiv.innerHTML = `<h1 class="mt-4">Add Lab</h1> 
+const addLab = document.querySelector("#addLab");
+addLab.addEventListener("click", async () => {
+  let dataDiv = document.getElementById("dashBoard");
+  dataDiv.innerHTML = "";
+  dataDiv.innerHTML = `<h1 class="mt-4">Add Lab</h1> 
                         <ol class="breadcrumb mb-4"> 
                             <li class="breadcrumb-item"><a href="/Panel/User/issue.html">Dashboard</a></li> 
                             <li class="breadcrumb-item active">Add Lab</li> 
@@ -49,97 +48,79 @@ addLab.addEventListener('click', async ()=>{
                           </div> 
                      </div> 
                       <div></div> 
-                  </div>`
+                  </div>`;
 
+  let baseUrl = window.location.origin;
+  let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("Token"),
+    },
+  }).then((data) => {
+    return data.json();
+  });
 
-                  let baseUrl = window.location.origin;
-                  let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
-                    method: "GET",
-                    headers: {
-                      "Content-Type": "application/json",
-                      "Authorization": "Bearer "+sessionStorage.getItem("Token")
-                    },
-                  }).then((data) => {
-                    return data.json();
-                  });
-                
-                  const selectionBox = document.querySelector("#labGetDepartment");
-                  let dataSelect = '<option value="select"> Select </option>';
-                  result.forEach((element) => {
-                    dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
-                  });
-                  selectionBox.innerHTML = dataSelect;
-
-
-})
+  const selectionBox = document.querySelector("#labGetDepartment");
+  let dataSelect = '<option value="select"> Select </option>';
+  result.forEach((element) => {
+    dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
+  });
+  selectionBox.innerHTML = dataSelect;
+});
 
 $(document).on("change", "#labGetDepartment", async (e) => {
-  
-    let baseUrl = window.location.origin;
-    let result1 = await fetch(
-      baseUrl + "/stockpile/v1/getUser/" + $(e.target).val(),
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer "+sessionStorage.getItem("Token")
-        },
-      }
-    ).then((data) => {
-      return data.json();
-    });
-
-    
-    const selectLabAdmin = document.querySelector("#labGetAdmin");
-    let dataSelect = '<option value="select"> Select </option>';
-    result1.forEach((element) => {
-      dataSelect += `<option value="${element._id}">${element.name}</option>`;
-    });
-    selectLabAdmin.innerHTML = dataSelect;
-
-  });
-  
-
-
-
-
-$(document).on('click',"#rLab", async()=>{
-
-
-    let department = document.getElementById("labGetDepartment").value;
-    let labName = document.getElementById("labName").value;
-    let labEstDate = document.getElementById("labEstDate").value;
-    let labAdmin = document.getElementById("labGetAdmin").value;
-    
-    let departmentDetails = {
-        department,
-        labName,
-        labEstDate,
-        labAdmin,
-    };
-
-
-    console.log('object', departmentDetails)
-
-    let baseUrl = window.location.origin;
-        let results = await fetch(baseUrl + "/stockpile/v1/lab/addLab", {
-            method: "POST",
-         headers: {
+  let baseUrl = window.location.origin;
+  let result1 = await fetch(
+    baseUrl + "/stockpile/v1/getUser/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer "+sessionStorage.getItem("Token")
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
       },
-      body: JSON.stringify(departmentDetails),
-          })
+    }
+  ).then((data) => {
+    return data.json();
+  });
 
-if(results.status==200){
-    alert('Lab Added Successfully')
-    $('#addDLabForm')[0].reset()
-}else{
+  const selectLabAdmin = document.querySelector("#labGetAdmin");
+  let dataSelect = '<option value="select"> Select </option>';
+  result1.forEach((element) => {
+    dataSelect += `<option value="${element._id}">${element.name}</option>`;
+  });
+  selectLabAdmin.innerHTML = dataSelect;
+});
 
-    alert("Something went Wrong")
-}
-        
+$(document).on("click", "#rLab", async () => {
+  let department = document.getElementById("labGetDepartment").value;
+  let labName = document.getElementById("labName").value;
+  let labEstDate = document.getElementById("labEstDate").value;
+  let labAdmin = document.getElementById("labGetAdmin").value;
 
-    
-    
-})
+  let departmentDetails = {
+    department,
+    labName,
+    labEstDate,
+    labAdmin,
+  };
+
+  console.log("object", departmentDetails);
+
+  let baseUrl = window.location.origin;
+  let results = await fetch(baseUrl + "/stockpile/v1/lab/addLab", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("Token"),
+    },
+    body: JSON.stringify(departmentDetails),
+  });
+
+  if (results.status == 200) {
+    alert("Lab Added Successfully");
+    $("#addDLabForm")[0].reset();
+  } else {
+    alert("Something went Wrong");
+  }
+});

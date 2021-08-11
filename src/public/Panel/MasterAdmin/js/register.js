@@ -1,14 +1,13 @@
-
-const addUser = document.querySelector('#addUser')
-addUser.addEventListener('click', async ()=>{
-    let dataDiv = document.getElementById("dashBoard");
-    dataDiv.innerHTML = '';
-    dataDiv.innerHTML = `<h1 class="mt-4">Register</h1> 
+const addUser = document.querySelector("#addUser");
+addUser.addEventListener("click", async () => {
+  let dataDiv = document.getElementById("dashBoard");
+  dataDiv.innerHTML = "";
+  dataDiv.innerHTML = `<h1 class="mt-4">Register</h1> 
                         <ol class="breadcrumb mb-4"> 
                             <li class="breadcrumb-item"><a href="/Panel/User/issue.html">Dashboard</a></li> 
                             <li class="breadcrumb-item active">Register</li> 
                         </ol> 
-						<div> 
+			
 		<div class="card mb-4" style="visibility:visible; font-size:12px";> 
             <div class="card-header"><i class="fas fa-table mr-1"></i>Register User</div> 
                 <div class="card-body"> 
@@ -53,6 +52,8 @@ addUser.addEventListener('click', async ()=>{
                                 <div class="col-md-6"> 
                                 <div class="form-group"><label class="small mb-1" for="UniversityID">University ID</label><input class="form-control py-4" id="eid" type="text" placeholder="UID" /></div> 
                                 </div> 
+
+                                
                                 <div class="col-md-6"> 
                                 <div class="custom-select" style="width:200px;">
                                 <input type = "date" placeholder="Date of Birth" id="userDob" name="dob" >
@@ -94,9 +95,9 @@ addUser.addEventListener('click', async ()=>{
                           </div> 
                      </div> 
                       <div></div> 
-                  </div>`
+                  </div>`;
 
-                  let baseUrl = window.location.origin;
+  let baseUrl = window.location.origin;
   let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
     method: "GET",
   }).then((data) => {
@@ -106,62 +107,51 @@ addUser.addEventListener('click', async ()=>{
   const selectionBox = document.querySelector("#department");
   let dataSelect = '<option value="select"> Select </option>';
   result.forEach((element) => {
-
     dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
   });
 
   selectionBox.innerHTML = dataSelect;
-})
+});
 
+$(document).on("click", "#rUser", async () => {
+  let name = document.getElementById("txtName").value;
+  let email = document.getElementById("txtEmail").value;
+  let phone = document.getElementById("txtphone").value;
+  let password = document.getElementById("txtPassword").value;
+  const element = document.getElementById("department");
+  const checkValue = element.options[element.selectedIndex].value;
+  //let department = $("department :selected").val();
+  let universityId = document.getElementById("eid").value;
+  let dob = document.getElementById("userDob").value;
+  let userRole = document.getElementById("role").value;
+  let gender = document.getElementById("gender").value;
 
+  let street = document.getElementById("street").value;
+  let pin = document.getElementById("pin").value;
+  let Landmark = document.getElementById("Landmark").value;
+  let UserDetails = {
+    name,
+    dob,
+    department: checkValue,
+    universityId,
+    userRole,
+    phone,
+    gender,
+    address: {
+      Landmark,
+      pin,
+      street,
+    },
+    email,
+    password,
+  };
 
-$(document).on('click',"#rUser", async()=>{
-
-        let name = document.getElementById("txtName").value;
-        let email = document.getElementById("txtEmail").value;
-        let phone = document.getElementById("txtphone").value;
-        let password = document.getElementById("txtPassword").value;
-        const element = document.getElementById("department");
-        const checkValue = element.options[element.selectedIndex].value;
-        //let department = $("department :selected").val();
-        let universityId = document.getElementById("eid").value;
-        let dob = document.getElementById("userDob").value;
-        let userRole = document.getElementById('role').value
-        let gender = document.getElementById("gender").value;
-      
-        let street = document.getElementById('street').value;
-        let pin = document.getElementById('pin').value;
-        let Landmark = document.getElementById('Landmark').value;
-        let UserDetails = {
-          name,
-          dob,
-          department:checkValue,
-          universityId,
-          userRole,
-          phone,
-          gender,
-          address: {
-            Landmark,
-            pin ,
-            street,
-          },
-          email,
-          password,
-        };
-    
-
-        let baseUrl = window.location.origin;
-        let resultz = await fetch(baseUrl + "/stockpile/v1/signUp", {
-            method: "POST",
-         headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(UserDetails),
-          })
-
-        
-
-
-    
-    
-})
+  let baseUrl = window.location.origin;
+  let resultz = await fetch(baseUrl + "/stockpile/v1/signUp", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(UserDetails),
+  });
+});
