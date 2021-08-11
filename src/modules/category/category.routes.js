@@ -9,14 +9,14 @@ router.post(
   (req, res) => {}
 );
 
-/* router.post(
+router.post(
   prefix + "/addSubCategory",
   auth,
-  doAddSubCategory,
+  _categoryService.doAddSubCategory,
   (req, res) => {}
 );
 
-router.Patch(
+/* router.Patch(
   prefix + "/updateCategory/:categoryId",
   auth,
   _categoryService.doUpdateCategory,
