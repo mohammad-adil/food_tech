@@ -43,11 +43,38 @@ btnUpdateLab.addEventListener('click', async ()=>{
                                       <div class="form-group"><label class="small mb-1" for="totalLabs">Department</label><input class="form-control py-4" id="labDepartments" type="text" placeholder="Lab Department" disabled /></div> 
                                          </div> 
                                             </div> 
-											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="text" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
+										                      
+                                          
                                             <div class="form-row"> 
+                                            <div class="col-md-6"> 
+                                            <div class="form-group">
+                                            <label class="small mb-1" for="EstdDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="text" aria-describedby="emailHelp" placeholder="Enter Establishment Date" disabled /></div> 
+                                            </div> 
                                                 <div class="col-md-6"> 
-                                                    <div class="form-group"><label class="small mb-1" for="labAdminName">Lab Admin</label><input class="form-control py-4" id="labAdminName" type="text" placeholder="Select Lab Admin" /></div> 
-                                                </div> 
+                                                  <div class="form-group"><label class="small mb-1" for="currentAdmin">Current Admin</label><input class="form-control py-4" id="currentAdmin" type="text" placeholder="Current Admin" disabled /></div> 
+                                                     </div> 
+                                                        </div>
+
+
+
+                                                        <div class="form-row"> 
+                                                        <div class="col-md-6"> 
+                                                        <div class="form-group">
+                                                        <label class="small mb-1" for="EstdDate">Choose New Admin</label>
+                                                        </div>
+                                                        <div class="custom-select" style="width:200px;">
+                                            <select id="labAdminName" class="targetLab" >
+                                            <option value="Choose">Choose New Lab Admin</option>
+                                            </select>
+                                                
+                                            </div> 
+                                            </div> 
+                                            </div>
+
+
+
+                                   
+                                            
                                                  
 											
                                               </div> 
@@ -67,6 +94,10 @@ btnUpdateLab.addEventListener('click', async ()=>{
                   let baseUrl = window.location.origin;
   let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+sessionStorage.getItem("Token")
+    },
   }).then((data) => {
     return data.json();
   });
@@ -90,6 +121,7 @@ $(document).on("change", "#updateGetLab", async (e) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
       },
     }
   ).then((data) => {
@@ -136,6 +168,7 @@ console.log(checkValue)
             method: "PATCH",
          headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
       },
       body: JSON.stringify(labDetails),
           })
@@ -157,24 +190,67 @@ $(document).on("change", "#updateGetLabFromDepartment", async (e) => {
   
   let baseUrl = window.location.origin;
   let result2 = await fetch(
-    baseUrl + "/stockpile/v1/lab/getLabByDepartmentId/" + $(e.target).val(),
+    baseUrl + "/stockpile/v1/lab/getlab/" + $(e.target).val(),
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
       },
     }
   ).then((data) => {
     return data.json();
   });
 
-
-console.log(result2)
-  document.getElementById("labDepartments").value= result2.department;
+  document.getElementById("labDepartments").value= result2.department.departmentName  ;
   document.getElementById("labName").value= result2.labName;
   document.getElementById("labEstDate").value = result2.labEstDate;
-  document.getElementById("labAdminName").value= result2.labAdmin;
+  document.getElementById("currentAdmin").value= result2.labAdmin.name;
   
 
+
+let selectDepartmet = document.querySelector("#updateGetLab").value
+
+console.log('Dept' , selectDepartmet)
+
+  let getUsers = await fetch(
+    baseUrl + "/stockpile/v1/getUser/"+selectDepartmet,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
+      },
+    }
+  ).then((data) => {
+    return data.json();
+  });
+  
+});
+
+
+$(document).on("change", "#updateGetLab", async (e) => {
+  
+  let baseUrl = window.location.origin;
+  let result1 = await fetch(
+    baseUrl + "/stockpile/v1/getUser/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
+      },
+    }
+  ).then((data) => {
+    return data.json();
+  });
+
+  
+  const selectLabAdmin = document.querySelector("#labAdminName");
+  let dataSelect = '<option value="select"> Select </option>';
+  result1.forEach((element) => {
+    dataSelect += `<option value="${element._id}">${element.name}</option>`;
+  });
+  selectLabAdmin.innerHTML = dataSelect;
 
 });
