@@ -10,6 +10,7 @@ const userRouter = require("./modules/user/user.routes");
 const labRouter = require("./modules/labs/labs.routes");
 const departmentRouter = require("./modules/departments/department.routes");
 const signin = require("./modules/signin/signin.routes");
+const item = require("./modules/items/item.routes");
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use(userRouter);
 app.use(labRouter);
 app.use(departmentRouter);
 app.use(signin);
+app.use(item);
 
 app.listen(PORT, () => {
   console.log("Application is running at port: " + PORT);
