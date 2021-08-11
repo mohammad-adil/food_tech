@@ -2,6 +2,7 @@ const router = require("express").Router();
 const _categoryService = require("../category/category.service");
 const auth = require("../../middleware/Auth");
 const prefix = "/stockpile/v1/category";
+
 router.post(
   prefix + "/addCategory",
   auth,
