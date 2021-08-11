@@ -17,6 +17,20 @@ router.post(
   (req, res) => {}
 );
 
+router.get(
+  prefix + "/getCategory",
+  auth,
+  _categoryService.doGetCategory,
+  (req, res) => {}
+);
+
+router.get(
+  prefix + "/getSubCategory",
+  auth,
+  _categoryService.doGetSubCategory,
+  (req, res) => {}
+);
+
 /* router.Patch(
   prefix + "/updateCategory/:categoryId",
   auth,
