@@ -25,3 +25,21 @@ exports.doAddSubCategory = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.doGetCategory = async (req, res, next) => {
+  try {
+    const category = await Category.find().select("categoryName");
+    res.status(200).send(category);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.doGetSubCategory = async (req, res, next) => {
+  try {
+    const category = await SubCategory.find().select("subCategoryName");
+    res.status(200).send(category);
+  } catch (err) {
+    next(err);
+  }
+};
