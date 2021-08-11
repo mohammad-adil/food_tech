@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const _categoryService = require("../category/category.services");
+const _categoryService = require("../category/category.service");
 const auth = require("../../middleware/Auth");
 const prefix = "/stockpile/v1/category";
 router.post(
@@ -9,7 +9,7 @@ router.post(
   (req, res) => {}
 );
 
-router.post(
+/* router.post(
   prefix + "/addSubCategory",
   auth,
   doAddSubCategory,
@@ -29,5 +29,5 @@ router.patch(
   auth,
   (req, res) => {}
 );
-
+ */
 module.exports = router;
