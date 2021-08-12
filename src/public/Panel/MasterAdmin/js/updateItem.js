@@ -1,15 +1,15 @@
-const btnItemAdd = document.querySelector("#addItem");
-btnItemAdd.addEventListener("click", async () => {
+const btnItemUpdate = document.querySelector("#addItem");
+btnItemUpdate.addEventListener("click", async () => {
     let dataDiv = document.getElementById("dashBoard");
     dataDiv.innerHTML = '';
-   dataDiv.innerHTML = `<h1 class="mt-4">Add Item</h1> 
+   dataDiv.innerHTML = `<h1 class="mt-4">Update Item</h1> 
                         <ol class="breadcrumb mb-4"> 
                             <li class="breadcrumb-item"><a href="/Panel/User/issue.html">Dashboard</a></li> 
-                            <li class="breadcrumb-item active">addItem</li> 
+                            <li class="breadcrumb-item active">Upate Item</li> 
                         </ol> 
 						<div> 
 		<div class="card mb-4" style="visibility:visible; font-size:12px";> 
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Add Item</div> 
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Upate Item</div> 
                 <div class="card-body"> 
                     <div class="card-body"> 
                         <form> 
@@ -236,7 +236,7 @@ btnItemAdd.addEventListener("click", async () => {
 
 
                                           <div class="form-group mt-4 mb-0"> 
-                                              <button id="addItemBtn" type="button" class="btn btn-primary btn-block">Add Item</button> 
+                                              <button id="registerAgent" type="button" class="btn btn-primary btn-block">AddItem</button> 
                                           </div> 
                                       </form> 
                                   </div> 
@@ -363,53 +363,3 @@ $(document).on("keyup", "#itemQuantity", async (e) => {
     $("#itemAvailable").val(totalAvail)
     
 });
-
-/*********************************Fire Request******************************************************** */
-
-
-$(document).on("click", "#addItemBtn", async () => {
-    let itemName = document.getElementById("addItemId").value;
-    let itemQuantity = parseInt (document.getElementById("itemQuantity").value);
-    let itemCategory = document.getElementById("categorySelect").value;
-    let itemSubCategory = document.getElementById("subCategorySelect").value;
-    const element = document.getElementById("itemGetDepartment");
-    const departmentId = element.options[element.selectedIndex].value;
-    let suppliedBy = document.getElementById("suppliedBy").value;
-    let itemAvailable = parseInt (document.getElementById("itemAvailable").value);
-    let source = document.getElementById("sourceItem").value;
-    let lab = document.getElementById("itemGetLabFromDepartment").value;
-    let unitPrice = parseInt(document.getElementById("unitPrice").value);
-    let totalPrice = parseInt(document.getElementById("totalPrice").value);
-    let currency = document.getElementById("currency").value;
-    let unit = document.getElementById("unit").value;
-    let purchaseDate = document.getElementById("purchaseDate").value;
-    let purchaseOrder = document.getElementById("purchaseOrderNumber").value;
-
-    let addLoad = {
-      itemName,
-      itemQuantity,
-      department: departmentId,
-      itemCategory,
-      itemSubCategory,
-      suppliedBy,
-      itemAvailable,
-      source,
-      lab,
-      unitPrice,
-      totalPrice,
-      currency,
-      unit,
-      purchaseDate,
-      purchaseOrder,
-    };
-    let baseUrl = window.location.origin;
-    let res = await fetch(baseUrl + "/stockpile/v1/item/addItem", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer "+sessionStorage.getItem("Token")
-      },
-      
-      body: JSON.stringify(addLoad),
-    });
-  });
