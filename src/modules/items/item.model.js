@@ -15,16 +15,14 @@ const itemSchema = new mongoose.Schema(
       default: 0,
     },
     itemCatagory: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
-      trim: true,
-      default: "Loren Sans",
+      ref: "Category",
     },
     itemSubCatagory: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
-      trim: true,
-      default: "Loren Sans",
+      ref: "SubCategory",
     },
     suppliedBy: {
       type: String,
@@ -33,10 +31,10 @@ const itemSchema = new mongoose.Schema(
       default: "Loren Sans",
     },
     itemAvailible: {
-      type: String,
+      type: Number,
       required: true,
       trim: true,
-      default: "Loren Sans",
+      default: 0,
     },
     enteredBy: {
       type: mongoose.Schema.Types.ObjectId,
@@ -72,6 +70,22 @@ const itemSchema = new mongoose.Schema(
       trim: true,
       default: 0,
     },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
+    purchaseDate: {
+      type: String,
+      required: true,
+      trim: true,
+      default: "2021-05-01",
+    },
+    purchaseOrder: {
+      type: String,
+      required: true,
+      trim: true,
+      default: "NA",
+    },
     currency: {
       type: String,
       required: true,
@@ -96,7 +110,7 @@ const itemSchema = new mongoose.Schema(
       required: true,
       trim: true,
       default: "Loren Ipsum",
-      enum: ["Kgs", "Liters", "Milligrams", "Grams", "No"],
+      enum: ["Kgs", "Liters", "Milligrams", "Grams", "Units", "Packets", "Box"],
     },
   },
   { timestamps: true }
