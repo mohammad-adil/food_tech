@@ -18,7 +18,6 @@ exports.doAddSubCategory = async (req, res, next) => {
     const { subCategoryName, parentCategory } = req.body;
     const { userId } = req;
     const cat = { subCategoryName, enteredBy: userId, parentCategory };
-
     const category = await SubCategory.create({ ...cat });
     res.status(200).send(category);
   } catch (err) {

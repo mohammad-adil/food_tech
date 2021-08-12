@@ -14,6 +14,21 @@ router.get(
   _itemService.doGetItemById,
   (req, res) => {}
 );
+
+router.get(
+  prefix + "/getItemsByDepartment/:departmentId",
+  auth,
+  _itemService.doGetItemByDepartment,
+  (req, res) => {}
+);
+
+router.get(
+  prefix + "/getItemsByLab/:labId",
+  auth,
+  _itemService.doGetItemByLab,
+  (req, res) => {}
+);
+
 router.patch(
   prefix + "/updateItem/:itemId",
   auth,
