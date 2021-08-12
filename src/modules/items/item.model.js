@@ -9,17 +9,14 @@ const itemSchema = new mongoose.Schema(
       default: "Loren Ipsum",
     },
     itemQuantity: {
-      type: Number,
-      required: true,
-      trim: true,
       default: 0,
     },
-    itemCatagory: {
+    itemCategory: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "Category",
     },
-    itemSubCatagory: {
+    itemSubCategory: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "SubCategory",
