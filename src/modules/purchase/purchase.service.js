@@ -7,14 +7,22 @@ exports.doPurchaseItem = async (req, res, next) => {
     req.body.enteredBy = userId;
     let payload = req.body;
     const item = await Item.findOne({
-      _id: req.body.Item,
+      _id: payload.item,
       department: payload.department,
     });
+
     if (item.length <= 0) {
       return res
         .status(404)
         .send({ Message: "No Such Item Found. Contact Administrator.. " });
     }
+
+    if (item.unit.toString() != payload.unit.toString()) {
+      return res
+        .status(400)
+        .send("Units Miss Match... Use Same units as per Item Discription");
+    }
+
     const purchaseItem = await Purchase.create({ ...req.body });
     if (purchaseItem) {
       item.totalItemQuantity += purchaseItem.itemQuantity;

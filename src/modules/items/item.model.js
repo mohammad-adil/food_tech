@@ -5,7 +5,6 @@ const itemSchema = new mongoose.Schema(
     itemName: {
       type: String,
       required: true,
-      trim: true,
       default: "Loren Ipsum",
     },
     totalItemQuantity: {
@@ -48,6 +47,15 @@ const itemSchema = new mongoose.Schema(
         purchaseId: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Purchase",
+        },
+      },
+    ],
+
+    issuedTo: [
+      {
+        issueId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Issue",
         },
       },
     ],
