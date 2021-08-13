@@ -403,7 +403,7 @@ $(document).on("keyup", "#itemQuantity", async (e) => {
 
 
 $(document).on("click", "#btnPurchseItem", async () => {
-    Item = document.getElementById("addItemId").value;
+    item = document.getElementById("addItemId").value;
     let itemQuantity = parseInt (document.getElementById("itemQuantity").value);
     const element = document.getElementById("itemGetDepartment");
     const departmentId = element.options[element.selectedIndex].value;
@@ -419,7 +419,7 @@ $(document).on("click", "#btnPurchseItem", async () => {
     let purchaseOrder = document.getElementById("purchaseOrderNumber").value;
 
     let purchasePayLoad = {
-      Item,
+      item,
       itemQuantity,
       department: departmentId,
       suppliedBy,
@@ -432,8 +432,6 @@ $(document).on("click", "#btnPurchseItem", async () => {
       purchaseDate,
       purchaseOrder,
     };
-
-    console.log(purchasePayLoad)
     let baseUrl = window.location.origin;
     let res = await fetch(baseUrl + "/stockpile/v1/purchase/purchaseItem", {
       method: "POST",
