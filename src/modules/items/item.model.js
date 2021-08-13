@@ -9,6 +9,7 @@ const itemSchema = new mongoose.Schema(
       default: "Loren Ipsum",
     },
     totalItemQuantity: {
+      type: Number,
       default: 0,
     },
     itemCategory: {
