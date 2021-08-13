@@ -4,6 +4,8 @@ exports.doIssueItem = async (req, res, next) => {
   try {
     const { itemId } = req.params;
     const payload = req.body;
+    payload.issuedBy = req.userId;
+
     payload.item = itemId;
     console.log(payload);
     const item = await Item.findById({ _id: itemId });
@@ -24,4 +26,20 @@ exports.doIssueItem = async (req, res, next) => {
     next(err);
   }
 };
-exports.doUpdateIssueItem = async (req, res, next) => {};
+exports.doUpdateIssueItem = async (req, res, next) => {
+  try {
+    const { issueId } = req.params;
+    const payload = req.body;
+    const issueItem = await Issue.findByIdAndUpdate(
+      { _id: issueId },
+      { ...payload },
+      { new: true }
+    );
+    if (!issueItem) {
+      return res.status(404).send("No Such Item issued Item found...!");
+    }
+    return res.status(200).send(issueItem);
+  } catch (err) {
+    next(err);
+  }
+};
