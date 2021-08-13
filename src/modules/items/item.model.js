@@ -8,7 +8,7 @@ const itemSchema = new mongoose.Schema(
       trim: true,
       default: "Loren Ipsum",
     },
-    itemQuantity: {
+    totalItemQuantity: {
       default: 0,
     },
     itemCategory: {
@@ -21,13 +21,7 @@ const itemSchema = new mongoose.Schema(
       required: true,
       ref: "SubCategory",
     },
-    suppliedBy: {
-      type: String,
-      required: true,
-      trim: true,
-      default: "Loren Sans",
-    },
-    itemAvailible: {
+    quantityAvailable: {
       type: Number,
       required: true,
       trim: true,
@@ -37,13 +31,6 @@ const itemSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
-    },
-    source: {
-      type: String,
-      required: true,
-      trim: true,
-      default: "Loren Sans",
-      enum: ["University", "Department", "External"],
     },
     department: {
       type: mongoose.Schema.Types.ObjectId,
@@ -55,52 +42,18 @@ const itemSchema = new mongoose.Schema(
       required: true,
       ref: "Lab",
     },
-    unitPrice: {
-      type: Number,
-      required: true,
-      trim: true,
-      default: "Loren Ipsum",
-    },
-    totalPrice: {
-      type: Number,
-      required: true,
-      trim: true,
-      default: 0,
-    },
+    purchasedAt: [
+      {
+        purchaseId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Purchase",
+        },
+      },
+    ],
+
     isDeleted: {
       type: Boolean,
       default: false,
-    },
-    purchaseDate: {
-      type: String,
-      required: true,
-      trim: true,
-      default: "2021-05-01",
-    },
-    purchaseOrder: {
-      type: String,
-      required: true,
-      trim: true,
-      default: "NA",
-    },
-    currency: {
-      type: String,
-      required: true,
-      trim: true,
-      default: "INR",
-      enum: [
-        "INR",
-        "AUD",
-        "USD",
-        "EUR",
-        "GBP",
-        "JPY",
-        "HKD",
-        "KRW",
-        "LRD",
-        "NZD",
-        "RUB",
-      ],
     },
     unit: {
       type: String,

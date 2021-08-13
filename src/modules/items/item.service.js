@@ -59,4 +59,9 @@ exports.doGetItemByLab = async (req, res, next) => {
   }
 };
 
-exports.doUpdateItem = async (req, res, next) => {};
+exports.doUpdateItem = async (req, res, next) => {
+  try {
+  } catch (err) {
+    next(err);
+  }
+};

@@ -13,7 +13,7 @@ const departmentRouter = require("./modules/departments/department.routes");
 const signin = require("./modules/signin/signin.routes");
 const item = require("./modules/items/item.routes");
 const category = require("./modules/category/category.routes");
-
+const purchase = require("./modules/purchase/purchase.routes");
 const app = express();
 
 //setting up the port for server dynamically
@@ -48,6 +48,7 @@ app.use(departmentRouter);
 app.use(signin);
 app.use(item);
 app.use(category);
+app.use(purchase);
 
 app.use(errorController);
 app.listen(PORT, () => {
