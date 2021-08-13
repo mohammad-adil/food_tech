@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const purchaseSchema = new mongoose.Schema(
   {
-    Item: {
+    item: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "Item",
