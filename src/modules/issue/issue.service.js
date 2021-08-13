@@ -16,6 +16,12 @@ exports.doIssueItem = async (req, res, next) => {
           .send("Units Miss Match... Use Same units as per Item Discription");
       }
     }
+    if (payload.quantityIssued > item.quantityAvailable) {
+      return res
+        .status(400)
+        .send("Less Quantity is Available. Kindly Decrese the Quantity");
+    }
+
     const issue = await Issue.create({ ...payload });
     if (issue) {
       item.quantityAvailable -= issue.quantityIssued;
@@ -26,6 +32,7 @@ exports.doIssueItem = async (req, res, next) => {
     next(err);
   }
 };
+
 exports.doUpdateIssueItem = async (req, res, next) => {
   try {
     const { issueId } = req.params;
