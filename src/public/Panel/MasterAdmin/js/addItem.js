@@ -14,6 +14,30 @@ btnItemAdd.addEventListener("click", async () => {
                     <div class="card-body"> 
                         <form> 
 
+
+
+<div class="form-row"> 
+                                <div class="col-md-6"> 
+                                <div class="form-group">
+                                          <label class="small mb-1" for="categorySelect">Select Category</label>
+                                          <select id="categorySelect" class="targetDept custom-select" >
+                                          <option value="Choose">Select Category</option>
+                                          </select>
+                                </div> 
+                                </div> 
+                                    <div class="col-md-6"> 
+                                      <div class="form-group">
+                                            <label class="small mb-1" for="subCategorySelect">Choose Sub Category</label>
+                                            <select id="subCategorySelect" class="targetDept custom-select" >
+                                          <option value="Choose">Choose Sub Category</option>
+                                          </select>
+                                      </div> 
+                                         </div> 
+                                            </div> 
+
+
+
+
             
                             <div class="form-row"> 
                                 <div class="col-md-6"> 
@@ -46,45 +70,23 @@ btnItemAdd.addEventListener("click", async () => {
                                           <option value="Choose">Choose Lab</option>
                                           </select>
                                 </div> 
-                                </div> 
-                                    <div class="col-md-6"> 
-                                      <div class="form-group">
-                                            <label class="small mb-1" for="inputAddItem">Item Source</label>
-                                            <select id="sourceItem" class="targetDept custom-select" >
-                                          <option value="Choose">Choose Source</option>
-                                          <option value="University">University</option>
-                                          <option value="Department">Department</option>
-                                          <option value="External">External</option>
-                                          </select>
-                                      </div> 
-                                         </div> 
-                                            </div> 
-
-
-
-
-
-
-
-
-                                            <div class="form-row"> 
+                                </div>
                                 <div class="col-md-6"> 
                                 <div class="form-group">
-                                          <label class="small mb-1" for="categorySelect">Select Category</label>
-                                          <select id="categorySelect" class="targetDept custom-select" >
-                                          <option value="Choose">Select Category</option>
-                                          </select>
+                                      <label class="small mb-1" for="unit">Unit</label>
+                                      <select id="unit" class="targetDept custom-select" >
+                                      <option value="Choose">Choose Unit</option>
+                                      <option value="Kgs">Kgs</option>
+                                      <option value="Liters">Liters</option>
+                                      <option value="Milligrams">Milligrams</option>
+                                      <option value="Grams">Grams</option>
+                                      <option value="Uints">Uints</option>
+                                      </select>
                                 </div> 
-                                </div> 
-                                    <div class="col-md-6"> 
-                                      <div class="form-group">
-                                            <label class="small mb-1" for="subCategorySelect">Choose Sub Category</label>
-                                            <select id="subCategorySelect" class="targetDept custom-select" >
-                                          <option value="Choose">Choose Sub Category</option>
-                                          </select>
-                                      </div> 
-                                         </div> 
+                                   </div>
                                             </div> 
+
+
 
 
 
@@ -103,117 +105,13 @@ btnItemAdd.addEventListener("click", async () => {
                                          <input class="form-control py-4" id="itemQuantity" type="number" placeholder="Enter Quantity" />
                                 </div> 
                                 </div> 
-                                    <div class="col-md-6"> 
-                                      <div class="form-group">
-                                            <label class="small mb-1" for="unit">Unit</label>
-                                            <select id="unit" class="targetDept custom-select" >
-                                            <option value="Choose">Choose Unit</option>
-                                            <option value="Kgs">Kgs</option>
-                                            <option value="Liters">Liters</option>
-                                            <option value="Milligrams">Milligrams</option>
-                                            <option value="Grams">Grams</option>
-                                            <option value="Uints">Uints</option>
-                                            </select>
-                                      </div> 
-                                         </div> 
-                                            </div> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                            <div class="form-row"> 
-                                <div class="col-md-6"> 
-                                <div class="form-group">
-                                          <label class="small mb-1" for="unitPrice">Unit Price</label>
-                                         <input class="form-control py-4" id="unitPrice" type="Number" placeholder="Enter Unit Price" />
-                                </div> 
-                                </div> 
-                                    <div class="col-md-6"> 
-                                      <div class="form-group">
-                                            <label class="small mb-1" for="totalPrice">Total Price</label>
-                                            <input class="form-control py-4" id="totalPrice" type="Number" placeholder="Enter total quantity" disabled/>
-                                      </div> 
-                                         </div> 
-                                            </div> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                            <div class="form-row"> 
-                                <div class="col-md-6"> 
-                                <div class="form-group">
-                                          <label class="small mb-1" for="chooseCurrency">Currency</label>
-                                          <select id="currency" class="targetDept custom-select" >
-                                          <option value="Choose">Choose Currency</option>
-                                          <option value="INR">INR</option>
-                                          <option value="USD">USD</option>
-                                          <option value="AUD">AUD</option>
-                                          <option value="EUR">EUR</option>
-                                          <option value="GBP">GBP</option>
-                                          </select>
-                                </div> 
-                                </div> 
-                                    <div class="col-md-6"> 
-                                      <div class="form-group">
-                                            <label class="small mb-1" for="suppliedBy">Supplier</label>
-                                            <input class="form-control py-4" id="suppliedBy" type="text" placeholder="Enter Supplier Name" />
-                                      </div> 
-                                         </div> 
-                                            </div> 
-
-
-
-
-
-
-
-                                            <div class="form-row"> 
                                 <div class="col-md-6"> 
                                 <div class="form-group">
                                           <label class="small mb-1" for="itemAvailable">Item Availibility</label>
                                          <input class="form-control py-4" id="itemAvailable" type="text" placeholder="Item Availibility" disabled/>
                                 </div> 
                                 </div> 
-                                    <div class="col-md-6"> 
-                                      <div class="form-group">
-                                            <label class="small mb-1" for="purchaseDate">Purchase Date</label>
-                                            <input class="form-control py-4" id="purchaseDate" type="date" placeholder="Purchase Date" />
-                                      </div> 
-                                         </div> 
+ 
                                             </div> 
 
 
@@ -221,14 +119,12 @@ btnItemAdd.addEventListener("click", async () => {
 
 
 
+
+
                                             <div class="form-row"> 
-                                <div class="col-md-6"> 
-                                <div class="form-group">
-                                          <label class="small mb-1" for="purchaseOrderNumber">Purchase Order Number</label>
-                                         <input class="form-control py-4" id="purchaseOrderNumber" type="text" placeholder="Purchase Order Number" />
-                                </div> 
-                                </div> 
-                                </div> 
+
+                                   
+                                            </div> 
 
 
 
@@ -369,39 +265,27 @@ $(document).on("keyup", "#itemQuantity", async (e) => {
 
 $(document).on("click", "#addItemBtn", async () => {
     let itemName = document.getElementById("addItemId").value;
-    let itemQuantity = parseInt (document.getElementById("itemQuantity").value);
+    let totalItemQuantity = parseInt (document.getElementById("itemQuantity").value);
     let itemCategory = document.getElementById("categorySelect").value;
     let itemSubCategory = document.getElementById("subCategorySelect").value;
     const element = document.getElementById("itemGetDepartment");
     const departmentId = element.options[element.selectedIndex].value;
-    let suppliedBy = document.getElementById("suppliedBy").value;
-    let itemAvailable = parseInt (document.getElementById("itemAvailable").value);
-    let source = document.getElementById("sourceItem").value;
+    let quantityAvailable = parseInt (document.getElementById("itemAvailable").value);
     let lab = document.getElementById("itemGetLabFromDepartment").value;
-    let unitPrice = parseInt(document.getElementById("unitPrice").value);
-    let totalPrice = parseInt(document.getElementById("totalPrice").value);
-    let currency = document.getElementById("currency").value;
     let unit = document.getElementById("unit").value;
-    let purchaseDate = document.getElementById("purchaseDate").value;
-    let purchaseOrder = document.getElementById("purchaseOrderNumber").value;
-
     let addLoad = {
       itemName,
-      itemQuantity,
+      totalItemQuantity,
       department: departmentId,
       itemCategory,
       itemSubCategory,
-      suppliedBy,
-      itemAvailable,
-      source,
+      quantityAvailable,
       lab,
-      unitPrice,
-      totalPrice,
-      currency,
       unit,
-      purchaseDate,
-      purchaseOrder,
     };
+
+
+    console.log(addLoad)
     let baseUrl = window.location.origin;
     let res = await fetch(baseUrl + "/stockpile/v1/item/addItem", {
       method: "POST",
