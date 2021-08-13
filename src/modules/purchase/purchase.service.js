@@ -29,3 +29,74 @@ exports.doPurchaseItem = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.doGetPurchasebyId = async (req, res, next) => {
+  try {
+    const { purchaseId } = req.params;
+    const getPurchase = await Purchase.findOne({ _id: purchaseId });
+    if (!getPurchase) {
+      return res
+        .status(404)
+        .send({ Message: "No Such Purchase Found. Contact Administrator.. " });
+    }
+    return res.status(200).send(getPurchase);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.doGetPurchasebyLab = async (req, res, next) => {
+  try {
+    const { labId } = req.params;
+    const getPurchaseByLab = await Purchase.find({ lab: labId });
+
+    if (!getPurchaseByLab) {
+      return res
+        .status(404)
+        .send({ Message: "No Such Purchase Found. Contact Administrator.. " });
+    }
+
+    return res.status(200).send(getPurchaseByLab);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.doGetPurchasebyDepartment = async (req, res, next) => {
+  try {
+    const { departmentId } = req.params;
+    const getPurchaseByDept = await Purchase.find({
+      department: departmentId,
+    });
+
+    if (!getPurchaseByDept) {
+      return res
+        .status(404)
+        .send({ Message: "No Such Purchase Found. Contact Administrator.. " });
+    }
+
+    return res.status(200).send(getPurchaseByDept);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.doUpdatePurchase = async (req, res, next) => {
+  try {
+    const { purchaseId } = req.params;
+    const query = { _id: purchaseId };
+    const update = { ...req.body };
+    const updatePurchase = await Purchase.findByIdAndUpdate(query, update, {
+      new: true,
+    });
+    if (!updatePurchase) {
+      return res.status(404).send({
+        Message:
+          "cannot Update..No Such Purchase Found. Contact Administrator.. ",
+      });
+    }
+    return res.status(200).send(updatePurchase);
+  } catch (err) {
+    next(err);
+  }
+};

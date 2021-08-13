@@ -9,24 +9,33 @@ router.post(
   _purchaseService.doPurchaseItem,
   (req, res) => {}
 );
-/* router.get(
-  prefix + "/getLabByDepartmentId/:departmentId",
+
+router.get(
+  prefix + "/getPurchasebyId/:purchaseId",
   auth,
-  _labService.doGetLabByDepartment,
-  (req, res) => {}
-);
-router.patch(
-  prefix + "/update/:labId",
-  auth,
-  _labService.doUpdateLab,
+  _purchaseService.doGetPurchasebyId,
   (req, res) => {}
 );
 
 router.get(
-  prefix + "/getlab/:labId",
+  prefix + "/getPurchasebyLab/:labId",
   auth,
-  _labService.doGetLabById,
+  _purchaseService.doGetPurchasebyLab,
   (req, res) => {}
 );
- */
+
+router.get(
+  prefix + "/getPurchasebyDepartment/:departmentId",
+  auth,
+  _purchaseService.doGetPurchasebyDepartment,
+  (req, res) => {}
+);
+
+router.patch(
+  prefix + "/update/:purchaseId",
+  auth,
+  _purchaseService.doUpdatePurchase,
+  (req, res) => {}
+);
+
 module.exports = router;
