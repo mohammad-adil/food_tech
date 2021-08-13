@@ -20,22 +20,20 @@ addLab.addEventListener("click", async () => {
                                 <div class="col-md-6"> 
                                 <div class="form-group"><label class="small mb-1" for="updateChoose">Choose Depatment</label></div> 
                                 </div>
-                                <div class="custom-select" style="width:200px;">
-                                <select id="labGetDepartment" class="targetDept" >
+                                <select id="labGetDepartment" class="targetDept custom-select" >
                                 <option value="Choose">Choose Department</option>
                                 </select>
-                                </div>
-                                            </div> 
+                                </div> 
 											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="email" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
                                             <div class="form-row"> 
                                             <div class="col-md-6"> 
                                             <div class="form-group"><label class="small mb-1" for="updateChooseAdmin">Select Lab Admin</label></div> 
                                             </div>
-                                            <div class="custom-select" style="width:200px;">
-                                            <select id="labGetAdmin" class="targetDept" >
+                                            
+                                            <select id="labGetAdmin" class="targetDept custom-select" >
                                             <option value="Choose">Choose Lab Admin</option>
                                             </select>
-                                            </div> 
+                                   
                                                  
 											
                                               </div> 
