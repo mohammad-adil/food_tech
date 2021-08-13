@@ -10,7 +10,7 @@ router.post(
   (req, res) => {}
 );
 
-router.post(
+router.patch(
   prefix + "/update/:issueId",
   auth,
   _issueService.doUpdateIssueItem,
