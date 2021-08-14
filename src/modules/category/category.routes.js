@@ -31,7 +31,7 @@ router.get(
   (req, res) => {}
 );
 
-/* router.Patch(
+router.patch(
   prefix + "/updateCategory/:categoryId",
   auth,
   _categoryService.doUpdateCategory,
@@ -40,9 +40,9 @@ router.get(
 
 router.patch(
   prefix + "/updateSubCategory/:categoryId",
-  _categoryService.doUpdateSubCategory,
   auth,
+  _categoryService.doUpdateSubCategory,
   (req, res) => {}
 );
- */
+
 module.exports = router;

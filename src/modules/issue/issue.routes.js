@@ -24,4 +24,17 @@ router.get(
   (req, res) => {}
 );
 
+router.get(
+  prefix + "/getIssueItemById/:issueId",
+  auth,
+  _issueService.doGetIssueItemById,
+  (req, res) => {}
+);
+
+router.get(
+  prefix + "/getIssueItemLab/:labId",
+  auth,
+  _issueService.doGetIssueByLab,
+  (req, res) => {}
+);
 module.exports = router;
