@@ -4,6 +4,8 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const db = require("../src/db/db");
 
+const User = require("../src/modules/user/user.model");
+
 const bodyParser = require("body-parser");
 ///router
 const errorController = require("./middleware/errorController");
@@ -42,6 +44,9 @@ app.get("/", async (req, res) => {
 });
 app.get("/login", (req, res) => {
   res.render("login");
+});
+app.all("/Panel/MasterAdmin/?*", (req, res) => {
+  console.log("admin route hit");
 });
 
 app.use(userRouter);

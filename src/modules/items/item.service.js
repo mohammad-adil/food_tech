@@ -61,6 +61,20 @@ exports.doGetItemByLab = async (req, res, next) => {
 
 exports.doUpdateItem = async (req, res, next) => {
   try {
+    const { itemId } = req.params;
+    const query = { _id: itemId };
+    const update = { ...req.body };
+    const updateItem = await Item.findByIdAndUpdate(query, update, {
+      new: true,
+    });
+    if (!updateItem) {
+      return res
+        .status(404)
+        .send("No Such item Found to Update. Update Failed");
+    }
+    return res
+      .status(200)
+      .send({ message: "Item Updated Successfully", data: updateItem });
   } catch (err) {
     next(err);
   }
