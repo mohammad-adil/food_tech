@@ -50,3 +50,23 @@ exports.doUpdateIssueItem = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getIssueByDepartment = async (req, res, next) => {
+  try {
+    const { departmentId } = req.params;
+    const issueByDept = await Issue.find({})
+      .populate("item")
+      .populate({
+        path: "department",
+        match: { department: departmentId },
+      })
+      .exec(function (err, issueItems) {
+        if (!issueItems) {
+          return res.status(404).send("No Such issued Item found...!");
+        }
+        return res.status(200).send(issueItems);
+      });
+  } catch (err) {
+    next(err);
+  }
+};
