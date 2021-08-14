@@ -10,7 +10,7 @@ approveElm.addEventListener("click", async () => {
     </ol> 
   
 
-    <select id="department" class="targetDept custom-select" >
+    <select id="selectApproveDelDepartment" class="targetDept custom-select" >
     <option value="Choose">Choose Department</option>
     </select>
     </div>
@@ -54,7 +54,7 @@ approveElm.addEventListener("click", async () => {
     return data.json();
   });
 
-  const selectionBox = document.querySelector("#department");
+  const selectionBox = document.querySelector("#selectApproveDelDepartment");
   let dataSelect = '<option value="select"> Select </option>';
   result.forEach((element) => {
     dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
@@ -62,7 +62,7 @@ approveElm.addEventListener("click", async () => {
   selectionBox.innerHTML = dataSelect;
 });
 
-$(document).on("change", "#department", async (e) => {
+$(document).on("change", "#selectApproveDelDepartment", async (e) => {
   let departmentTable = document.getElementById("departmentTable");
   departmentTable.innerHTML = "";
   departmentTable.innerHTML = `<div class="ui segment">
