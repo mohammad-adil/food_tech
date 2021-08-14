@@ -2,14 +2,14 @@ const btnItemPurchase = document.querySelector("#purchaseItem");
 btnItemPurchase.addEventListener("click", async () => {
     let dataDiv = document.getElementById("dashBoard");
     dataDiv.innerHTML = '';
-   dataDiv.innerHTML = `<h1 class="mt-4">Add Item</h1> 
+   dataDiv.innerHTML = `<h1 class="mt-4">Purchase Item</h1> 
                         <ol class="breadcrumb mb-4"> 
                             <li class="breadcrumb-item"><a href="/Panel/User/issue.html">Dashboard</a></li> 
-                            <li class="breadcrumb-item active">Add Item</li> 
+                            <li class="breadcrumb-item active">Purchase Item</li> 
                         </ol> 
 						<div> 
 		<div class="card mb-4" style="visibility:visible; font-size:12px";> 
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Add Item</div> 
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Purchase Item</div> 
                 <div class="card-body"> 
                     <div class="card-body"> 
                         <form> 

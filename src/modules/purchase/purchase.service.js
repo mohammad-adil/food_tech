@@ -42,7 +42,7 @@ exports.doGetPurchasebyId = async (req, res, next) => {
   try {
     const { purchaseId } = req.params;
     const getPurchase = await Purchase.findOne({ _id: purchaseId }).populate(
-      "item"
+      "Item"
     );
     if (!getPurchase) {
       return res
