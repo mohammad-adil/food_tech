@@ -12,7 +12,7 @@ btnItemAdd.addEventListener("click", async () => {
             <div class="card-header"><i class="fas fa-table mr-1"></i>Add Item</div> 
                 <div class="card-body"> 
                     <div class="card-body"> 
-                        <form> 
+                        <form id="addItemForm"> 
 
 
 
@@ -168,6 +168,8 @@ btnItemAdd.addEventListener("click", async () => {
 
 });
 
+
+/******************************Fetch Lab********************************************************** */
 $(document).on("change", "#itemGetDepartment", async (e) => {
  
     let baseUrl = window.location.origin;
@@ -296,4 +298,13 @@ $(document).on("click", "#addItemBtn", async () => {
       
       body: JSON.stringify(addLoad),
     });
+
+    if (res.status == 200) {
+      alert("Item Added Successfully");
+      $("#addItemForm")[0].reset();
+    } else {
+      alert("Something went Wrong");
+    }
+
+
   });

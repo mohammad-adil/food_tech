@@ -16,6 +16,10 @@ const labSchema = new mongoose.Schema(
     labEstDate: {
       type: String,
     },
+    isDeleted: {
+    type :Boolean, 
+    default: false,
+    },
     labAdmin: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
