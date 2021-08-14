@@ -12,30 +12,38 @@ addLab.addEventListener("click", async () => {
             <div class="card-header"><i class="fas fa-table mr-1"></i>Add Lab</div> 
                 <div class="card-body"> 
                     <div class="card-body"> 
+
                         <form id="addDLabForm"> 
                             <div class="form-row"> 
                                 <div class="col-md-6"> 
-                                <div class="form-group"><label class="small mb-1" for="labName">Lab Name</label><input class="form-control py-4" id="labName" type="text" placeholder="Enter Lab Name" /></div> 
+                                <div class="form-group"><label class="small mb-1" for="labName">Lab Name</label>
+                                <input class="form-control py-4" id="labName" type="text" placeholder="Enter Lab Name" />
                                 </div> 
-                                <div class="col-md-6"> 
-                                <div class="form-group"><label class="small mb-1" for="updateChoose">Choose Depatment</label></div> 
                                 </div>
-                                <div class="custom-select" style="width:200px;">
-                                <select id="labGetDepartment" class="targetDept" >
+                                </div> 
+                                
+                                <div class="form-group">
+                                <div class="col-md-6">
+                                <label class="small mb-1" for="updateChoose">Choose Depatment</label></div> 
+                                <div class="form-row">
+                                <select id="labGetDepartment" class="targetDept custom-select" >
                                 <option value="Choose">Choose Department</option>
                                 </select>
                                 </div>
-                                            </div> 
-											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="email" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
-                                            <div class="form-row"> 
-                                            <div class="col-md-6"> 
-                                            <div class="form-group"><label class="small mb-1" for="updateChooseAdmin">Select Lab Admin</label></div> 
-                                            </div>
-                                            <div class="custom-select" style="width:200px;">
-                                            <select id="labGetAdmin" class="targetDept" >
-                                            <option value="Choose">Choose Lab Admin</option>
-                                            </select>
-                                            </div> 
+                                
+
+											<div class="form-group">
+                      <label class="small mb-1" for="establishmentDate">Establishment Date</label>
+                      <input class="form-control py-4" id="labEstDate" type="email" aria-describedby="emailHelp" placeholder="Enter Establishment Date" />
+                      </div> 
+                      <div class="form-row"> 
+                      <div class="col-md-6"> 
+                      <div class="form-group"><label class="small mb-1" for="updateChooseAdmin">Select Lab Admin</label></div> 
+                      </div>
+                      <select id="labGetAdmin" class="targetDept custom-select" >
+                      <option value="Choose">Choose Lab Admin</option>
+                      </select>
+                      </div> 
                                                  
 											
                                               </div> 

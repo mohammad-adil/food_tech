@@ -12,8 +12,7 @@ btnUpdateDepartment.addEventListener('click', async ()=>{
                         <div class="col-md-6"> 
                         <div class="form-group"><label class="medium mb-1" for="updateChoose">Choose Depatment to Update</label></div> 
                         </div>
-                        <div class="custom-select" style="width:200px;">
-                        <select id="updateGetDepartment" class="targetDept" >
+                        <select id="updateGetDepartment" class="targetDept custom-select" >
                         <option value="Choose">Choose Department</option>
                         </select>
                         </div>

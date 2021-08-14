@@ -23,11 +23,11 @@ exports.doGetLabByDepartment = async (req, res, next) => {
 
 exports.doUpdateLab = async (req, res, next) => {
   try {
-    const { labAdmin } = req.body;
+   
     const labId = req.params.labId;
     const updatedLab = await Lab.findByIdAndUpdate(
       { _id: labId },
-      { labAdmin },
+      { ...req.body },
       { new: true }
     );
     return res.status(200).send(updatedLab);

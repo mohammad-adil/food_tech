@@ -17,8 +17,8 @@ const labSchema = new mongoose.Schema(
       type: String,
     },
     isDeleted: {
-      type: Boolean,
-      default: false,
+    type :Boolean, 
+    default: false,
     },
     labAdmin: {
       type: mongoose.Schema.Types.ObjectId,
