@@ -12,7 +12,7 @@ addUser.addEventListener("click", async () => {
             <div class="card-header"><i class="fas fa-table mr-1"></i>Register User</div> 
                 <div class="card-body"> 
                     <div class="card-body"> 
-                        <form> 
+                        <form id="registerUserForm"> 
                             <div class="form-row"> 
                                 <div class="col-md-6"> 
                                 <div class="form-group">
@@ -198,4 +198,13 @@ $(document).on("click", "#rUser", async () => {
     },
     body: JSON.stringify(UserDetails),
   });
+  console.log(resultz)
+
+  
+  if (resultz.status == 201) {
+    alert("User Registered Successfully");
+    $("#registerUserForm")[0].reset();
+  } else {
+    alert("Something went Wrong");
+  }
 });
