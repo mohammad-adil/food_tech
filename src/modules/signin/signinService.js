@@ -1,5 +1,6 @@
 const User = require("../user/user.model");
 const jwt = require("jsonwebtoken");
+const path = require("path");
 //const cookieParser = require("cookie-parser");
 exports.signinUser = async (req, res, next) => {
   try {
@@ -9,11 +10,19 @@ exports.signinUser = async (req, res, next) => {
     if (user != null) {
       Token = await signJwt(user._id);
       console.log("token, ", Token);
-      if (user && user.userRole.toString() == "user") {
+      if (user && user.userRole == "superAdmin") {
+        res.cookie("data", { Token, user });
+        res.redirect("/Panel/MasterAdmin/index.html");
+        res.status(302);
+      } else if (user && user.userRole == "user") {
         res.cookie("data", { Token, user });
         res.redirect("/Panel/User/index.html");
         res.status(302);
-      } else if (user && user.userRole.toString() == "admin") {
+      } else if (user && user.userRole == "labAdmin") {
+        res.cookie("data", { Token, user });
+        res.redirect("/Panel/MasterAdmin/index.html");
+        res.status(302);
+      } else if (user && user.userRole == "admin") {
         res.cookie("data", { Token, user });
         res.redirect("/Panel/Admin/index.html");
         res.status(302);
@@ -26,17 +35,6 @@ exports.signinUser = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
-
-exports.signiMasterUser = async (req, res, next) => {
-  Token = await signJwt(user._id);
-  res.cookie("data", { Token, user });
-  res.redirect("/Panel/MasterAdmin/index.html");
-  res.status(302);
-};
-
-exports.masterUser = async (req, res, next) => {
-  console.log("admin route hit");
 };
 
 const signJwt = async (payload) => {

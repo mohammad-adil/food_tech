@@ -31,28 +31,22 @@ app.use(cookieParser());
 ///setting up the view engine for advanced templating
 //app.set('view engine','hbs')
 // view engine setup
-console.log(__dirname);
 app.set("views", "./views");
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
 
 ///includeing the dynamic pages for application
-//
-
+app.use(signin);
 app.get("/", async (req, res) => {
   res.render("index");
 });
 app.get("/login", (req, res) => {
   res.render("login");
 });
-app.all("/Panel/MasterAdmin/?*", (req, res) => {
-  console.log("admin route hit");
-});
 
 app.use(userRouter);
 app.use(labRouter);
 app.use(departmentRouter);
-app.use(signin);
 app.use(item);
 app.use(category);
 app.use(purchase);
