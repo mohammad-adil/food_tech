@@ -42,7 +42,8 @@ exports.doGetPurchasebyId = async (req, res, next) => {
   try {
     const { purchaseId } = req.params;
     const getPurchase = await Purchase.findOne({ _id: purchaseId }).populate(
-      "item"
+      "item",
+      ["itemName"]
     );
     if (!getPurchase) {
       return res
@@ -59,7 +60,8 @@ exports.doGetPurchasebyLab = async (req, res, next) => {
   try {
     const { labId } = req.params;
     const getPurchaseByLab = await Purchase.find({ lab: labId }).populate(
-      "item"
+      "item",
+      ["itemName"]
     );
 
     if (!getPurchaseByLab) {
@@ -79,7 +81,7 @@ exports.doGetPurchasebyDepartment = async (req, res, next) => {
     const { departmentId } = req.params;
     const getPurchaseByDept = await Purchase.find({
       department: departmentId,
-    }).populate("item");
+    }).populate("item", ["itemName"]);
 
     if (!getPurchaseByDept) {
       return res
