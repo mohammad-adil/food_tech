@@ -17,4 +17,11 @@ router.patch(
   (req, res) => {}
 );
 
+router.get(
+  prefix + "/getIssueByDepartment/:departmentId",
+  auth,
+  _issueService.getIssueByDepartment,
+  (req, res) => {}
+);
+
 module.exports = router;
