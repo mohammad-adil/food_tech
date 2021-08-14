@@ -19,8 +19,7 @@ BtnDeleteDepartment.addEventListener('click', async ()=>{
                     <div class="col-md-6"> 
                     <div class="form-group"><label class="medium mb-1" for="deleteChoose">Choose Depatment to Delete</label></div> 
                     </div>
-                    <div class="custom-select" style="width:200px;">
-                    <select id="deleteGetDepartment" class="targetDept" >
+                    <select id="deleteGetDepartment" class="targetDept custom-select" >
                     <option value="Choose">Choose Department</option>
                     </select>
                     </div>

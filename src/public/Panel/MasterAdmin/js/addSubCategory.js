@@ -18,8 +18,7 @@ addSubCat.addEventListener("click", async () => {
                         <div class="col-md-6"> 
                         <div class="form-group"><label class="small mb-1" for="subCategoryName">Select Category</label>
                        
-                        <div class="custom-select" style="width:200px;">
-                        <select id="parentCategory" class="targetDept" >
+                        <select id="parentCategory" class="targetDept custom-select" >
                         <option value="Choose">Select Category</option>
                         </select>
                         </div> 

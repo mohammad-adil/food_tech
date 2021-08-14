@@ -10,8 +10,7 @@ approveElm.addEventListener("click", async () => {
     </ol> 
   
 
-    <div class="custom-select" style="width:200px;">
-    <select id="department" class="targetDept" >
+    <select id="department" class="targetDept custom-select" >
     <option value="Choose">Choose Department</option>
     </select>
     </div>

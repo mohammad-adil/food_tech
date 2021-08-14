@@ -12,7 +12,7 @@ btnIssueItem.addEventListener("click", async () => {
             <div class="card-header"><i class="fas fa-table mr-1"></i>Issue Item</div> 
                 <div class="card-body"> 
                     <div class="card-body"> 
-                        <form> 
+                        <form id="issueItemForm"> 
 
             
                         <div class="form-row"> 
@@ -261,7 +261,7 @@ if(returnable=='True'){
       issuedTo,
     };
     let baseUrl = window.location.origin;
-    let res = await fetch(baseUrl + "/stockpile/v1/issue/issueItem/"+itemChoose, {
+    let res1 = await fetch(baseUrl + "/stockpile/v1/issue/issueItem/"+itemChoose, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -271,4 +271,12 @@ if(returnable=='True'){
       body: JSON.stringify(issuePayLoad),
 
     });
+
+    if (res1.status == 200) {
+      alert("Issued Successfully");
+      $("#issueItemForm")[0].reset();
+    } else {
+      alert("Something went Wrong");
+    }
+
   });
