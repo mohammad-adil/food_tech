@@ -5,9 +5,7 @@ exports.doIssueItem = async (req, res, next) => {
     const { itemId } = req.params;
     const payload = req.body;
     payload.issuedBy = req.userId;
-
     payload.item = itemId;
-    console.log(payload);
     const item = await Item.findById({ _id: itemId });
     if (item) {
       if (item.unit.toString() != payload.unit.toString()) {
@@ -25,9 +23,12 @@ exports.doIssueItem = async (req, res, next) => {
     const issue = await Issue.create({ ...payload });
     if (issue) {
       item.quantityAvailable -= issue.quantityIssued;
+      item.issuedTo.unshift({ issueId: issue._id });
       await item.save();
     }
-    return res.status(200).send("Item Issued Successfully");
+    return res
+      .status(200)
+      .send({ Message: "Item Issued Successfully", data: issue });
   } catch (err) {
     next(err);
   }
@@ -59,6 +60,41 @@ exports.getIssueByDepartment = async (req, res, next) => {
       .populate({
         path: "department",
         match: { department: departmentId },
+      })
+      .exec(function (err, issueItems) {
+        if (!issueItems) {
+          return res.status(404).send("No Such issued Item found...!");
+        }
+        return res.status(200).send(issueItems);
+      });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.doGetIssueItemById = async (req, res, next) => {
+  try {
+    const { issueId } = req.params;
+    const issuedItem = await Issue.findById({ _id: issueId });
+    if (!issuedItem) {
+      return res.status(404).send("No Such issued Item found...!");
+    }
+    return res
+      .status(200)
+      .send({ Message: "Item found...!", data: issuedItem });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.doGetIssueByLab = async (req, res, next) => {
+  try {
+    const { labId } = req.params;
+    const issueByLab = await Issue.find({})
+      .populate("item")
+      .populate({
+        path: "lab",
+        match: { lab: labId },
       })
       .exec(function (err, issueItems) {
         if (!issueItems) {

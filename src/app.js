@@ -4,7 +4,10 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const db = require("../src/db/db");
 
+const User = require("../src/modules/user/user.model");
+
 const bodyParser = require("body-parser");
+
 ///router
 const errorController = require("./middleware/errorController");
 const userRouter = require("./modules/user/user.routes");
@@ -29,14 +32,12 @@ app.use(cookieParser());
 ///setting up the view engine for advanced templating
 //app.set('view engine','hbs')
 // view engine setup
-console.log(__dirname);
 app.set("views", "./views");
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
 
 ///includeing the dynamic pages for application
-//
-
+app.use(signin);
 app.get("/", async (req, res) => {
   res.render("index");
 });
@@ -47,7 +48,6 @@ app.get("/login", (req, res) => {
 app.use(userRouter);
 app.use(labRouter);
 app.use(departmentRouter);
-app.use(signin);
 app.use(item);
 app.use(category);
 app.use(purchase);
