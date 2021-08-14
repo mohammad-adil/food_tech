@@ -1,12 +1,18 @@
 const User = require("../user/user.model");
 const Department = require("../departments/department.model");
 const auth = require("../../middleware/Auth");
+const email = require("../mail/SignUp.mailer");
 
 exports.doSignupUser = async (req, res, next) => {
   try {
     let createUser = req.body;
     const user = await User.create({ ...createUser });
     if (user) {
+      await email.sendSignUpMail({
+        email: user.email,
+        name: user.name,
+      });
+
       return res.status(201).send("User has been Created");
     } else {
       return res.status(500).send("Cannot Create User");
