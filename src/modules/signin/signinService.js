@@ -1,11 +1,11 @@
 const User = require("../user/user.model");
 const jwt = require("jsonwebtoken");
+const path = require("path");
 //const cookieParser = require("cookie-parser");
 exports.signinUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email, password: password });
-
     if (user != null) {
       Token = await signJwt(user._id);
       console.log("token, ", Token);
