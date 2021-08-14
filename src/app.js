@@ -7,6 +7,7 @@ const db = require("../src/db/db");
 const User = require("../src/modules/user/user.model");
 
 const bodyParser = require("body-parser");
+
 ///router
 const errorController = require("./middleware/errorController");
 const userRouter = require("./modules/user/user.routes");
