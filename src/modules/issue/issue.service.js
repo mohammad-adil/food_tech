@@ -111,7 +111,6 @@ exports.doGetIssueByLab = async (req, res, next) => {
 exports.getIssueItembyEmail = async (req, res, next) => {
   try {
     const { email } = req.body;
-
     if (!validator.isEmail(email)) {
       return res.status(400).send({ Message: "Not a valid Email...!" });
     }
@@ -120,6 +119,11 @@ exports.getIssueItembyEmail = async (req, res, next) => {
       .populate({
         path: "issuedTo",
         match: { email },
+        select: "name",
+      })
+      .populate({
+        path: "issuedBy",
+        select: "name",
       })
       .exec(function (err, issueItems) {
         if (!issueItems) {

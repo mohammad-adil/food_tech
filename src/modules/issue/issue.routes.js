@@ -38,7 +38,7 @@ router.get(
   (req, res) => {}
 );
 
-router.get(
+router.post(
   prefix + "/getIssueItembyEmail",
   auth,
   _issueService.getIssueItembyEmail,
