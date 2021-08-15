@@ -158,8 +158,6 @@ $(document).on("change", "#deleteGetLab", async (e) => {
       return data.json();
     });
 
-console.log(resultDel)
-
     document.getElementById("labDeleteName").value= resultDel.labName;
     document.getElementById("LabEstDate").value = resultDel.labEstDate;
     document.getElementById("labAdmin").value= resultDel.labAdmin.name;
