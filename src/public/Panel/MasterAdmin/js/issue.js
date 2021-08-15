@@ -231,7 +231,7 @@ $(document).on("change", "#issueGetLabFromDepartment", async (e) => {
 
 
 $(document).on("click", "#btnIssueItem", async () => {
-    let itemQuantity = parseInt (document.getElementById("issuedQuantity").value);
+    let quantityIssued = parseInt (document.getElementById("issuedQuantity").value);
     const element = document.getElementById("issueGetDepartment");
     const departmentId = element.options[element.selectedIndex].value;
     let lab = document.getElementById("issueGetLabFromDepartment").value;
@@ -252,7 +252,7 @@ if(returnable=='True'){
 
 
     let issuePayLoad = {
-      itemQuantity,
+      quantityIssued,
       department: departmentId,
       lab,
       unit,
@@ -260,6 +260,7 @@ if(returnable=='True'){
       returnDate,
       issuedTo,
     };
+    console.log(issuePayLoad)
     let baseUrl = window.location.origin;
     let res1 = await fetch(baseUrl + "/stockpile/v1/issue/issueItem/"+itemChoose, {
       method: "POST",
