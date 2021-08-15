@@ -37,4 +37,12 @@ router.get(
   _issueService.doGetIssueByLab,
   (req, res) => {}
 );
+
+router.get(
+  prefix + "/getIssueItembyEmail",
+  auth,
+  _issueService.getIssueItembyEmail,
+  (req, res) => {}
+);
+
 module.exports = router;
