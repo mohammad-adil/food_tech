@@ -28,7 +28,7 @@
     "hbs": "^4.1.1",
     "heroku": "^7.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mailgun-js": "^0.22.0",
+    "mailgun-js": "^0.6.7",
     "mongoose": "^5.13.5",
     "nodemailer": "^6.6.3",
     "validator": "^13.1.17"
