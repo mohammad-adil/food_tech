@@ -33,6 +33,14 @@ const issueSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    returned: {
+      type: Boolean,
+      default: false,
+    },
+    returnId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Return",
+    },
     unit: {
       type: String,
       required: true,
