@@ -12,7 +12,7 @@ btnUpdatePurchase.addEventListener('click', async ()=>{
 <div class="card-header"><i class="fas fa-table mr-1"></i>Update Purchase</div> 
 <div class="card-body"> 
 <div class="card-body"> 
-    <form> 
+    <form id="updatePurchaseForm"> 
 
 
         <div class="form-row"> 
@@ -21,7 +21,7 @@ btnUpdatePurchase.addEventListener('click', async ()=>{
                   <div class="form-group">
                         <label class="small mb-1" for="department Select">Department</label>
         
-            <select id="itemGetDepartment" class="targetDept custom-select" >
+            <select id="updatePurchaseGetDepartment" class="targetDept custom-select" >
             <option value="Choose">Choose Department</option>
             </select>
             
@@ -31,7 +31,7 @@ btnUpdatePurchase.addEventListener('click', async ()=>{
                      <div class="col-md-6"> 
                      <div class="form-group">
                                <label class="small mb-1" for="inputAddItem">ChooseLab</label>
-                               <select id="itemGetLabFromDepartment" class="targetDept custom-select" >
+                               <select id="updatePurchaseGetLabFromDepartment" class="targetDept custom-select" >
                                <option value="Choose">Choose Lab</option>
                                </select>
                      </div> 
@@ -60,10 +60,7 @@ btnUpdatePurchase.addEventListener('click', async ()=>{
             <div class="col-md-6"> 
             <div class="form-group">
                       <label class="small mb-1" for="inputAddItem">Item Name</label>
-                   
-                      <select id="addItemId" class="targetDept custom-select" disabled >
-            <option value="Choose"></option>
-            </select>
+                      <input class="form-control py-4" id="addItemId" type="text" placeholder=" " disabled />
                    
             </div> 
             </div>
@@ -79,36 +76,6 @@ btnUpdatePurchase.addEventListener('click', async ()=>{
                   </div> 
                      </div> 
                         </div> 
-
-
-
-
-                        <div class="form-row"> 
-            <div class="col-md-6"> 
-            <div class="form-group">
-                      <label class="small mb-1" for="categorySelect">Select Category</label>
-                      <select id="categorySelect" class="targetDept custom-select" disabled >
-                      <option value="Choose"></option>
-                      </select>
-            </div> 
-            </div> 
-                <div class="col-md-6"> 
-                  <div class="form-group">
-                        <label class="small mb-1" for="subCategorySelect">Choose Sub Category</label>
-                        <select id="subCategorySelect" class="targetDept custom-select" disabled >
-                      <option value="Choose"></option>
-                      </select>
-                  </div> 
-                     </div> 
-                        </div> 
-
-
-
-
-
-
-
-
 
 
 
@@ -220,15 +187,14 @@ btnUpdatePurchase.addEventListener('click', async ()=>{
                         <div class="form-row"> 
             <div class="col-md-6"> 
             <div class="form-group">
-                      <label class="small mb-1" for="itemAvailable">Item Availibility</label>
-                     <input class="form-control py-4" id="itemAvailable" type="text" placeholder="Item Availibility" disabled/>
-            </div> 
-            </div> 
-                <div class="col-md-6"> 
-                  <div class="form-group">
                         <label class="small mb-1" for="purchaseDate">Purchase Date</label>
                         <input class="form-control py-4" id="purchaseDate" type="date" placeholder="Purchase Date" />
                   </div> 
+                     </div> 
+                     <div class="col-md-6"> 
+                     <div class="form-group">
+                               <label class="small mb-1" for="purchaseOrderNumber">Purchase Order Number</label>
+                              <input class="form-control py-4" id="purchaseOrderNumber" type="text" placeholder="Purchase Order Number" />
                      </div> 
                         </div> 
 
@@ -237,22 +203,8 @@ btnUpdatePurchase.addEventListener('click', async ()=>{
 
 
 
-                        <div class="form-row"> 
-            <div class="col-md-6"> 
-            <div class="form-group">
-                      <label class="small mb-1" for="purchaseOrderNumber">Purchase Order Number</label>
-                     <input class="form-control py-4" id="purchaseOrderNumber" type="text" placeholder="Purchase Order Number" />
-            </div> 
-            </div> 
-            </div> 
-
-
-
-
-
-
                       <div class="form-group mt-4 mb-0"> 
-                          <button id="btnPurchseItem" type="button" class="btn btn-primary btn-block">Add Item</button> 
+                          <button id="btnUpdatePurchaseItem" type="button" class="btn btn-primary btn-block">Update Purchase Details</button> 
                       </div> 
                   </form> 
               </div> 
@@ -273,7 +225,7 @@ Authorization: "Bearer " + sessionStorage.getItem("Token"),
 return data.json();
 });
 
-const selectionBox = document.querySelector("#itemGetDepartment");
+const selectionBox = document.querySelector("#updatePurchaseGetDepartment");
 let dataSelect = '<option value="select"> Select </option>';
 result.forEach((element) => {
 dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
@@ -283,13 +235,9 @@ selectionBox.innerHTML = dataSelect;
 
 
 
-await addCategory2()
-
-
-
 });
 
-$(document).on("change", "#itemGetDepartment", async (e) => {
+$(document).on("change", "#updatePurchaseGetDepartment", async (e) => {
 
 let baseUrl = window.location.origin;
 let result = await fetch(
@@ -306,55 +254,10 @@ return data.json();
 });
 
 
-const selectionBox = document.querySelector("#itemGetLabFromDepartment");
+const selectionBox = document.querySelector("#updatePurchaseGetLabFromDepartment");
 let dataSelect = '<option value="select"> Select </option>';
 result.forEach((element) => {
 dataSelect += `<option value="${element._id}">${element.labName}</option>`;
-});
-selectionBox.innerHTML = dataSelect;
-});
-
-
-const addCategory2 = async () => {
-
-let baseUrl = window.location.origin;
-let result = await fetch(baseUrl + "/stockpile/v1/category/getCategory", {
-method: "GET",
-headers: {
-"Content-Type": "application/json",
-"Authorization": "Bearer "+sessionStorage.getItem("Token")
-},
-}).then((data) => {
-return data.json();
-});
-
-const selectionBox = document.querySelector("#categorySelect");
-let dataSelect = '<option value="select"> Select </option>';
-result.forEach((element) => {
-dataSelect += `<option value="${element._id}">${element.categoryName}</option>`;
-});
-selectionBox.innerHTML = dataSelect;
-};
-
-
-
-$(document).on("change", "#categorySelect", async (e) => {
-
-let baseUrl = window.location.origin;
-let result = await fetch(baseUrl + "/stockpile/v1/category/getSubCategory", {
-method: "GET",
-headers: {
-"Content-Type": "application/json",
-"Authorization": "Bearer "+sessionStorage.getItem("Token")
-},
-}).then((data) => {
-return data.json();
-});
-
-const selectionBox = document.querySelector("#subCategorySelect");
-let dataSelect = '<option value="select"> Select </option>';
-result.forEach((element) => {
-dataSelect += `<option value="${element._id}">${element.subCategoryName}</option>`;
 });
 selectionBox.innerHTML = dataSelect;
 });
@@ -367,7 +270,7 @@ selectionBox.innerHTML = dataSelect;
 /****************************Call Purchased Items from LAb****************************************************** */
 
 
-$(document).on("change", "#itemGetLabFromDepartment", async (e) => {
+$(document).on("change", "#updatePurchaseGetLabFromDepartment", async (e) => {
 
     let baseUrl = window.location.origin;
     let result = await fetch(baseUrl + "/stockpile/v1/purchase/getPurchasebyLab/" + $(e.target).val(), {
@@ -378,13 +281,14 @@ $(document).on("change", "#itemGetLabFromDepartment", async (e) => {
     },
     }).then((data) => {
     return data.json();
-    });
-    console.log(result)
-    
+    });    
     const selectionBox = document.querySelector("#addItemId");
+
     let dataSelect = '<option value="select"> Select </option>';
-    result.forEach((element) => {
-    dataSelect += `<option value="${element._id}">${element.itemName}</option>`;
+
+
+   await  result.forEach((element) => {
+    dataSelect += `<option value="${element._id}">${element.item.itemName}</option>`;
     });
     selectionBox.innerHTML = dataSelect;
     });
@@ -393,7 +297,7 @@ $(document).on("change", "#itemGetLabFromDepartment", async (e) => {
 /****************************Call Item from LAb****************************************************** */
 
 
-$(document).on("change", "#itemGetLabFromDepartment", async (e) => {
+$(document).on("change", "#updatePurchaseGetLabFromDepartment", async (e) => {
 
 let baseUrl = window.location.origin;
 let result = await fetch(baseUrl + "/stockpile/v1/purchase/getPurchasebyLab/" + $(e.target).val(), {
@@ -409,46 +313,61 @@ return data.json();
 const selectionBox = document.querySelector("#purchaseUpdateSelect");
 let dataSelect = '<option value="select"> Select </option>';
 result.forEach((element) => {
-dataSelect += `<option value="${element._id}">${element.itemName}</option>`;
+dataSelect += `<option value="${element._id}">${element.item.itemName}</option>`;
 });
 selectionBox.innerHTML = dataSelect;
 });
 
 
-/******************************Calculating Total Price from Unit Price********************************************************** */
+/******************************Put details in form********************************************************** */
 
-$(document).on("keyup", "#unitPrice", async (e) => {
+$(document).on("change", "#purchaseUpdateSelect", async (e) => {
+  
+  let baseUrl = window.location.origin;
+  let result1 = await fetch(baseUrl + "/stockpile/v1/purchase/getPurchasebyId/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer "+sessionStorage.getItem("Token")
+      },
+    }
+  ).then((data) => {
+    return data.json();
+  });
+  document.getElementById("addItemId").value= result1.item.itemName;
+  $('#addItemId').attr('value', result1.item._id);
+  document.getElementById("sourceItem").value= result1.source;
+  document.getElementById("itemQuantity").value = result1.itemQuantity;
+  document.getElementById("unit").value= result1.unit;
+  document.getElementById("unitPrice").value= result1.unitPrice;
+  document.getElementById("totalPrice").value= result1.totalPrice;
+  document.getElementById("currency").value= result1.currency;
+  document.getElementById("suppliedBy").value= result1.suppliedBy;
+  document.getElementById("purchaseDate").value= result1.purchaseDate;
+  document.getElementById("purchaseOrderNumber").value= result1.purchaseOrder;
+  
+  
+  
 
-let quantity = $("#itemQuantity").val()
-let uprice = e.target.value
-let totalPrice=quantity *  uprice
-$("#totalPrice").val()
-$("#totalPrice").val(totalPrice)
 
 });
 
 
-/******************************Calculating Item Availl********************************************************** */
 
-$(document).on("keyup", "#itemQuantity", async (e) => {
-
-let totalAvail = e.target.value
-$("#itemAvailable").val(totalAvail)
-
-});
 
 /*********************************Fire Request******************************************************** */
 
 
-$(document).on("click", "#btnPurchseItem", async () => {
-item = document.getElementById("addItemId").value;
+$(document).on("click", "#btnUpdatePurchaseItem", async () => {
+item = document.getElementById("addItemId").getAttribute("value");
 let itemQuantity = parseInt (document.getElementById("itemQuantity").value);
-const element = document.getElementById("itemGetDepartment");
+const element = document.getElementById("updatePurchaseGetDepartment");
 const departmentId = element.options[element.selectedIndex].value;
 let suppliedBy = document.getElementById("suppliedBy").value;
 
 let source = document.getElementById("sourceItem").value;
-let lab = document.getElementById("itemGetLabFromDepartment").value;
+let lab = document.getElementById("updatePurchaseGetLabFromDepartment").value;
 let unitPrice = parseInt(document.getElementById("unitPrice").value);
 let totalPrice = parseInt(document.getElementById("totalPrice").value);
 let currency = document.getElementById("currency").value;
@@ -456,7 +375,7 @@ let unit = document.getElementById("unit").value;
 let purchaseDate = document.getElementById("purchaseDate").value;
 let purchaseOrder = document.getElementById("purchaseOrderNumber").value;
 
-let purchasePayLoad = {
+let updatePurchasePayLoad = {
 item,
 itemQuantity,
 department: departmentId,
@@ -470,14 +389,24 @@ unit,
 purchaseDate,
 purchaseOrder,
 };
+const uPurchase = document.getElementById("purchaseUpdateSelect");
+const updatePurchaseID = uPurchase.options[uPurchase.selectedIndex].value;
+
+
 let baseUrl = window.location.origin;
-let res = await fetch(baseUrl + "/stockpile/v1/purchase/purchaseItem", {
-method: "POST",
+let res = await fetch(baseUrl + "/stockpile/v1/purchase/update/" + updatePurchaseID, {
+method: "PATCH",
 headers: {
 "Content-Type": "application/json",
 "Authorization": "Bearer "+sessionStorage.getItem("Token")
 },
 
-body: JSON.stringify(purchasePayLoad),
+body: JSON.stringify(updatePurchasePayLoad),
 });
+if (res.status == 200) {
+  alert("Purchase Updated Successfully");
+  $("#updatePurchaseForm")[0].reset();
+} else {
+  alert("Something went Wrong");
+}
 });
