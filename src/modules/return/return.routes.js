@@ -10,13 +10,14 @@ router.post(
   (req, res) => {}
 );
 
-/* router.get(
-  prefix + "/getItemById/:itemId",
+router.get(
+  prefix + "/getReturnById/:returnId",
   auth,
-  _itemService.doGetItemById,
+  _returnService.doGetReturnById,
   (req, res) => {}
 );
 
+/*
 router.get(
   prefix + "/getItemsByDepartment/:departmentId",
   auth,
@@ -30,12 +31,12 @@ router.get(
   _itemService.doGetItemByLab,
   (req, res) => {}
 );
-
+*/
 router.patch(
-  prefix + "/updateItem/:itemId",
+  prefix + "/update/:returnId",
   auth,
-  _itemService.doUpdateItem,
+  _returnService.doUpdateReturn,
   (req, res) => {}
-); */
+);
 
 module.exports = router;
