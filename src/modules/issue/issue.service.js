@@ -1,5 +1,6 @@
 const Issue = require("../issue/issue.model");
 const Item = require("../items/item.model");
+const validator = require("validator");
 exports.doIssueItem = async (req, res, next) => {
   try {
     const { itemId } = req.params;
@@ -99,6 +100,30 @@ exports.doGetIssueByLab = async (req, res, next) => {
       .exec(function (err, issueItems) {
         if (!issueItems) {
           return res.status(404).send("No Such issued Item found...!");
+        }
+        return res.status(200).send(issueItems);
+      });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getIssueItembyEmail = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+
+    if (!validator.isEmail(email)) {
+      return res.status(400).send({ Message: "Not a valid Email...!" });
+    }
+    const issueItems = await Issue.find({})
+      .populate("item")
+      .populate({
+        path: "issuedTo",
+        match: { email },
+      })
+      .exec(function (err, issueItems) {
+        if (!issueItems) {
+          return res.status(404).send("No Such issued Items found...!");
         }
         return res.status(200).send(issueItems);
       });
