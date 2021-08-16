@@ -221,7 +221,7 @@ $(document).on("change", "#itemGetDepartment", async (e) => {
   $(document).on("change", "#categorySelect", async (e) => {
 
   let baseUrl = window.location.origin;
-  let result = await fetch(baseUrl + "/stockpile/v1/category/getSubCategory", {
+  let result = await fetch(baseUrl + "/stockpile/v1/category/getSubCategory/"+ $(e.target).val(), {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
