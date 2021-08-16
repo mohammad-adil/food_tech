@@ -1,4 +1,4 @@
-var  baseUrl = window.location.origin;
+var baseUrl = window.location.origin;
 const approveElm = document.querySelector("#approveUser");
 approveElm.addEventListener("click", async () => {
   let dataDiv = document.getElementById("dashBoard");
@@ -48,7 +48,7 @@ approveElm.addEventListener("click", async () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer "+sessionStorage.getItem("Token")
+      Authorization: "Bearer " + sessionStorage.getItem("Token"),
     },
   }).then((data) => {
     return data.json();
@@ -81,7 +81,7 @@ $(document).on("change", "#selectApproveDelDepartment", async (e) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer "+sessionStorage.getItem("Token")
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
       },
     }
   ).then((data) => {
@@ -91,6 +91,8 @@ $(document).on("change", "#selectApproveDelDepartment", async (e) => {
   let tableData = "";
 
   result.forEach((element) => {
+    console.log(element);
+
     tableData += `  <tr>
     <td class="collapsing">
     <div class="inline fields">
@@ -107,78 +109,45 @@ $(document).on("change", "#selectApproveDelDepartment", async (e) => {
 });
 
 $(document).on("click", "#remove", async () => {
-
-  const userId =  $('input[name=user]:checked').val();
+  const userId = $("input[name=user]:checked").val();
   let payload = {
     deleteUser: userId,
   };
-  
 
-  let api = baseUrl+ "/stockpile/v1/deleteUser"
-  let deletedUser = await serverRequest(payload,api,"DELETE" )
-  if(deletedUser.status==200){
-
-    alert('User Removed')
-}else{
-    alert('Error')
-}
-  
+  let api = baseUrl + "/stockpile/v1/deleteUser";
+  let deletedUser = await serverRequest(payload, api, "DELETE");
+  if (deletedUser.status == 200) {
+    alert("User Removed");
+  } else {
+    alert("Error");
+  }
 });
 
-
 $(document).on("click", "#approve", async () => {
-
-  const userId =  $('input[name=user]:checked').val();
+  const userId = $("input[name=user]:checked").val();
   let payload = {
     activeUser: userId,
   };
-  
 
-  let api = baseUrl+ "/stockpile/v1/activeUser"
-  let approvedUser = await serverRequest(payload,api,"PATCH" )
+  let api = baseUrl + "/stockpile/v1/activeUser";
+  let approvedUser = await serverRequest(payload, api, "PATCH");
 
-  if(approvedUser.status==200){
-
-    alert('User Approved')
-}else{
-    alert('Error')
-}
+  if (approvedUser.status == 200) {
+    alert("User Approved");
+  } else {
+    alert("Error");
+  }
 });
 
+const serverRequest = async (payload, url, method) => {
+  let result = await fetch(url, {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("Token"),
+    },
+    body: JSON.stringify(payload),
+  });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-const serverRequest = async (payload,url,method)=>{
-let result = await fetch(url, {
-      method,
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer "+sessionStorage.getItem("Token")
-      },
-      body: JSON.stringify(payload),
-    });
-  
-  
-
-return result
-
-}
-
-
-
-
-
-
-
-
+  return result;
+};

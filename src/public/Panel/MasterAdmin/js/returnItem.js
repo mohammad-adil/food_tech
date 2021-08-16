@@ -1,8 +1,8 @@
 const btnReturnItem = document.querySelector("#returnItem");
 btnReturnItem.addEventListener("click", async () => {
-    let dataDiv = document.getElementById("dashBoard");
-    dataDiv.innerHTML = '';
-   dataDiv.innerHTML = `<h1 class="mt-4">Return Item</h1> 
+  let dataDiv = document.getElementById("dashBoard");
+  dataDiv.innerHTML = "";
+  dataDiv.innerHTML = `<h1 class="mt-4">Return Item</h1> 
    <ol class="breadcrumb mb-4"> 
        <li class="breadcrumb-item"><a href="/Panel/User/issue.html">Dashboard</a></li> 
        <li class="breadcrumb-item active">Return Item</li> 
@@ -56,79 +56,43 @@ btnReturnItem.addEventListener("click", async () => {
      </div> 
 </div> 
  <div></div> 
-</div>`
-
-
+</div>`;
 });
 
-$(document).on('click', '#searchButton', async()=>{
-let obj={
-    email:document.getElementById('txtGetEmail').value
-}
-    let baseUrl = window.location.origin;
-    let result= await fetch(
-      baseUrl + "/stockpile/v1/issue/getIssueItembyEmail",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer "+sessionStorage.getItem("Token")
-        },
-        body: JSON.stringify(obj),
-      }
-    ).then((data) => {
-      return data.json();
-    });
-    generateTable(result)
-})
+$(document).on("click", "#searchButton", async () => {
+  let obj = {
+    email: document.getElementById("txtGetEmail").value,
+  };
+  let baseUrl = window.location.origin;
+  let result = await fetch(
+    baseUrl + "/stockpile/v1/issue/getIssueItembyEmail",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
+      },
+      body: JSON.stringify(obj),
+    }
+  ).then((data) => {
+    return data.json();
+  });
+  generateTable(result);
+});
 
+const generateTable = async (result) => {
+  document.getElementById("insertIssueItem").innerHTML = "";
+  let tableRow = "";
 
-const generateTable= async(result)=> {
-    document.getElementById('insertIssueItem').innerHTML=''
-    let  tableRow= ''
-
-result.forEach(element => {
-
-    tableRow+=`  <tr>
+  result.forEach((element) => {
+    tableRow += `  <tr>
     <td>${element.issuedTo.name}</td>
     <td>${new Date(element.createdAt)}</td>
     <td>${element.returnable}</td>
     <td>${element.returnDate}</td>
-  </tr>`
-});
-
-document.getElementById('insertIssueItem').innerHTML=tableRow
-
-}
- 
+  </tr>`;
+  });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  document.getElementById("insertIssueItem").innerHTML = tableRow;
+};
