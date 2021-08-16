@@ -34,7 +34,7 @@ addLab.addEventListener("click", async () => {
 
 											<div class="form-group">
                       <label class="small mb-1" for="establishmentDate">Establishment Date</label>
-                      <input class="form-control py-4" id="labEstDate" type="email" aria-describedby="emailHelp" placeholder="Enter Establishment Date" />
+                      <input class="form-control py-4" id="labEstDate" type="date" aria-describedby="emailHelp" placeholder="Enter Establishment Date" />
                       </div> 
                       <div class="form-row"> 
                       <div class="col-md-6"> 
