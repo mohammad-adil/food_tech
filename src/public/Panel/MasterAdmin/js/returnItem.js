@@ -93,5 +93,6 @@ const generateTable = async (result) => {
   </tr>`;
   });
 
+
   document.getElementById("insertIssueItem").innerHTML = tableRow;
 };
