@@ -25,7 +25,7 @@ router.get(
 );
 
 router.get(
-  prefix + "/getSubCategory",
+  prefix + "/getSubCategory/:parentCategory",
   auth,
   _categoryService.doGetSubCategory,
   (req, res) => {}
