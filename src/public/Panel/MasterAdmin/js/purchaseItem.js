@@ -12,7 +12,7 @@ btnItemPurchase.addEventListener("click", async () => {
             <div class="card-header"><i class="fas fa-table mr-1"></i>Purchase Item</div> 
                 <div class="card-body"> 
                     <div class="card-body"> 
-                        <form> 
+                        <form id="purchaseItemForm"> 
 
             
                             <div class="form-row"> 
@@ -154,29 +154,6 @@ btnItemPurchase.addEventListener("click", async () => {
                                       </div> 
                                          </div> 
                                             </div> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -442,4 +419,13 @@ $(document).on("click", "#btnPurchseItem", async () => {
       
       body: JSON.stringify(purchasePayLoad),
     });
+
+    console.log(res)
+
+    if (res.status == 201) {
+      alert("Item Purchase Complete");
+      $("#purchaseItemForm")[0].reset();
+    } else {
+      alert("Something went Wrong");
+    }
   });
