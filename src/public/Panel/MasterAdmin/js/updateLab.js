@@ -46,7 +46,7 @@ btnUpdateLab.addEventListener('click', async ()=>{
                                             <div class="form-row"> 
                                             <div class="col-md-6"> 
                                             <div class="form-group">
-                                            <label class="small mb-1" for="EstdDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="text" aria-describedby="emailHelp" placeholder="Enter Establishment Date" disabled /></div> 
+                                            <label class="small mb-1" for="EstdDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="date" aria-describedby="emailHelp" placeholder="Enter Establishment Date" disabled /></div> 
                                             </div> 
                                                 <div class="col-md-6"> 
                                                   <div class="form-group"><label class="small mb-1" for="currentAdmin">Current Admin</label><input class="form-control py-4" id="currentAdmin" type="text" placeholder="Current Admin" disabled /></div> 
