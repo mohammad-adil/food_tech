@@ -36,7 +36,10 @@ exports.doGetCategory = async (req, res, next) => {
 
 exports.doGetSubCategory = async (req, res, next) => {
   try {
-    const category = await SubCategory.find().select("subCategoryName");
+    const { parentCategory } = req.params;
+    const category = await SubCategory.find({ parentCategory }).select(
+      "subCategoryName"
+    );
     res.status(200).send(category);
   } catch (err) {
     next(err);
