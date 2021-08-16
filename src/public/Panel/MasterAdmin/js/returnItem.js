@@ -100,7 +100,7 @@ result.forEach(element => {
 document.getElementById('insertIssueItem').innerHTML=tableRow
 
 }
-
+ 
 
 
 
