@@ -31,7 +31,7 @@ btnUpdateDepartment.addEventListener('click', async ()=>{
                                       <div class="form-group"><label class="small mb-1" for="totalLabs">Total Labs</label><input class="form-control py-4" id="totalLabs" type="number" placeholder="Enter Total Labs" /></div> 
                                          </div> 
                                             </div> 
-											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="estDate" type="email" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
+											<div class="form-group"><label class="small mb-1" for="establishmentDate">Establishment Date</label><input class="form-control py-4" id="estDate" type="date" aria-describedby="emailHelp" placeholder="Enter Establishment Date" /></div> 
                                             <div class="form-row"> 
                                                 <div class="col-md-6"> 
                                                     <div class="form-group"><label class="small mb-1" for="establishmentSource">Establishment Source</label><input class="form-control py-4" id="estSource" type="text" placeholder="Enter Establishment Source" /></div> 
