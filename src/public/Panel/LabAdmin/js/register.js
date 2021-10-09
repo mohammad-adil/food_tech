@@ -12,80 +12,120 @@ addUser.addEventListener("click", async () => {
             <div class="card-header"><i class="fas fa-table mr-1"></i>Register User</div> 
                 <div class="card-body"> 
                     <div class="card-body"> 
-                        <form> 
+                        <form id="registerUserForm"> 
                             <div class="form-row"> 
                                 <div class="col-md-6"> 
-                                <div class="form-group"><label class="small mb-1" for="inputName">Name</label><input class="form-control py-4" id="txtName" type="text" placeholder="Enter Name" />
+                                <div class="form-group">
+                                <label class="small mb-1" for="inputName">Name</label><input class="form-control py-4" id="txtName" type="text" placeholder="Enter Name" />
                                 </div> 
                                 </div> 
-                                </div>
+                                <div class="col-md-6"> 
                                 <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label><input class="form-control py-4" id="txtEmail" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
                                 </div> 
+                                </div>
+                                </div>
+
+
+
+
+
+
                                 <div class="form-row"> 
                                 <div class="col-md-6"> 
-                                <div class="form-group"><label class="small mb-1" for="phone">Phone</label>
+                                <div class="form-group">
+                                <label class="small mb-1" for="inputName">Phone</label>
                                 <input class="form-control py-4" id="txtphone" type="text" placeholder="Enter Phone Number" />
                                 </div> 
-                                <div class="col-md-6">
-                                <div class="form-group">
-                                <label class="small mb-1" for="gender">Gender</label> 
-                                <div class="custom-select" style="width:200px;">
-                                <select id= "gender" name="gender">
+                                </div> 
+                                <div class="col-md-6"> 
+                                <label class="small mb-1" for="gender">Gender</label>  
+                                <select id= "gender" name="gender" class ="custom-select">
                                 <option value="Choose">Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Others">Others</option>
                                 </select>
-                                </div> 
-                                </div>
-                                </div> 
                                 </div>
                                 </div>
 
-                                <div class="form-row">
-                                <div class="col-md-6">
-                                <div class="form-group">
-                                </div>
-                                </div>
-                                </div>
-                                </div> 
-                                <div class="col-md-6"> 
-                                <div class="form-group"><label class="small mb-1" for="UniversityID">University ID</label><input class="form-control py-4" id="eid" type="text" placeholder="UID" /></div> 
-                                </div> 
 
-                                
+
+
+                                <div class="form-row"> 
                                 <div class="col-md-6"> 
-                                <div class="custom-select" style="width:200px;">
-                                <input type = "date" placeholder="Date of Birth" id="userDob" name="dob" >
+                                <div class="form-group"><label class="small mb-1" for="UniversityID">University ID</label>
+                                <input class="form-control py-4" id="eid" type="text" placeholder="UID" />
                                 </div> 
+                                </div> 
+                                <div class="col-md-6"> 
+                                <label class="small mb-1" for="gender">Date Of Birth</label>  
+                                <input class="custom-select" type = "date" placeholder="Date of Birth" id="userDob" name="dob" >
                                 </div>
-                                             
-                                <div class="custom-select" style="width:200px;">
-                                <select id="department" name="depts" style="background: none; outline: none; border: none; line-height: 1; font-weight: 600; font-size: 1.1rem;  color: #333;">
+                                </div>
+                                </div>
+
+
+
+
+                                <div class="form-row"> 
+                                <div class="col-md-6"> 
+                                <div class="form-group"><label class="small mb-1" for="Department">Select Department</label>
+                                <select id="department" name="depts" class ="custom-select">
                                 <option value="Choose">Choose Department</option>
                                 </select>
+                                </div> 
+                                </div> 
+                                <div class="col-md-6">
+                                <div class="form-group"> 
+                                <label class="small mb-1" for="txtPin">Password</label>
+                                <input class="form-control py-4" id="txtPassword" type="password" placeholder="Enter Password" />
                                 </div>
-											
+                                </div>
+                                </div>
 
 
+
+
+
+
+
+                                <div class="form-row"> 
                                 <div class="col-md-6"> 
-                                                    
-                                <div class="form-group"><label class="small mb-1" for="street">Street</label><input class="form-control py-4" id="street" type="text" placeholder="Enter Street" /></div> 
+                                <div class="form-group"><label class="small mb-1" for="street">Street</label>
+                                <input class="form-control py-4" id="street" type="text" placeholder="Enter Street" />
                                 </div> 
-								<div class="col-md-6"> 
-                                <div class="form-group"><label class="small mb-1" for="txtPin">Pin Code</label><input class="form-control py-4" id="pin" type="text" placeholder="Enter Pin Code" /></div> 
+                                </div> 
+                                <div class="col-md-6">
+                                <div class="form-group"> 
+                                <label class="small mb-1" for="txtPin">Pin Code</label>
+                                <input class="form-control py-4" id="pin" type="text" placeholder="Enter Pin Code" />
+                                </div>
+                                </div>
+                                </div>
+
+
+
+                                
+                                <div class="form-row"> 
                                 <div class="col-md-6"> 
-                                <div class="form-group"><label class="small mb-1" for="Landmark">Landmark</label><input class="form-control py-4" id="Landmark" type="text" placeholder="Enter Landmark" /></div> 
+                                <div class="form-group"><label class="small mb-1" for="Landmark">Landmark</label>
+                                <input class="form-control py-4" id="Landmark" type="text" placeholder="Enter Landmark" />
                                 </div> 
-                                <div class="form-group"><label class="small mb-1" for="txtPin">Password</label><input class="form-control py-4" id="txtPassword" type="password" placeholder="Enter Password" /></div> 
-                                <select id="role" name="Title" class="custom-select form-control-lg" style="width:80px;"> 
+                                </div> 
+                                <div class="col-md-6">
+                                <div class="form-group"> 
+                                <label class="small mb-1" for="txtPin">Role</label>
+                                <select id="role" name="Title" class="custom-select"> 
                                 <option selected>Role</option> 
                                 <option value="admin">Admin</option> 
                                 <option value="labAdmin">Lab Admin</option>
                                 <option value="user">User</option> 
                                 </select>  
-								</div> 
-                                </div> 
+                                </div>
+                                </div>
+                                </div>
+
+                                
                                 <div class="form-group mt-4 mb-0"> 
                                 <button id="rUser" type="button" class="btn btn-primary btn-block">Register</button> 
                                 </div> 
@@ -100,10 +140,14 @@ addUser.addEventListener("click", async () => {
   let baseUrl = window.location.origin;
   let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+sessionStorage.getItem("Token")
+    },
   }).then((data) => {
     return data.json();
   });
-
+console.log(result)
   const selectionBox = document.querySelector("#department");
   let dataSelect = '<option value="select"> Select </option>';
   result.forEach((element) => {
@@ -154,4 +198,13 @@ $(document).on("click", "#rUser", async () => {
     },
     body: JSON.stringify(UserDetails),
   });
+  console.log(resultz)
+
+  
+  if (resultz.status == 201) {
+    alert("User Registered Successfully");
+    $("#registerUserForm")[0].reset();
+  } else {
+    alert("Something went Wrong");
+  }
 });
