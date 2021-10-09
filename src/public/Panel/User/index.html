@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Master Admin Dashboard</title>
+    <title>User Dashboard</title>
     <link href="/Panel/MasterAdmin/css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -27,7 +27,7 @@
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand"  href="/Panel/MasterAdmin/index.html"> Dashboard </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+        <a class="navbar-brand"  href="/Panel/User/index.html"> Dashboard </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             >
             <!-- Navbar Search-->
 			
@@ -69,215 +69,11 @@
                                 <i class="fas fa-tachometer-alt"></i>
                             </div>Dashboard</a>
 
-                        <a class="nav-link" id="" href="#">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-list-alt" aria-hidden="true"></i>
-                            </div>Issue</a>
-
-                        <a class="nav-link" id="" href="#">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>Return</a>
-
-                       <!--  <a class="nav-link" id="SearchItenary" href="#">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-calender"></i>
-                            </div>Search</a> -->
-
 
                         <div class="sb-sidenav-menu-heading">Menu</div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdd" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Item
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                     
-                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="addItem" type="button" class="btn btn-link nav-link itenary">Add Item</button>
-
-                        </div>
-                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="updateItem"  type="button" class="btn btn-link nav-link itenary">Update Item</button>
-
-                        </div>
-                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="deleteItem" type="button" class="btn btn-link nav-link itenary">Delete Item</button>
-
-                        </div>
-                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-
-                        </div>
-
-                        
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseItem" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            Department
-
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="addDepartment" type="button" class="btn btn-link nav-link nav-link">Add Department</button>
-                        </div>
-
-                        <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="updateDeparment" type="button" class="btn btn-link nav-link nav-link">Update Department</button>
-                        </div>
-
-                    <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <button id="deleteDeparment" type="button" class="btn btn-link nav-link nav-link">Delete Department</button>
-                    </div>
-
-
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLab" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        Labs
-
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
-                        </div>
-                    </a>
-                    <div class="collapse" id="collapseLab" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <button id="addLab" type="button" class="btn btn-link nav-link nav-link">Add Lab</button>
-                    </div>
-
-                    <div class="collapse" id="collapseLab" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <button id="updateLab" type="button" class="btn btn-link nav-link nav-link">Update Lab</button>
-                    </div>
-
-                <div class="collapse" id="collapseLab" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                    <button id="deleteLab" type="button" class="btn btn-link nav-link nav-link">Delete Lab</button>
-                </div>
-
-
-
+                       
 
                     
- 
-                <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                </div>
-
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-certificate  " aria-hidden="true"></i>
-                            </div>
-                            User
-
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="addUser" type="button" class="btn btn-link nav-link nav-link">Add User</button>
-                            <button id="updateUser" type="button" class="btn btn-link nav-link ">Update User</button>
-
-        
-                            <button id="approveUser"  type="button" class="btn btn-link nav-link ">Approve User \ Delete User</button>
-
-                        </div>
-
-
-
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-certificate  " aria-hidden="true"></i>
-                            </div>
-                            Categories
-
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapsePages1" aria-labelledby="headingTwo1" data-parent="#sidenavAccordion">
-                            <button id="addCategory" type="button" class="btn btn-link nav-link nav-link">Add Category</button>
-                            <button id="addSubCategory" type="button" class="btn btn-link nav-link ">Add Sub-Category</button>
-                        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchase" aria-expanded="false" aria-controls="collapsePurchase">
-                            <div class="sb-nav-link-icon">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            Purchase
-
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapsePurchase" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-
-                            <button id="purchaseItem" type="button" class="btn btn-link nav-link nav-link">Purchase</button>
-                            <button id="updatePurchaseItem" type="button" class="btn btn-link nav-link ">Update</button>
-                            <button id="" type="button" class="btn btn-link nav-link "> Get Items by Department</button>
-
-                        </div>
-
-
-
-
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIssue" aria-expanded="false" aria-controls="collapseIssue">
-                            <div class="sb-nav-link-icon">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            Issue
-
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseIssue" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-
-                            <button id="issueItem" type="button" class="btn btn-link nav-link nav-link">Issue</button>
-                            <button id="updateIssue" type="button" class="btn btn-link nav-link ">Update</button>
-
-                        </div>
-
-
-
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReturn" aria-expanded="false" aria-controls="collapsePurchase">
-                            <div class="sb-nav-link-icon">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            Return
-
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseReturn" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-
-                            <button id="returnItem" type="button" class="btn btn-link nav-link nav-link">Return Item</button>
-                            <button id="updateReturnItem" type="button" class="btn btn-link nav-link ">Update</button>
-                            <button id="" type="button" class="btn btn-link nav-link "> Get Return by Department</button>
-
-                        </div>
-
-
-
-
-
-
-
 
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseacc" aria-expanded="false" aria-controls="collapseacc">
                             <div class="sb-nav-link-icon">
@@ -367,24 +163,9 @@
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <link href="/Panel/MasterAdmin/css/myStyle.css" rel="stylesheet" />
       <!--   <script src="/Panel/MasterAdmin/js/script.js"></script> -->
-        <script src="/Panel/MasterAdmin/js/dashboard.js"></script>
-        <script src="/Panel/MasterAdmin/js/register.js"></script>
-        <script src="/Panel/MasterAdmin/js/addItem.js"></script>
-        <script src="/Panel/MasterAdmin/js/addDepartment.js"></script>
- 
-        <script src="/Panel/MasterAdmin/js/approveDelUser.js"></script>
-        <script src="/Panel/MasterAdmin/js/updateDepartment.js"></script>
-        <script src="/Panel/MasterAdmin/js/addLab.js"></script>
-        <script src="/Panel/MasterAdmin/js/deleteDepartment.js"></script>
-        <script src="/Panel/MasterAdmin/js/updateLab.js"></script>
-        <script src="/Panel/MasterAdmin/js/addCategory.js"></script>
-        <script src="/Panel/MasterAdmin/js/addSubCategory.js"></script>
-        <script src="/Panel/MasterAdmin/js/updateItem.js"></script>
-        <script src="/Panel/MasterAdmin/js/purchaseItem.js"></script> 
-        <script src="/Panel/MasterAdmin/js/issue.js"></script> 
-        <script src="/Panel/MasterAdmin/js/deleteLab.js"></script> 
-        <script src="/Panel/MasterAdmin/js/updatePurchase.js"></script> 
-        <script src="/Panel/MasterAdmin/js/returnItem.js"></script>      
+        <script src="/Panel/User/js/dashboard.js"></script>
+        <script src="/Panel/Userjs/register.js"></script>
+     
 <script>
 
 
