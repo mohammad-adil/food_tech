@@ -12,8 +12,7 @@ btnUpdateLab.addEventListener('click', async ()=>{
                         <div class="col-md-6"> 
                         <div class="form-group"><label class="medium mb-1" for="updateChoose">Choose Department</label></div> 
                         </div>
-                        <div class="custom-select" style="width:200px;">
-                        <select id="updateGetLab" class="targetDept" >
+                        <select id="updateGetLab" class="targetDept custom-select" >
                         <option value="Choose">Choose Lab</option>
                         </select>
                         </div>
@@ -23,8 +22,7 @@ btnUpdateLab.addEventListener('click', async ()=>{
                         <div class="col-md-6"> 
                         <div class="form-group"><label class="medium mb-1" for="updateLabChoose">Choose Lab to Update</label></div> 
                         </div>
-                        <div class="custom-select" style="width:200px;">
-                        <select id="updateGetLabFromDepartment" class="targetLab" >
+                        <select id="updateGetLabFromDepartment" class="targetLab custom-select" >
                         <option value="Choose">Choose Lab</option>
                         </select>
                         </div>
@@ -48,7 +46,7 @@ btnUpdateLab.addEventListener('click', async ()=>{
                                             <div class="form-row"> 
                                             <div class="col-md-6"> 
                                             <div class="form-group">
-                                            <label class="small mb-1" for="EstdDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="text" aria-describedby="emailHelp" placeholder="Enter Establishment Date" disabled /></div> 
+                                            <label class="small mb-1" for="EstdDate">Establishment Date</label><input class="form-control py-4" id="labEstDate" type="date" aria-describedby="emailHelp" placeholder="Enter Establishment Date" disabled /></div> 
                                             </div> 
                                                 <div class="col-md-6"> 
                                                   <div class="form-group"><label class="small mb-1" for="currentAdmin">Current Admin</label><input class="form-control py-4" id="currentAdmin" type="text" placeholder="Current Admin" disabled /></div> 
@@ -62,8 +60,8 @@ btnUpdateLab.addEventListener('click', async ()=>{
                                                         <div class="form-group">
                                                         <label class="small mb-1" for="EstdDate">Choose New Admin</label>
                                                         </div>
-                                                        <div class="custom-select" style="width:200px;">
-                                            <select id="labAdminName" class="targetLab" >
+          
+                                            <select id="labAdminName" class="targetLab custom-select" >
                                             <option value="Choose">Choose New Lab Admin</option>
                                             </select>
                                                 
