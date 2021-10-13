@@ -91,6 +91,7 @@
                             Item
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
+                     
                         <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <button id="addItem" type="button" class="btn btn-link nav-link itenary">Add Item</button>
 
@@ -108,31 +109,6 @@
                         </div>
 
                         
-
-
-
-
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLab" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        Labs
-
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
-                        </div>
-                    </a>
-                    <div class="collapse" id="collapseLab" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <button id="addLab" type="button" class="btn btn-link nav-link nav-link">Add Lab</button>
-                    </div>
-
-                    <div class="collapse" id="collapseLab" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <button id="updateLab" type="button" class="btn btn-link nav-link nav-link">Update Lab</button>
-                    </div>
-
-                <div class="collapse" id="collapseLab" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                    <button id="deleteLab" type="button" class="btn btn-link nav-link nav-link">Delete Lab</button>
-                </div>
 
 
 
@@ -181,6 +157,75 @@
                         </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchase" aria-expanded="false" aria-controls="collapsePurchase">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            Purchase
+
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapsePurchase" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+
+                            <button id="purchaseItem" type="button" class="btn btn-link nav-link nav-link">Purchase</button>
+                            <button id="updatePurchaseItem" type="button" class="btn btn-link nav-link ">Update</button>
+                            <button id="" type="button" class="btn btn-link nav-link "> Get Items by Department</button>
+
+                        </div>
+
+
+
+
+
+
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIssue" aria-expanded="false" aria-controls="collapseIssue">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            Issue
+
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseIssue" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+
+                            <button id="issueItem" type="button" class="btn btn-link nav-link nav-link">Issue</button>
+                            <button id="updateIssue" type="button" class="btn btn-link nav-link ">Update</button>
+
+                        </div>
+
+
+
+
+
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReturn" aria-expanded="false" aria-controls="collapsePurchase">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            Return
+
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseReturn" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+
+                            <button id="returnItem" type="button" class="btn btn-link nav-link nav-link">Return Item</button>
+                            <button id="updateReturnItem" type="button" class="btn btn-link nav-link ">Update</button>
+                            <button id="" type="button" class="btn btn-link nav-link "> Get Return by Department</button>
+
+                        </div>
 
 
 
@@ -275,17 +320,26 @@
       <!--   <script src="/Panel/MasterAdmin/js/scripts.js"></script> -->
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <link href="/Panel/Admin/css/myStyle.css" rel="stylesheet" />
+        <link href="/Panel/MasterAdmin/css/myStyle.css" rel="stylesheet" />
       <!--   <script src="/Panel/MasterAdmin/js/script.js"></script> -->
-        <script src="/Panel/Admin/js/dashboard.js"></script>
-        <script src="/Panel/Admin/js/register.js"></script>
-        <script src="/Panel/Admin/js/addItem.js"></script>
-        <script src="/Panel/Admin/js/approveDelUser.js"></script>
-        <script src="/Panel/Admin/js/addLab.js"></script>
-        <script src="/Panel/Admin/js/updateLab.js"></script>
-        <script src="/Panel/Admin/js/addCategory.js"></script>
-        <script src="/Panel/Admin/js/addSubCategory.js"></script>
-        <script src="/Panel/Admin/js/updateItem.js"></script>      
+        <script src="/Panel/MasterAdmin/js/dashboard.js"></script>
+        <script src="/Panel/MasterAdmin/js/register.js"></script>
+        <script src="/Panel/MasterAdmin/js/addItem.js"></script>
+        <script src="/Panel/MasterAdmin/js/addDepartment.js"></script>
+ 
+        <script src="/Panel/MasterAdmin/js/approveDelUser.js"></script>
+        <script src="/Panel/MasterAdmin/js/updateDepartment.js"></script>
+        <script src="/Panel/MasterAdmin/js/addLab.js"></script>
+        <script src="/Panel/MasterAdmin/js/deleteDepartment.js"></script>
+        <script src="/Panel/MasterAdmin/js/updateLab.js"></script>
+        <script src="/Panel/MasterAdmin/js/addCategory.js"></script>
+        <script src="/Panel/MasterAdmin/js/addSubCategory.js"></script>
+        <script src="/Panel/MasterAdmin/js/updateItem.js"></script>
+        <script src="/Panel/MasterAdmin/js/purchaseItem.js"></script> 
+        <script src="/Panel/MasterAdmin/js/issue.js"></script> 
+        <script src="/Panel/MasterAdmin/js/deleteLab.js"></script> 
+        <script src="/Panel/MasterAdmin/js/updatePurchase.js"></script> 
+        <script src="/Panel/MasterAdmin/js/returnItem.js"></script>      
 <script>
 
 

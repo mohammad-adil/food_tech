@@ -7,20 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Master Admin Dashboard</title>
-    <link href="/Panel/User/css/styles.css" rel="stylesheet" />
+    <title>User Dashboard</title>
+    <link href="/Panel/MasterAdmin/css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link href="/Panel/User/css/myStyle.css" rel="stylesheet" />
-    <script src="/Panel/User/js/script.js"></script>
-    <script src="/Panel/User/js/dashboard.js"></script>
-    <script src="/Panel/User/js/register.js"></script>
-    <script src="/Panel/User/js/addItem.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/eventHandler.js"></script>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
-
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
     <style> 
         .modal {
             overflow-x: scroll;
@@ -30,7 +27,7 @@
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand"  href="/Panel/User/issue.html"> Dashboard </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+        <a class="navbar-brand"  href="/Panel/User/index.html"> Dashboard </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             >
             <!-- Navbar Search-->
 			
@@ -67,89 +64,16 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Stock Pile</div>
-                        <a class="nav-link" href="/Panel/User/issue.html">
+                        <a class="nav-link" href="/Panel/MasterAdmin/index.html">
                             <div class="sb-nav-link-icon">
                                 <i class="fas fa-tachometer-alt"></i>
                             </div>Dashboard</a>
 
-                        <a class="nav-link" id="" href="#">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-list-alt" aria-hidden="true"></i>
-                            </div>Report</a>
-
-                        <a class="nav-link" id="" href="#">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>Search</a>
-
-                       <!--  <a class="nav-link" id="SearchItenary" href="#">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-calender"></i>
-                            </div>Search</a> -->
-
 
                         <div class="sb-sidenav-menu-heading">Menu</div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdd" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Add
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="addDepartment"  type="button" class="btn btn-link nav-link itenary">Add Department</button>
+                       
 
-                        </div>
-                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="addUser" type="button" class="btn btn-link nav-link itenary">Add User</button>
-
-                        </div>
-                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="addUser" type="button" class="btn btn-link nav-link itenary">Add Lab</button>
-
-                        </div>
-
-                        <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="addItem" type="button" class="btn btn-link nav-link itenary">Add Item</button>
-
-                        </div>
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseItem" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            Item
-
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="" type="button" class="btn btn-link nav-link nav-link">Issue</button>
-                        </div>
-
-                        <div class="collapse" id="collapseItem" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="" type="button" class="btn btn-link nav-link nav-link">Return</button>
-                        </div>
-
-
-
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-certificate  " aria-hidden="true"></i>
-                            </div>
-                            Update
-
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="" type="button" class="btn btn-link nav-link nav-link">Update User Details</button>
-                            <button id="" type="button" class="btn btn-link nav-link ">Update Asset Details</button>
-                            <button id=""  type="button" class="btn btn-link nav-link ">Update Department</button>
-                            <button id=""  type="button" class="btn btn-link nav-link ">Update Lab</button>
-
-                        </div>
+                    
 
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseacc" aria-expanded="false" aria-controls="collapseacc">
                             <div class="sb-nav-link-icon">
@@ -174,30 +98,6 @@
 
 
 
-                       
-
-                        
-
-
-
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVendor" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            Register
-
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseVendor" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <button id="btnRegisterVendor" type="button" class="btn btn-link nav-link nav-link">Register User</button>
-                        </div>
-
-
-
-
-
 
 
                       
@@ -211,7 +111,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Admin
+                    <script> document.write(cookieParse(getCookie('data')).user.name) </script>
                 </div>
             </nav>
         </div>
@@ -254,13 +154,23 @@
             </footer>
             </div>
         </div>
-   
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+       
+    <!--  <script src="semantic/dist/semantic.min.js"></script> -->
+      
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="/Panel/User/js/scripts.js"></script>
+      <!--   <script src="/Panel/MasterAdmin/js/scripts.js"></script> -->
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <link href="/Panel/MasterAdmin/css/myStyle.css" rel="stylesheet" />
+      <!--   <script src="/Panel/MasterAdmin/js/script.js"></script> -->
+        <script src="/Panel/User/js/dashboard.js"></script>
+        <script src="/Panel/Userjs/register.js"></script>
+     
+<script>
 
+
+
+</script>
 </body>
 
 </html>
