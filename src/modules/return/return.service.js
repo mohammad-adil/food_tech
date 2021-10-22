@@ -3,6 +3,7 @@ const Department = require("../departments/department.model");
 const User = require("../user/user.model");
 const Return = require("../return/return.model");
 const Issue = require("../issue/issue.model");
+const Item = require("../items/item.model");
 
 exports.doReturnItem = async (req, res, next) => {
   try {
@@ -25,6 +26,12 @@ exports.doReturnItem = async (req, res, next) => {
     if (!returnItem) {
       res.status(500).send("Unable to Return.. Conatct Admintsrator...");
     }
+    const getItem = await Item.findOne({ _id: issueItem.item });
+    getItem.totalItemQuantity += issueItem.quantityIssued;
+    await getItem.save();
+    issueItem.returned = true;
+    await issueItem.save();
+
     res.status(201).send(returnItem);
   } catch (err) {
     next(err);

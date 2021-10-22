@@ -5,7 +5,8 @@ const path = require("path");
 exports.signinUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email: email, password: password });
+    const user = await User.findByCredentials(email, password);
+
     if (user != null) {
       Token = await signJwt(user._id);
       console.log("token, ", Token);

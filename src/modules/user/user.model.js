@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -44,7 +45,7 @@ const userSchema = new mongoose.Schema(
       trim: true,
     },
     active: {
-      type: String,
+      type: Boolean,
       required: true,
       enum: [true, false],
       default: false,
@@ -101,5 +102,30 @@ userSchema.methods.toJSON = function () {
 
   return userObject;
 };
+//*******************Authenticate the user from Database************************** */
+userSchema.statics.findByCredentials = async (email, password) => {
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      throw new Error("User not found");
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      throw new Error("Unable to Login.. Incorrect Password");
+    }
+    return user;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//**********HASH PASSWORDS BEFORE SAVING THE DATA************ */
+userSchema.pre("save", async function (next) {
+  const user = this;
+  if (user.isModified("password")) {
+    user.password = await bcrypt.hash(user.password, 8);
+  }
+  next();
+});
 
 module.exports = User = mongoose.model("User", userSchema);

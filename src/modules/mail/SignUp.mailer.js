@@ -1,13 +1,27 @@
 const nodemailer = require("nodemailer");
 const mailTemplate = require("./emailtemplate");
 exports.sendSignUpMail = async (payload) => {
-  console.log(payload);
-
-  let transpot = nodemailer.createTransport({
-    service: "gmail",
+  /*  let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    requireTLS: true,
     auth: {
       user: "me.stockpile@gmail.com",
       pass: "bpxubvyj!1@aadilshah",
+    },
+  }); */
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail", //smtp.gmail.com  //in place of service use host...
+    secure: false, //true
+    port: 25, //465
+    auth: {
+      user: "me.stockpile@gmail.com",
+      pass: "bpxubvyj!1@aadilshah",
+    },
+    tls: {
+      rejectUnauthorized: false,
     },
   });
 
@@ -267,7 +281,7 @@ exports.sendSignUpMail = async (payload) => {
     </body>
     </html>`,
   };
-  transpot.sendMail(mailOptions, (err, info) => {
+  transporter.sendMail(mailOptions, (err, info) => {
     if (err) console.log(err);
 
     console.log("mail sent", info.response);
