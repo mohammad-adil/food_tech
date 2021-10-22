@@ -1,5 +1,6 @@
 const fs = require("fs");
 const express = require("express");
+require("dotenv").config;
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const db = require("../src/db/db");
@@ -9,8 +10,10 @@ const User = require("../src/modules/user/user.model");
 const bodyParser = require("body-parser");
 
 ///router
+
 const errorController = require("./middleware/errorController");
 const userRouter = require("./modules/user/user.routes");
+const genralDetails = require("./modules/general/general.routes");
 const labRouter = require("./modules/labs/labs.routes");
 const departmentRouter = require("./modules/departments/department.routes");
 const signin = require("./modules/signin/signin.routes");
@@ -54,6 +57,7 @@ app.use(category);
 app.use(purchase);
 app.use(issue);
 app.use(returnItem);
+app.use(genralDetails);
 
 app.use(errorController);
 app.listen(PORT, () => {

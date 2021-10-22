@@ -84,14 +84,15 @@ const generateTable = async (result) => {
     <td>${new Date(element.createdAt)}</td>
     <td>${element.returned}</td>
     <td>${element.returnDate}</td> 
-    <td><input type="date" id="date_${element._id}" name="date"></td> 
+    <td><input type="date" id="date_${
+      element._id
+    }" name="date" ${buttonVisiblity} ></td> 
     <td> <button id="${
       element._id
     }" class="positive ui small button btnreturn" ${buttonVisiblity}>Return</button>    </td>
 
   </tr>`;
   });
-
 
   document.getElementById("insertIssueItem").innerHTML = tableRow;
 };
