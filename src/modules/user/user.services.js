@@ -5,9 +5,13 @@ const email = require("../mail/SignUp.mailer");
 
 exports.doSignupUser = async (req, res, next) => {
   try {
-    let createUser = req.body;
-    const user = await User.create({ ...createUser });
+    let user = new User(req.body);
+    user = await user.save();
+
+    console.log(user);
     if (user) {
+      console.log(user);
+
       await email.sendSignUpMail({
         email: user.email,
         name: user.name,

@@ -3,6 +3,7 @@ const _signinService = require("../signin/signinService");
 const prefix = "/stockpile/v1";
 const User = require("../user/user.model");
 router.post(prefix + "/signin", _signinService.signinUser, (req, res) => {});
+
 /* router.all(
   "/Panel/MasterAdmin/*",
   signinUser,
@@ -18,4 +19,5 @@ router.post(prefix + "/signin", _signinService.signinUser, (req, res) => {});
 const signinUser = async () => {
   const user = await User.findOne({ email: email, password: password });
 }; */
+
 module.exports = router;

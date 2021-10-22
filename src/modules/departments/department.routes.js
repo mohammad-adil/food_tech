@@ -4,7 +4,6 @@ const auth = require("../../middleware/Auth");
 const prefix = "/stockpile/v1/department";
 router.post(
   prefix + "/addDepartment",
-  auth,
   _departmentService.doAddDepartment,
   (req, res) => {}
 );

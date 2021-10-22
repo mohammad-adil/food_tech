@@ -30,27 +30,16 @@ btnReturnItem.addEventListener("click", async () => {
     <tr>
       <th>Name</th>
       <th>Issued Date</th>
-      <th>Returnable</th>
+      <th>Item Returned</th>
+      <th>Due Return Date</th>
       <th>Return Date</th>
       <th>Return</th>
     </tr>
   </thead>
   <tbody id="insertIssueItem">
-
-
-
-
-
    </tr>
   </tbody>
 </table>
-
-
-
-
-
-
-
            </div> 
        </div> 
      </div> 
@@ -83,16 +72,51 @@ $(document).on("click", "#searchButton", async () => {
 const generateTable = async (result) => {
   document.getElementById("insertIssueItem").innerHTML = "";
   let tableRow = "";
-
+  console.log(result);
   result.forEach((element) => {
+    let buttonVisiblity = "Disabled";
+    if (element.returned.toString() === "false") {
+      buttonVisiblity = " ";
+    }
+
     tableRow += `  <tr>
-    <td>${element.issuedTo.name}</td>
+    <td>${element.item.itemName}</td>
     <td>${new Date(element.createdAt)}</td>
-    <td>${element.returnable}</td>
-    <td>${element.returnDate}</td>
+    <td>${element.returned}</td>
+    <td>${element.returnDate}</td> 
+    <td><input type="date" id="date_${
+      element._id
+    }" name="date" ${buttonVisiblity} ></td> 
+    <td> <button id="${
+      element._id
+    }" class="positive ui small button btnreturn" ${buttonVisiblity}>Return</button>    </td>
+
   </tr>`;
   });
 
-
   document.getElementById("insertIssueItem").innerHTML = tableRow;
 };
+
+$(document).on("click", ".btnreturn", async (event) => {
+  var id = $(event.target).attr("id");
+
+  const returnDate = document.getElementById("date_" + id).value;
+
+  console.log(returnDate);
+
+  let baseUrl = window.location.origin;
+  let result = await fetch(baseUrl + "/stockpile/v1/return/returnItem/" + id, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("Token"),
+    },
+    body: JSON.stringify({ returnedDate: returnDate }),
+  }).then((data) => {
+    return data.json();
+  });
+
+  if (result) {
+    alert("Successfully intiated");
+  }
+});
