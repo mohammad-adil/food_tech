@@ -82,7 +82,7 @@ $(document).ready(async function () {
                         </div> 
                     </div> 				
                    </div>`;
-
+  console.log("hello");
   let result = await getDetails();
   console.log(result);
   document.getElementById("totalUsers").innerHTML = result.totalUsers;
