@@ -1,8 +1,8 @@
 const btnItemPurchase = document.querySelector("#purchaseItem");
 btnItemPurchase.addEventListener("click", async () => {
-    let dataDiv = document.getElementById("dashBoard");
-    dataDiv.innerHTML = '';
-   dataDiv.innerHTML = `<h1 class="mt-4">Purchase Item</h1> 
+  let dataDiv = document.getElementById("dashBoard");
+  dataDiv.innerHTML = "";
+  dataDiv.innerHTML = `<h1 class="mt-4">Purchase Item</h1> 
                         <ol class="breadcrumb mb-4"> 
                             <li class="breadcrumb-item"><a href="/Panel/User/issue.html">Dashboard</a></li> 
                             <li class="breadcrumb-item active">Purchase Item</li> 
@@ -228,9 +228,9 @@ btnItemPurchase.addEventListener("click", async () => {
                           </div> 
                      </div> 
                       <div></div> 
-                  </div>`
+                  </div>`;
 
-                  let baseUrl = window.location.origin;
+  let baseUrl = window.location.origin;
   let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
     method: "GET",
     headers: {
@@ -248,73 +248,66 @@ btnItemPurchase.addEventListener("click", async () => {
   });
   selectionBox.innerHTML = dataSelect;
 
-
-
-
-  await addCategory1()
-  
-
-
+  await addCategory1();
 });
 
 $(document).on("change", "#itemGetDepartment", async (e) => {
- 
-    let baseUrl = window.location.origin;
-    let result = await fetch(
-      baseUrl + "/stockpile/v1/lab/getLabByDepartmentId/" + $(e.target).val(),
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer "+sessionStorage.getItem("Token")
-        },
-      }
-    ).then((data) => {
-      return data.json();
-    });
-  
-    const selectionBox = document.querySelector("#itemGetLabFromDepartment");
-    let dataSelect = '<option value="select"> Select </option>';
-    result.forEach((element) => {
-      dataSelect += `<option value="${element._id}">${element.labName}</option>`;
-    });
-    selectionBox.innerHTML = dataSelect;
-  });
-
-
-  const addCategory1 = async () => {
- 
-    let baseUrl = window.location.origin;
-    let result = await fetch(baseUrl + "/stockpile/v1/category/getCategory", {
+  let baseUrl = window.location.origin;
+  let result = await fetch(
+    baseUrl + "/stockpile/v1/lab/getLabByDepartmentId/" + $(e.target).val(),
+    {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer "+sessionStorage.getItem("Token")
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
       },
-    }).then((data) => {
-      return data.json();
-    });
-  
-    const selectionBox = document.querySelector("#categorySelect");
-    let dataSelect = '<option value="select"> Select </option>';
-    result.forEach((element) => {
-      dataSelect += `<option value="${element._id}">${element.categoryName}</option>`;
-    });
-    selectionBox.innerHTML = dataSelect;
-  };
+    }
+  ).then((data) => {
+    return data.json();
+  });
 
-  baseUrl + "/stockpile/v1/category/getSubCategory/" + $(e.target).val(),
+  const selectionBox = document.querySelector("#itemGetLabFromDepartment");
+  let dataSelect = '<option value="select"> Select </option>';
+  result.forEach((element) => {
+    dataSelect += `<option value="${element._id}">${element.labName}</option>`;
+  });
+  selectionBox.innerHTML = dataSelect;
+});
 
-  $(document).on("change", "#categorySelect", async (e) => {
-
+const addCategory1 = async () => {
   let baseUrl = window.location.origin;
-  let result = await fetch( baseUrl + "/stockpile/v1/category/getSubCategory/" + $(e.target).val(), {
+  let result = await fetch(baseUrl + "/stockpile/v1/category/getCategory", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer "+sessionStorage.getItem("Token")
+      Authorization: "Bearer " + sessionStorage.getItem("Token"),
     },
   }).then((data) => {
+    return data.json();
+  });
+
+  const selectionBox = document.querySelector("#categorySelect");
+  let dataSelect = '<option value="select"> Select </option>';
+  result.forEach((element) => {
+    dataSelect += `<option value="${element._id}">${element.categoryName}</option>`;
+  });
+  selectionBox.innerHTML = dataSelect;
+};
+
+//baseUrl + "/stockpile/v1/category/getSubCategory/" + $(e.target).val(),
+
+$(document).on("change", "#categorySelect", async (e) => {
+  let baseUrl = window.location.origin;
+  let result = await fetch(
+    baseUrl + "/stockpile/v1/category/getSubCategory/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
+      },
+    }
+  ).then((data) => {
     return data.json();
   });
 
@@ -326,22 +319,20 @@ $(document).on("change", "#itemGetDepartment", async (e) => {
   selectionBox.innerHTML = dataSelect;
 });
 
-
-
-
 /****************************Call Item from LAb****************************************************** */
 
-
 $(document).on("change", "#itemGetLabFromDepartment", async (e) => {
-
   let baseUrl = window.location.origin;
-  let result = await fetch(baseUrl + "/stockpile/v1/item/getItemsByLab/" + $(e.target).val(), {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer "+sessionStorage.getItem("Token")
-    },
-  }).then((data) => {
+  let result = await fetch(
+    baseUrl + "/stockpile/v1/item/getItemsByLab/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
+      },
+    }
+  ).then((data) => {
     return data.json();
   });
 
@@ -353,79 +344,72 @@ $(document).on("change", "#itemGetLabFromDepartment", async (e) => {
   selectionBox.innerHTML = dataSelect;
 });
 
-
 /******************************Calculating Total Price from Unit Price********************************************************** */
 
-    $(document).on("keyup", "#unitPrice", async (e) => {
-
-        let quantity = $("#itemQuantity").val()
-        let uprice = e.target.value
-        let totalPrice=quantity *  uprice
-        $("#totalPrice").val()
-        $("#totalPrice").val(totalPrice)
-        
+$(document).on("keyup", "#unitPrice", async (e) => {
+  let quantity = $("#itemQuantity").val();
+  let uprice = e.target.value;
+  let totalPrice = quantity * uprice;
+  $("#totalPrice").val();
+  $("#totalPrice").val(totalPrice);
 });
-
 
 /******************************Calculating Item Availl********************************************************** */
 
 $(document).on("keyup", "#itemQuantity", async (e) => {
-
-    let totalAvail = e.target.value
-    $("#itemAvailable").val(totalAvail)
-    
+  let totalAvail = e.target.value;
+  $("#itemAvailable").val(totalAvail);
 });
 
 /*********************************Fire Request******************************************************** */
 
-
 $(document).on("click", "#btnPurchseItem", async () => {
-    item = document.getElementById("addItemId").value;
-    let itemQuantity = parseInt (document.getElementById("itemQuantity").value);
-    const element = document.getElementById("itemGetDepartment");
-    const departmentId = element.options[element.selectedIndex].value;
-    let suppliedBy = document.getElementById("suppliedBy").value;
-  
-    let source = document.getElementById("sourceItem").value;
-    let lab = document.getElementById("itemGetLabFromDepartment").value;
-    let unitPrice = parseInt(document.getElementById("unitPrice").value);
-    let totalPrice = parseInt(document.getElementById("totalPrice").value);
-    let currency = document.getElementById("currency").value;
-    let unit = document.getElementById("unit").value;
-    let purchaseDate = document.getElementById("purchaseDate").value;
-    let purchaseOrder = document.getElementById("purchaseOrderNumber").value;
+  item = document.getElementById("addItemId").value;
+  let itemQuantity = parseInt(document.getElementById("itemQuantity").value);
+  const element = document.getElementById("itemGetDepartment");
+  const departmentId = element.options[element.selectedIndex].value;
+  let suppliedBy = document.getElementById("suppliedBy").value;
 
-    let purchasePayLoad = {
-      item,
-      itemQuantity,
-      department: departmentId,
-      suppliedBy,
-      source,
-      lab,
-      unitPrice,
-      totalPrice,
-      currency,
-      unit,
-      purchaseDate,
-      purchaseOrder,
-    };
-    let baseUrl = window.location.origin;
-    let res = await fetch(baseUrl + "/stockpile/v1/purchase/purchaseItem", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer "+sessionStorage.getItem("Token")
-      },
-      
-      body: JSON.stringify(purchasePayLoad),
-    });
+  let source = document.getElementById("sourceItem").value;
+  let lab = document.getElementById("itemGetLabFromDepartment").value;
+  let unitPrice = parseInt(document.getElementById("unitPrice").value);
+  let totalPrice = parseInt(document.getElementById("totalPrice").value);
+  let currency = document.getElementById("currency").value;
+  let unit = document.getElementById("unit").value;
+  let purchaseDate = document.getElementById("purchaseDate").value;
+  let purchaseOrder = document.getElementById("purchaseOrderNumber").value;
 
-    console.log(res)
+  let purchasePayLoad = {
+    item,
+    itemQuantity,
+    department: departmentId,
+    suppliedBy,
+    source,
+    lab,
+    unitPrice,
+    totalPrice,
+    currency,
+    unit,
+    purchaseDate,
+    purchaseOrder,
+  };
+  let baseUrl = window.location.origin;
+  let res = await fetch(baseUrl + "/stockpile/v1/purchase/purchaseItem", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("Token"),
+    },
 
-    if (res.status == 201) {
-      alert("Item Purchase Complete");
-      $("#purchaseItemForm")[0].reset();
-    } else {
-      alert("Something went Wrong");
-    }
+    body: JSON.stringify(purchasePayLoad),
   });
+
+  console.log(res);
+
+  if (res.status == 201) {
+    alert("Item Purchase Complete");
+    $("#purchaseItemForm")[0].reset();
+  } else {
+    alert("Something went Wrong");
+  }
+});
