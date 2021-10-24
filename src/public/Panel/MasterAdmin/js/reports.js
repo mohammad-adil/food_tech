@@ -1,60 +1,56 @@
-assetReport = document.querySelector("#assetReport");
+assetReport = document.querySelector("#issueReport");
 assetReport.addEventListener("click", async () => {
-  alert("Hey man");
   let dataDiv = document.getElementById("dashBoard");
   dataDiv.innerHTML = "";
-  dataDiv.innerHTML = `<h1 class="mt-4">Return Item</h1> 
+  dataDiv.innerHTML = `
    <ol class="breadcrumb mb-4"> 
        <li class="breadcrumb-item"><a href="/Panel/User/issue.html">Dashboard</a></li> 
        <li class="breadcrumb-item active">Reports</li> 
    </ol> 
    
 <div class="card mb-4" style="visibility:visible; font-size:12px";> 
-<div class="card-header"><i class="fas fa-table mr-1"></i>Return Item</div> 
+<div class="card-header"><i class="fas fa-table mr-1"></i>Reports</div> 
 <div class="card-body"> 
-<div class="card-body"> 
+<div class="card-body" style="padding:0;margin-left: 15px"> 
   
+<button type="button" id="exports" value=".xls" class="btn export btn-link input-sm" disabled>Export to Excel</button>
+
 
 
 <div class="form-row">
-<input class="form-check-input assetClassRadio" type="radio" name="assetRadio" id="assetRadio1" value="date"> 
-<div class="col-md-6">
+
+<div class="col-md-4">
 <label class="small mb-1" for="establishmentDate">Start Date</label>
-<input class="form-control py-4" id="assetsStartDate" type="date" aria-describedby="report" placeholder="Choose Date" />
+<input class="form-control  input-sm" id="issueStartDate" type="date" aria-describedby="report" placeholder="Choose Date" />
 </div>
-<div class="col-md-6">
+<div class="col-md-4">
 <label class="small mb-1" for="establishmentDate">End Date</label>
-<input class="form-control py-4" id="assetsEndDate" type="date" aria-describedby="report" placeholder="Choose Date" />
+<input class="form-control input-sm" id="issueEndDate" type="date" aria-describedby="report" placeholder="Choose Date" />
 </div>
 
-<button type="button" id="getReportByDate" class="btn btn-link">Get Report</button>
-</div>
-
-<div class="form-row">
-<input class="form-check-input assetClassRadio" type="radio" name="assetRadio" id="assetRadio2" value="days"> 
-<div class="col-md-6">
-<button type="button" class="btn btn-link">Last 30 Days</button>
-</div>
-<div class="col-md-6">
-<button type="button" class="btn btn-link">Last 60 Days</button>
-</div>
+<button type="button" id="getIssueReportByDate" class="btn btn-link input-sm">Get Report</button>
 </div>
 
 
 
 
-<table class="ui striped table">
+
+
+<table class="ui striped table" id="issueTableReport">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Issued Date</th>
+      <th>Issued To</th>
+      <th>Department</th>
+      <th>Mobile No</th>
+      <th>Issued By</th>
+      <th>Issued On</th>
       <th>Item Returned</th>
       <th>Due Return Date</th>
-      <th>Return Date</th>
-      <th>Return</th>
+    
+  
     </tr>
   </thead>
-  <tbody id="insertIssueItem">
+  <tbody id="IssueItemR">
    </tr>
   </tbody>
 </table>
@@ -89,53 +85,73 @@ $(document).on("click", ".assetClassRadio", async function (e) {
   }
 });
 
-$(document).on("click", "#searchButton", async () => {
-  let obj = {
-    email: document.getElementById("txtGetEmail").value,
-  };
+$(document).on("click", "#getIssueReportByDate", async () => {
+  const startDate = document.getElementById("issueStartDate").value;
+  const endDate = document.getElementById("issueEndDate").value;
+
   let baseUrl = window.location.origin;
   let result = await fetch(
-    baseUrl + "/stockpile/v1/issue/getIssueItembyEmail",
+    baseUrl + `/stockpile/v1/reports/getByDate/${startDate}/${endDate}`,
     {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + sessionStorage.getItem("Token"),
       },
-      body: JSON.stringify(obj),
     }
-  ).then((data) => {
-    return data.json();
-  });
-  generateAssetTable(result);
+  )
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else if (response.status === 404) {
+        return Promise.reject("404");
+      } else {
+        return Promise.reject("some other error: " + response.status);
+      }
+    })
+    .catch((err) => {
+      return err;
+    });
+
+  if (result == "404") {
+    document.getElementById("IssueItemR").innerHTML = "";
+    $("#exports").attr("disabled"), "disabled";
+    alert("No Data Found");
+    result = null;
+  }
+
+  if (result != "404") {
+    generateAssetTable(result.data);
+  }
 });
 
 const generateAssetTable = async (result) => {
-  document.getElementById("insertIssueItem").innerHTML = "";
+  document.getElementById("IssueItemR").innerHTML = "";
   let tableRow = "";
-  console.log(result);
   result.forEach((element) => {
-    let buttonVisiblity = "Disabled";
-    if (element.returned.toString() === "false") {
-      buttonVisiblity = " ";
-    }
-
     tableRow += `  <tr>
-    <td>${element.item.itemName}</td>
+    <td>${element.issuedTo.name}</td>
+    <td>${element.issuedTo.department.departmentName}</td>
+    <td>${element.issuedTo.phone}</td>
+    <td>${element.issuedBy.name}</td>
     <td>${new Date(element.createdAt)}</td>
     <td>${element.returned}</td>
     <td>${element.returnDate}</td> 
-    <td><input type="date" id="date_${
-      element._id
-    }" name="date" ${buttonVisiblity} ></td> 
-    <td> <button id="${
-      element._id
-    }" class="positive ui small button btnreturn" ${buttonVisiblity}>Return</button>    </td>
+    
 
   </tr>`;
   });
 
-  document.getElementById("insertIssueItem").innerHTML = tableRow;
+  document.getElementById("IssueItemR").innerHTML = tableRow;
+  $("#exports").removeAttr("disabled");
 };
 
-//$(document).on("click", ".btnreturn", async (event) => {});
+$(document).on("click", ".export", function (event) {
+  $("#issueTableReport").table2excel({
+    // exclude CSS class
+    exclude: ".noExl",
+    name: "Worksheet Name",
+    filename: "SomeFile", //do not include extension
+    fileext: ".xls", // file extension
+  });
+});

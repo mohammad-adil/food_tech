@@ -1,8 +1,8 @@
-const btnIssueItem = document.querySelector("#issueItem","#quickIssue");
+const btnIssueItem = document.querySelector("#issueItem", "#quickIssue");
 btnIssueItem.addEventListener("click", async () => {
-    let dataDiv = document.getElementById("dashBoard");
-    dataDiv.innerHTML = '';
-   dataDiv.innerHTML = `<h1 class="mt-4">Issue Item</h1> 
+  let dataDiv = document.getElementById("dashBoard");
+  dataDiv.innerHTML = "";
+  dataDiv.innerHTML = `<h1 class="mt-4">Issue Item</h1> 
                         <ol class="breadcrumb mb-4"> 
                             <li class="breadcrumb-item"><a href="/Panel/User/issue.html">Dashboard</a></li> 
                             <li class="breadcrumb-item active">Issue Item</li> 
@@ -106,8 +106,13 @@ btnIssueItem.addEventListener("click", async () => {
                                             <option value="Liters">Liters</option>
                                             <option value="Milligrams">Milligrams</option>
                                             <option value="Grams">Grams</option>
-                                            <option value="Uints">Uints</option>
+                                            <option value="Units">Units</option>
+                                            <option value="Box">Box</option> 
+                                            <option value="Packets">Packets</option> 
                                             </select>
+
+
+                              
                                       </div> 
                                          </div> 
                                             </div> 
@@ -124,97 +129,87 @@ btnIssueItem.addEventListener("click", async () => {
                           </div> 
                      </div> 
                       <div></div> 
-                  </div>`
-                  let baseUrl = window.location.origin;
-                  let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
-                    method: "GET",
-                    headers: {
-                      "Content-Type": "application/json",
-                      Authorization: "Bearer " + sessionStorage.getItem("Token"),
-                    },
-                  }).then((data) => {
-                    return data.json();
-                  });
-                
-                  const selectionBox = document.querySelector("#issueGetDepartment");
-                  let dataSelect = '<option value="select"> Select </option>';
-                  result.forEach((element) => {
-                    dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
-                  });
-                  selectionBox.innerHTML = dataSelect;
-                  
-                
-
-
-
-});
-
-
-$(document).on("change", "#issueGetDepartment", async (e) => {
- 
-    let baseUrl = window.location.origin;
-    let result = await fetch(
-      baseUrl + "/stockpile/v1/lab/getLabByDepartmentId/" + $(e.target).val(),
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer "+sessionStorage.getItem("Token")
-        },
-      }
-    ).then((data) => {
-      return data.json();
-    });
-  
-    const selectionBox = document.querySelector("#issueGetLabFromDepartment");
-    let dataSelect = '<option value="select"> Select </option>';
-    result.forEach((element) => {
-      dataSelect += `<option value="${element._id}">${element.labName}</option>`;
-    });
-    selectionBox.innerHTML = dataSelect;
-  });
-
-
-
-/****************************Issued to****************************************************** */
-$(document).on("change", "#issueGetDepartment", async (e) => {
- 
-    let baseUrl = window.location.origin;
-    let result = await fetch(
-      baseUrl + "/stockpile/v1/getUser/" + $(e.target).val(),
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer "+sessionStorage.getItem("Token")
-        },
-      }
-    ).then((data) => {
-      return data.json();
-    });
-  
-    const selectionBox = document.querySelector("#issuedTo");
-    let dataSelect = '<option value="select"> Select </option>';
-    result.forEach((element) => {
-      dataSelect += `<option value="${element._id}">${element.name}</option>`;
-    });
-    selectionBox.innerHTML = dataSelect;
-  });
-
-
-/****************************Choose Item from LAb****************************************************** */
-
-
-$(document).on("change", "#issueGetLabFromDepartment", async (e) => {
-
+                  </div>`;
   let baseUrl = window.location.origin;
-  let result = await fetch(baseUrl + "/stockpile/v1/item/getItemsByLab/" + $(e.target).val(), {
+  let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer "+sessionStorage.getItem("Token")
+      Authorization: "Bearer " + sessionStorage.getItem("Token"),
     },
   }).then((data) => {
+    return data.json();
+  });
+
+  const selectionBox = document.querySelector("#issueGetDepartment");
+  let dataSelect = '<option value="select"> Select </option>';
+  result.forEach((element) => {
+    dataSelect += `<option value="${element._id}">${element.departmentName}</option>`;
+  });
+  selectionBox.innerHTML = dataSelect;
+});
+
+$(document).on("change", "#issueGetDepartment", async (e) => {
+  let baseUrl = window.location.origin;
+  let result = await fetch(
+    baseUrl + "/stockpile/v1/lab/getLabByDepartmentId/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
+      },
+    }
+  ).then((data) => {
+    return data.json();
+  });
+
+  const selectionBox = document.querySelector("#issueGetLabFromDepartment");
+  let dataSelect = '<option value="select"> Select </option>';
+  result.forEach((element) => {
+    dataSelect += `<option value="${element._id}">${element.labName}</option>`;
+  });
+  selectionBox.innerHTML = dataSelect;
+});
+
+/****************************Issued to****************************************************** */
+$(document).on("change", "#issueGetDepartment", async (e) => {
+  let baseUrl = window.location.origin;
+  let result = await fetch(
+    baseUrl + "/stockpile/v1/getUser/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
+      },
+    }
+  ).then((data) => {
+    return data.json();
+  });
+
+  const selectionBox = document.querySelector("#issuedTo");
+  let dataSelect = '<option value="select"> Select </option>';
+  result.forEach((element) => {
+    dataSelect += `<option value="${element._id}">${element.name}</option>`;
+  });
+  selectionBox.innerHTML = dataSelect;
+});
+
+/****************************Choose Item from LAb****************************************************** */
+
+$(document).on("change", "#issueGetLabFromDepartment", async (e) => {
+  let baseUrl = window.location.origin;
+  let result = await fetch(
+    baseUrl + "/stockpile/v1/item/getItemsByLab/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
+      },
+    }
+  ).then((data) => {
     return data.json();
   });
 
@@ -226,58 +221,57 @@ $(document).on("change", "#issueGetLabFromDepartment", async (e) => {
   selectionBox.innerHTML = dataSelect;
 });
 
-
 /*********************************Fire Request******************************************************** */
 
-
 $(document).on("click", "#btnIssueItem", async () => {
-    let quantityIssued = parseInt (document.getElementById("issuedQuantity").value);
-    const element = document.getElementById("issueGetDepartment");
-    const departmentId = element.options[element.selectedIndex].value;
-    let lab = document.getElementById("issueGetLabFromDepartment").value;
-    let unit = document.getElementById("unit").value;
-    let issuedTo = document.getElementById("issuedTo").value;
+  let quantityIssued = parseInt(
+    document.getElementById("issuedQuantity").value
+  );
+  const element = document.getElementById("issueGetDepartment");
+  const departmentId = element.options[element.selectedIndex].value;
+  let lab = document.getElementById("issueGetLabFromDepartment").value;
+  let unit = document.getElementById("unit").value;
+  let issuedTo = document.getElementById("issuedTo").value;
 
-    let returnable = document.getElementById("itemReturnable").value;
-    let returnDate = document.getElementById("returnDate").value;
+  let returnable = document.getElementById("itemReturnable").value;
+  let returnDate = document.getElementById("returnDate").value;
 
-    const elmItem = document.getElementById("itemChoose");
-    const itemChoose = elmItem.options[elmItem.selectedIndex].value;
+  const elmItem = document.getElementById("itemChoose");
+  const itemChoose = elmItem.options[elmItem.selectedIndex].value;
 
-let returnAble=false
-if(returnable=='True'){
-    returnAble = true
-}
+  let returnAble = false;
+  if (returnable == "True") {
+    returnAble = true;
+  }
 
-
-
-    let issuePayLoad = {
-      quantityIssued,
-      department: departmentId,
-      lab,
-      unit,
-      returnable:returnAble,
-      returnDate,
-      issuedTo,
-    };
-    console.log(issuePayLoad)
-    let baseUrl = window.location.origin;
-    let res1 = await fetch(baseUrl + "/stockpile/v1/issue/issueItem/"+itemChoose, {
+  let issuePayLoad = {
+    quantityIssued,
+    department: departmentId,
+    lab,
+    unit,
+    returnable: returnAble,
+    returnDate,
+    issuedTo,
+  };
+  console.log(issuePayLoad);
+  let baseUrl = window.location.origin;
+  let res1 = await fetch(
+    baseUrl + "/stockpile/v1/issue/issueItem/" + itemChoose,
+    {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer "+sessionStorage.getItem("Token")
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
       },
-      
+
       body: JSON.stringify(issuePayLoad),
-
-    });
-
-    if (res1.status == 200) {
-      alert("Issued Successfully");
-      $("#issueItemForm")[0].reset();
-    } else {
-      alert("Something went Wrong");
     }
+  );
 
-  });
+  if (res1.status == 200) {
+    alert("Issued Successfully");
+    $("#issueItemForm")[0].reset();
+  } else {
+    alert("Something went Wrong");
+  }
+});
