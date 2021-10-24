@@ -22,6 +22,7 @@ const category = require("./modules/category/category.routes");
 const purchase = require("./modules/purchase/purchase.routes");
 const issue = require("./modules/issue/issue.routes");
 const returnItem = require("./modules/return/return.routes");
+const reports = require("./modules/reports/reports.routes");
 
 const app = express();
 
@@ -58,6 +59,7 @@ app.use(purchase);
 app.use(issue);
 app.use(returnItem);
 app.use(genralDetails);
+app.use(reports);
 
 app.use(errorController);
 app.listen(PORT, () => {
