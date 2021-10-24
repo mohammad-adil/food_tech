@@ -80,7 +80,9 @@ btnItemAdd.addEventListener("click", async () => {
                                       <option value="Liters">Liters</option>
                                       <option value="Milligrams">Milligrams</option>
                                       <option value="Grams">Grams</option>
-                                      <option value="Uints">Uints</option>
+                                      <option value="Units">Units</option>
+                                      <option value="Box">Box</option> 
+                                      <option value="Packets">Packets</option> 
                                       </select>
                                 </div> 
                                    </div>
