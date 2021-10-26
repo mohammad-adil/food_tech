@@ -135,3 +135,37 @@ exports.getIssueItembyEmail = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.doGetIssue = async (req, res, next) => {
+  try {
+    let { startDate, endDate } = req.params;
+    console.log({ startDate }, { endDate });
+    console.log(req.userId);
+    const result = await Issue.find({
+      createdAt: { $gte: startDate, $lte: endDate },
+      issuedTo: req.userId,
+    })
+      .populate({
+        path: "issuedTo",
+        select: "name phone email universityId",
+        populate: { path: "department", select: "departmentName" },
+      })
+      .populate({
+        path: "issuedBy",
+        select: "name",
+      })
+      .populate({
+        path: "item",
+        select: "itemName",
+      });
+
+    console.log(result);
+
+    if (result.length == 0) {
+      return res.status(404).send("No Items Were Found");
+    }
+    return res.status(200).send({ data: result });
+  } catch (err) {
+    next(err);
+  }
+};
