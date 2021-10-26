@@ -1,8 +1,8 @@
 const btnItemUpdate = document.querySelector("#updateItem");
 btnItemUpdate.addEventListener("click", async () => {
-    let dataDiv = document.getElementById("dashBoard");
-    dataDiv.innerHTML = '';
-   dataDiv.innerHTML = `<h1 class="mt-4">Update Item</h1> 
+  let dataDiv = document.getElementById("dashBoard");
+  dataDiv.innerHTML = "";
+  dataDiv.innerHTML = `<h1 class="mt-4">Update Item</h1> 
                         <ol class="breadcrumb mb-4"> 
                             <li class="breadcrumb-item"><a href="/Panel/User/issue.html">Dashboard</a></li> 
                             <li class="breadcrumb-item active">Upate Item</li> 
@@ -244,9 +244,9 @@ btnItemUpdate.addEventListener("click", async () => {
                           </div> 
                      </div> 
                       <div></div> 
-                  </div>`
+                  </div>`;
 
-                  let baseUrl = window.location.origin;
+  let baseUrl = window.location.origin;
   let result = await fetch(baseUrl + "/stockpile/v1/department/getDepartment", {
     method: "GET",
     headers: {
@@ -264,53 +264,44 @@ btnItemUpdate.addEventListener("click", async () => {
   });
   selectionBox.innerHTML = dataSelect;
 
-
-
-
-  await addCategory()
-
-
+  await addCategory();
 });
 
 $(document).on("change", "#itemGetDepartment", async (e) => {
- 
-    let baseUrl = window.location.origin;
-    let result = await fetch(
-      baseUrl + "/stockpile/v1/lab/getLabByDepartmentId/" + $(e.target).val(),
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer "+sessionStorage.getItem("Token")
-        },
-      }
-    ).then((data) => {
-      return data.json();
-    });
-  
-    const selectionBox = document.querySelector("#itemGetLabFromDepartment");
-    let dataSelect = '<option value="select"> Select </option>';
-    result.forEach((element) => {
-      dataSelect += `<option value="${element._id}">${element.labName}</option>`;
-    });
-    selectionBox.innerHTML = dataSelect;
+  let baseUrl = window.location.origin;
+  let result = await fetch(
+    baseUrl + "/stockpile/v1/lab/getLabByDepartmentId/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
+      },
+    }
+  ).then((data) => {
+    return data.json();
   });
 
+  const selectionBox = document.querySelector("#itemGetLabFromDepartment");
+  let dataSelect = '<option value="select"> Select </option>';
+  result.forEach((element) => {
+    dataSelect += `<option value="${element._id}">${element.labName}</option>`;
+  });
+  selectionBox.innerHTML = dataSelect;
+});
 
-
-
-
-
-  $(document).on("change", "#categorySelect", async (e) => {
-
+$(document).on("change", "#categorySelect", async (e) => {
   let baseUrl = window.location.origin;
-  let result = await fetch( baseUrl + "/stockpile/v1/category/getSubCategory/" + $(e.target).val(), {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer "+sessionStorage.getItem("Token")
-    },
-  }).then((data) => {
+  let result = await fetch(
+    baseUrl + "/stockpile/v1/category/getSubCategory/" + $(e.target).val(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("Token"),
+      },
+    }
+  ).then((data) => {
     return data.json();
   });
 
@@ -322,25 +313,19 @@ $(document).on("change", "#itemGetDepartment", async (e) => {
   selectionBox.innerHTML = dataSelect;
 });
 
-
 /******************************Calculating Total Price from Unit Price********************************************************** */
 
-    $(document).on("keyup", "#unitPrice", async (e) => {
-
-        let quantity = $("#itemQuantity").val()
-        let uprice = e.target.value
-        let totalPrice=quantity *  uprice
-        $("#totalPrice").val()
-        $("#totalPrice").val(totalPrice)
-        
+$(document).on("keyup", "#unitPrice", async (e) => {
+  let quantity = $("#itemQuantity").val();
+  let uprice = e.target.value;
+  let totalPrice = quantity * uprice;
+  $("#totalPrice").val();
+  $("#totalPrice").val(totalPrice);
 });
-
 
 /******************************Calculating Item Availl********************************************************** */
 
 $(document).on("keyup", "#itemQuantity", async (e) => {
-
-    let totalAvail = e.target.value
-    $("#itemAvailable").val(totalAvail)
-    
+  let totalAvail = e.target.value;
+  $("#itemAvailable").val(totalAvail);
 });

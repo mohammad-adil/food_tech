@@ -15,4 +15,16 @@ router.get(
   _reportService.doGetReturnReport
 );
 
+router.get(
+  prefix + "/item/:startDate/:endDate",
+  auth,
+  _reportService.doGetItemReport
+);
+
+router.get(
+  prefix + "/purchase/:startDate/:endDate",
+  auth,
+  _reportService.doGetPurchaseReport
+);
+
 module.exports = router;
