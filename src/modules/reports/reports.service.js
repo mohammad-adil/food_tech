@@ -34,3 +34,28 @@ exports.doGetByDate = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.doGetReturnReport = async (req, res, next) => {
+  try {
+    let { startDate, endDate } = req.params;
+    const result = await Return.find({
+      createdAt: { $gte: startDate, $lte: endDate },
+    })
+      .populate({
+        path: "recievedBy",
+        select: "name email phone",
+      })
+      .populate({
+        path: "issueId",
+        select: "quantityIssued returnDate returned item issuedTo",
+        populate: "item issuedTo issuedBy",
+      });
+    if (result.length == 0) {
+      return res.status(404).send("No Items Were Found");
+    }
+    return res.status(200).send({ data: result });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};

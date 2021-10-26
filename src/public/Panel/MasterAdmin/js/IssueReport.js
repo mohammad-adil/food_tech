@@ -39,6 +39,7 @@ assetReport.addEventListener("click", async () => {
 <table class="ui striped table" id="issueTableReport">
   <thead>
     <tr>
+    <th>Item Name </th>
       <th>Issued To</th>
       <th>Department</th>
       <th>Mobile No</th>
@@ -91,7 +92,7 @@ $(document).on("click", "#getIssueReportByDate", async () => {
 
   let baseUrl = window.location.origin;
   let result = await fetch(
-    baseUrl + `/stockpile/v1/reports/getByDate/${startDate}/${endDate}`,
+    baseUrl + `/stockpile/v1/reports/issue/${startDate}/${endDate}`,
     {
       method: "GET",
       headers: {
@@ -130,6 +131,7 @@ const generateAssetTable = async (result) => {
   let tableRow = "";
   result.forEach((element) => {
     tableRow += `  <tr>
+    <td>${element.item.itemName}</td>
     <td>${element.issuedTo.name}</td>
     <td>${element.issuedTo.department.departmentName}</td>
     <td>${element.issuedTo.phone}</td>
@@ -150,8 +152,8 @@ $(document).on("click", ".export", function (event) {
   $("#issueTableReport").table2excel({
     // exclude CSS class
     exclude: ".noExl",
-    name: "Worksheet Name",
-    filename: "SomeFile", //do not include extension
+    name: "ISSUE",
+    filename: `Issue_${new Date()}`, //do not include extension
     fileext: ".xls", // file extension
   });
 });
