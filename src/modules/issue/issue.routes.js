@@ -3,6 +3,13 @@ const _issueService = require("../issue/issue.service");
 const auth = require("../../middleware/Auth");
 const prefix = "/stockpile/v1/issue";
 
+router.get(
+  prefix + "/getIssue/:startDate/:endDate",
+  auth,
+  _issueService.doGetIssue,
+  (req, res) => {}
+);
+
 router.post(
   prefix + "/issueItem/:itemId",
   auth,
