@@ -21,7 +21,7 @@ const purchaseSchema = new mongoose.Schema(
     lab: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "Lab",
+      ref: "Labs",
     },
     isDeleted: {
       type: Boolean,

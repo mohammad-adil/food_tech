@@ -119,28 +119,13 @@ btnItemPurchase.addEventListener("click", async () => {
                                             <option value="Liters">Liters</option>
                                             <option value="Milligrams">Milligrams</option>
                                             <option value="Grams">Grams</option>
-                                            <option value="Uints">Uints</option>
+                                            <option value="Units">Uints</option>
                                             </select>
                                       </div> 
                                          </div> 
                                             </div> 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                            <div class="form-row"> 
+                                   <div class="form-row"> 
                                 <div class="col-md-6"> 
                                 <div class="form-group">
                                           <label class="small mb-1" for="unitPrice">Unit Price</label>
@@ -178,14 +163,7 @@ btnItemPurchase.addEventListener("click", async () => {
                                       </div> 
                                          </div> 
                                             </div> 
-
-
-
-
-
-
-
-                                            <div class="form-row"> 
+                                           <div class="form-row"> 
                                 <div class="col-md-6"> 
                                 <div class="form-group">
                                           <label class="small mb-1" for="itemAvailable">Item Availibility</label>
@@ -199,13 +177,7 @@ btnItemPurchase.addEventListener("click", async () => {
                                       </div> 
                                          </div> 
                                             </div> 
-
-
-
-
-
-
-                                            <div class="form-row"> 
+                                               <div class="form-row"> 
                                 <div class="col-md-6"> 
                                 <div class="form-group">
                                           <label class="small mb-1" for="purchaseOrderNumber">Purchase Order Number</label>
@@ -213,13 +185,7 @@ btnItemPurchase.addEventListener("click", async () => {
                                 </div> 
                                 </div> 
                                 </div> 
-
-
-
-
-
-
-                                          <div class="form-group mt-4 mb-0"> 
+                                                <div class="form-group mt-4 mb-0"> 
                                               <button id="btnPurchseItem" type="button" class="btn btn-primary btn-block">Add Item</button> 
                                           </div> 
                                       </form> 

@@ -61,9 +61,9 @@ form.sign-in-form {
 }
 
 .title {
-  font-size: 2.2rem;
+  font-size: 1 rem;
   color: #444;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .input-field {
@@ -71,7 +71,7 @@ form.sign-in-form {
   width: 100%;
   background-color: #f0f0f0;
   margin: 10px 0;
-  height: 35px;
+  height: 30px;
   border-radius: 55px;
   display: grid;
   grid-template-columns: 15% 85%;
@@ -92,9 +92,9 @@ form.sign-in-form {
   background: none;
   outline: none;
   border: none;
-  line-height: 1;   
-  font-weight: 600;
-  font-size: 1.1rem;
+  line-height: 1;
+  font-weight: 100;
+  font-size: 0.8rem;
   color: #333;
 }
 

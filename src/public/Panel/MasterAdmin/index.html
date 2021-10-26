@@ -15,6 +15,7 @@
     <script src="/js/jquery.table2excel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/js/eventHandler.js"></script>
+
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -51,7 +52,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
+                    <a class="dropdown-item" id="userProfile" href="#">Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Logout</a>
                 </div>
@@ -102,7 +103,7 @@
 
                         </div>
                         <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <button id="deleteItem" type="button" class="btn btn-link nav-link itenary">Delete Item</button>
+            
 
                         </div>
                         <div class="collapse" id="collapseAdd" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
@@ -177,8 +178,6 @@
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                             <button id="addUser" type="button" class="btn btn-link nav-link nav-link">Add User</button>
-                            <button id="updateUser" type="button" class="btn btn-link nav-link ">Update User</button>
-
         
                             <button id="approveUser"  type="button" class="btn btn-link nav-link ">Approve User \ Delete User</button>
 
@@ -227,7 +226,7 @@
 
                             <button id="purchaseItem" type="button" class="btn btn-link nav-link nav-link">Purchase</button>
                             <button id="updatePurchaseItem" type="button" class="btn btn-link nav-link ">Update</button>
-                            <button id="" type="button" class="btn btn-link nav-link "> Get Items by Department</button>
+                            
 
                         </div>
 
@@ -269,7 +268,7 @@
 
                             <button id="returnItem" type="button" class="btn btn-link nav-link nav-link">Return Item</button>
                             <button id="updateReturnItem" type="button" class="btn btn-link nav-link ">Update</button>
-                            <button id="" type="button" class="btn btn-link nav-link "> Get Return by Department</button>
+                        
 
                         </div>
 
@@ -297,6 +296,7 @@
                             <button id="issueReport" type="button" class="btn btn-link nav-link nav-link">Issue Report</button>
                             <button id="returnReport" type="button" class="btn btn-link nav-link ">Return Report</button>
                             <button id="itemReport" type="button" class="btn btn-link nav-link "> Item Report</button>
+                            <button id="purchaseReport" type="button" class="btn btn-link nav-link "> Purchase Report</button>
 
                         </div>
 
@@ -336,7 +336,7 @@
                     <script>
                         $(document).on('keyup', '#myInput', function() {
                             var value = $(this).val().toLowerCase();
-                            $("#results > tbody > tr").filter(function() {
+                            $("#itemTableReport > tbody > tr").filter(function() {
                                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                             });
                         });
@@ -387,7 +387,11 @@
         <script src="/Panel/MasterAdmin/js/updatePurchase.js"></script> 
         <script src="/Panel/MasterAdmin/js/returnItem.js"></script>  
         <script src="/Panel/MasterAdmin/js/IssueReport.js"></script>  
-        <script src="/Panel/MasterAdmin/js/returnReport.js"></script>     
+        <script src="/Panel/MasterAdmin/js/returnReport.js"></script> 
+        <script src="/Panel/MasterAdmin/js/itemReport.js"></script>    
+        <script src="/Panel/MasterAdmin/js/purchaseReport.js"></script>   
+        <script src="/Panel/MasterAdmin/js/userProfile.js"></script> 
+        <script src="/Panel/MasterAdmin/js/updateIssue.js"></script>         
        
 
 </body>
