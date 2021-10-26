@@ -63,3 +63,37 @@ exports.doActiveUser = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.doGetUser = async (req, res, next) => {
+  try {
+    const result = await User.findById({ _id: req.userId });
+    if (result.length == 0) {
+      return res.status(404).send("No Such User Found, Invalid Auth Token");
+    }
+    return res.status(200).send({ data: result });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.doChangePassword = async (req, res) => {
+  try {
+    const { Password } = req.body;
+    const user = await User.findById({ _id: req.userId });
+
+    console.log(user.password);
+    user.password = Password;
+    console.log(user);
+
+    let result = await user.save();
+    if (result.length == 0) {
+      return res
+        .status(500)
+        .send({ Message: "No Such User Found, Invalid Auth Token" });
+    }
+    return res.status(200).send({ Message: " Password Updated successfully" });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};

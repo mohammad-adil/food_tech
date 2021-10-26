@@ -40,7 +40,7 @@ const itemSchema = new mongoose.Schema(
     lab: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "Lab",
+      ref: "Labs",
     },
     purchasedAt: [
       {

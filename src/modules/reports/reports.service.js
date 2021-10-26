@@ -59,3 +59,64 @@ exports.doGetReturnReport = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.doGetItemReport = async (req, res, next) => {
+  try {
+    let { startDate, endDate } = req.params;
+    const result = await Items.find({
+      createdAt: { $gte: startDate, $lte: endDate },
+    })
+      .populate({
+        path: "department",
+        select: "departmentName",
+      })
+      .populate({
+        path: "lab",
+        select: "labName",
+      })
+      .populate({
+        path: "enteredBy",
+        select: "name phone email",
+      });
+
+    if (result.length == 0) {
+      return res.status(404).send("No Items Were Found");
+    }
+    return res.status(200).send({ data: result });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
+
+exports.doGetPurchaseReport = async (req, res, next) => {
+  try {
+    let { startDate, endDate } = req.params;
+    const result = await Purchase.find({
+      createdAt: { $gte: startDate, $lte: endDate },
+    })
+      .populate({
+        path: "item",
+        select: "itemName",
+      })
+      .populate({
+        path: "department",
+        select: "departmentName",
+      })
+      .populate({
+        path: "lab",
+        select: "labName",
+      })
+      .populate({
+        path: "enteredBy",
+        select: "name phone email",
+      });
+    if (result.length == 0) {
+      return res.status(404).send("No Items Were Found");
+    }
+    return res.status(200).send({ data: result });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};

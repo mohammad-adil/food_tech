@@ -25,4 +25,7 @@ router.patch(
   (req, res) => {}
 );
 
+router.get(prefix + "/getUser", auth, _signupService.doGetUser);
+router.patch(prefix + "/changePassword", auth, _signupService.doChangePassword);
+
 module.exports = router;

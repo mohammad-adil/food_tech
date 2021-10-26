@@ -4,6 +4,7 @@ const Item = require("../items/item.model");
 exports.doPurchaseItem = async (req, res, next) => {
   try {
     const { userId } = req;
+
     req.body.enteredBy = userId;
     let payload = req.body;
     const item = await Item.findOne({
