@@ -1,4 +1,4 @@
-const btnIssueItem = document.querySelector("#issueItem", "#quickIssue");
+const btnIssueItem = document.querySelector("#issueItem", ".quickIssue");
 btnIssueItem.addEventListener("click", async () => {
   let dataDiv = document.getElementById("dashBoard");
   dataDiv.innerHTML = "";

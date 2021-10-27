@@ -1,4 +1,5 @@
 const btnItemUpdate = document.querySelector("#updateItem");
+console.log("Updating Item");
 btnItemUpdate.addEventListener("click", async () => {
   let dataDiv = document.getElementById("dashBoard");
   dataDiv.innerHTML = "";
